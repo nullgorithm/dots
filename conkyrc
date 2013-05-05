@@ -1,0 +1,49 @@
+# -- Conky settings -- #
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+imlib_cache_size 0
+
+# -- Window specifications -- #
+
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+
+border_inner_margin 0
+border_outer_margin 0
+
+minimum_size 1366 20
+maximum_width 1366
+alignment bottom_right
+gap_x -34
+gap_y -10
+
+# -- Graphics settings -- #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+
+# -- Text settings -- #
+use_xft yes
+xftfont Libel Suit:style=Regular:size=20
+
+uppercase yes
+
+default_color a0a0a0
+color1 c0c0c0
+color2 efefef
+
+TEXT
+${alignr}${offset -40}${color}${if_mpd_playing}${mpd_artist} ${color1}${mpd_title}${endif} ${color}${mpd_album} ${color2}${exec bash-fuzzy-clock}

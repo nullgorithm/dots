@@ -1,0 +1,121 @@
+;; -*- Lisp -*-
+;; S A W F I S H R C
+
+;; Modules
+( require 'sawfish.wm.commands.jump-or-exec )
+( require 'sawfish.wm.custom )
+( require 'sawfish.wm.edge.flip )
+( require 'sawfish.wm.ext.auto-raise )
+( require 'sawfish.wm.ext.match-window )
+( require 'sawfish.wm.ext.window-history )
+( require 'sawfish.wm.frames )
+( require 'sawfish.wm.menus )
+( require 'rep.io.timers )
+
+( bind-keys global-keymap
+;; Applications
+"Super-SPC" '(system "gmrun &")
+"Super-RET" '(system "termite &")
+"Super-d" '(system "urxvtc -e ranger &")
+"Super-l" '(system "/home/luizf/bin/mpm &")
+"Super-n" '(system "urxvtc -e ncmpcpp &")
+"Super-t" '(system "urxvtc -e tmux &")
+"Super-T" '(system "urxvtc -e tmux attach &")
+"Super-s" '(jump-or-exec "Skype" "skype" t)
+"Super-e" '(jump-or-exec "Emacs" "emacs" t)
+"Super-v" '(jump-or-exec "gVim" "gvim" t)
+"Super-f" '(jump-or-exec "Thunar" "thunar" t)
+"Super-b" '(jump-or-exec "Firefox" "firefox" t)
+"Print" '(system "scrot '/mnt/data/Scrots/%d-%m-%Y_%H:%M.png' &")
+
+;; Media Keys
+"XF86AudioPrev" '(system "mpc prev &")
+"XF86AudioPlay" '(system "mpc toggle &")
+"XF86AudioNext" '(system "mpc next &")
+"XF86AudioStop" '(system "mpc stop &")
+"XF86AudioLowerVolume" '(system "amixer set PCM 5%- &")
+"XF86AudioRaiseVolume" '(system "amixer set PCM 5%+ &")
+"XF86AudioMute" '(system "amixer set Master toggle &")
+"XF86AudioMedia" '(system "urxvtc -e pimpd2 -sh &")
+
+;; WM Functions
+"Super-q" 'delete-window-instance
+"Super-m" 'maximize-window
+"Super-M" 'unmaximize-window
+"Super-i" 'iconify-window
+"Super-TAB" 'cycle-windows
+"Super-Left" 'previous-workspace
+"Super-Right" 'next-workspace
+"Super-1" '(activate-workspace 1)
+"Super-2" '(activate-workspace 2)
+"Super-3" '(activate-workspace 3)
+"Super-4" '(activate-workspace 4)
+"Super-5" '(activate-workspace 5)
+"Super-R" 'restart )
+
+;; Rootwindow Keybindings
+( bind-keys root-window-keymap
+"Button2-Click" 'popup-window-list-menu
+"Button3-Click" 'popup-root-menu
+"Button4-Click" 'previous-workspace
+"Button5-Click" 'next-workspace )
+
+;; Window Keybindings
+( bind-keys window-keymap
+"Super-Button1-Move" 'move-window-interactively
+"Super-Button3-Move" 'resize-window-interactively
+
+"Super-f" 'maximize-window-fullscreen-toggle )
+
+;; Appearance
+( defvar-setq default-frame-style 'dynasty )
+( defvar-setq resize-show-dimensions nil )
+(custom-set-typed-variable (quote default-font) (quote ("Pango" . "Alterebro Pixel Font 12")) (quote font))
+
+;; Placement & Focus
+( defvar-setq focus-click-through t )
+( defvar-setq focus-windows-when-mapped t )
+( defvar-setq raise-windows-on-focus t )
+( defvar-setq raise-window-timeout 100 )
+( defvar-setq cycle-raise-windows t )
+( defvar-setq place-window-mode 'best-fit )
+( defvar-setq move-resize-raise-window t )
+
+;; Edge Actions
+( defvar-setq edge-actions-enabled t )
+( defvar-setq left-right-edge-action 'flip-workspace )
+( defvar-setq left-right-edge-move-action 'flip-workspace )
+
+;; Workspaces
+( defvar-setq workspace-names '( "Main" "WWW" "Media" "IM" "Misc" ) )
+
+;; Window History
+( defvar-setq window-history-auto-save-position t )
+( defvar-setq window-history-auto-save-dimensions t )
+( defvar-setq window-history-auto-save-state t )
+( defvar-setq window-history-ignore-transients nil )
+
+;; Misc/tint2
+(custom-set-typed-variable (quote prompt-color) (quote ("#800077007700" . "#150015001500")) (quote (pair (labelled "Foreground:" color) (labelled "Background:" color))))
+(custom-set-typed-variable (quote match-window-profile) (quote ((((WM_CLASS . "tint2")) (ignore-program-position . #t) (workspace . 5) (new-workspace . #f) (new-viewport . #f) (fixed-position . #f) (fixed-size . #f) (sticky . #f) (sticky-viewport . #f) (focus-when-mapped . #f) (never-focus . #f) (focus-click-through . #f) (frame-type . none) (iconified . #f) (never-iconify . #t) (never-maximize . #t) (window-list-skip . #t) (task-list-skip . #t) (never-delete . #f) (no-history . #t)) (((WM_CLASS . "conky")) (frame-type . none)))) (quote match-window) (quote sawfish.wm.ext.match-window))
+
+;; Startup message
+(defun get-output-string-exec (x)
+  (let* ((stream (make-string-output-stream))
+         (process (make-process stream))
+         (retval (call-process process nil x)))
+    (get-output-stream-string stream)))
+
+(defun kid-display-message (message &optional seconds)
+  "display MESSAGE for SECONDS seconds and make the message disappeared.
+The default display-message don't close the message window automatically"
+  (interactive)
+  (display-message message)
+  (make-timer
+   (lambda ()
+     (display-message)) ; close message window
+   (or seconds 6)))
+
+(kid-display-message (get-output-string-exec "fortune"))
+
+;; vim: set ft=lisp :
