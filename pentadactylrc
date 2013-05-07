@@ -1,0 +1,56 @@
+loadplugins '\.(js|penta)$'
+group user
+
+set guioptions-=rb
+set editor='/usr/bin/urxvtc -e vim'
+set hintkeys=adsjlkfmph
+set hlfind
+set shell=/bin/zsh
+
+hi -a StatusLine font-weight: normal;
+hi -a StatusLineNormal color:#c1c1c1 !important; background:#151515 !important;
+
+hi FontCode -a font-family: Alterebro Pixel Font important; font-size: 12pt !important;
+hi FontFixed -a font-family: Alterebro Pixel Font !important; font-size: 12pt !important;
+hi Normal -a font-family: Alterebro Pixel Font !important; font-size: 12pt !important;
+
+style -name gaycrew http://*,https://*,file://*,about:blank <<EOM
+  * {
+    color: #707880 !important;
+    background: #151515 !important;
+    border-color: #282A2E !important;
+  }
+  a, a * {
+    color: #81A2BE !important;
+    text-decoration: none !important;
+  }
+  a:hover, a:hover * {
+    color: #F0C674 !important;
+  }
+  a:visited, a:visited * {
+    color: #b294bb !important;
+  }
+  a:visited:hover, a:visited:hover * {
+    color: #de935f !important;
+  }
+EOM
+styledisable -name=gaycrew
+
+highlight Hint text-transform: uppercase; font-family : "Arial", "Helvetica", "Lucida Grande", "Sans"; font-weight: bold; font-size: 11px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6); color: #302505; padding: 1px 3px 0px 3px; background: -moz-linear-gradient(top, #FFF785, #FFC542); border: 1px #C38A22 solid; -moz-border-radius: 3px; -moz-box-shadow: 0 3px 7px 0px rgba(0,0,0,0.3);
+highlight HintActive background-color: inherit !important
+highlight HintElem background-color: inherit !important
+highlight HintImage opacity: .5 !important;
+highlight -link=FontFixed StatusLine -moz-appearance: none !important; font-weight: bold; background: transparent !important; border: 0px !important; padding-right: 0px !important; min-height: 18px !important; text-shadow: none !important; font-family: Alterebro Pixel Font !important; font-weight: normal !important; font-size: 12pt !important;
+
+highlight CompGroup background: #151515; color: #888;
+highlight CompItem[selected] background: #ff8939; color: #151515;
+highlight CompTitle background: #151515; color: #bdf271;
+highlight CompTitleSep display: none;
+highlight MoreMsg color: #050505; background: #222;
+highlight NonText background: #050505; color: #888;
+highlight Normal background: #050505; color: #888;
+highlight Preview color: #444;
+highlight StatusLineNormal background: #151515;
+highlight Title background: #050505; color: #bdf271;
+
+" vim: set ft=pentadactyl:
