@@ -1,0 +1,120 @@
+# app launcher
+super + space
+    interrobang
+
+# terminal
+super + Return
+    termite
+
+super + Q
+    bspc quit 1
+
+super + R
+    bspc reload_autostart
+
+super + b
+    bspc balance
+
+# media keys
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+    amixer -q sset PCM {1%+,1%-,toggle}
+
+XF86Audio{Play,Stop,Prev,Next}
+    mpc {toggle,stop,prev,next}
+
+# image viewer
+super + I
+    sxiv -rt "/mnt/data/Porn/Pic"
+
+# color pick
+super + G
+    zenity --color-selection
+
+# move focus
+super + {h,j,k,l}
+    bspc focus {left,down,up,right}
+
+# move frames
+super + shift + {h,j,k,l}
+    bspc shift {left,down,up,right}
+
+# mpd seek
+alt + shift + {0-9}
+    mpc seek {0-9}0%
+
+ctrl + alt + {q,r,s}
+    sudo systemctl {poweroff,reboot,suspend}
+
+# close window
+super + q
+    bspc close
+
+# kill window
+super + w
+    bspc kill
+
+# cycle last layout
+super + t
+    bspc cycle_layout
+
+# cycle frames
+super + {comma,period}
+    bspc circulate {backward,forward}
+
+# cycle modes
+super + {f,F,x,z}
+    bspc toggle_{floating,fullscreen,locked,visibility}
+
+# next/previous frame
+super + {Tab,shift + Tab}
+    bspc cycle {next,prev}
+
+# mouse support ==========================
+
+:button1
+    bspc grab_pointer focus
+
+super + button{1,2,3}
+    bspc grab_pointer {move,resize_side,resize_corner}
+
+super + !button{1,2,3}
+    bspc {track_pointer,track_pointer,track_pointer} %i %i
+
+super + @button{1,2,3}
+    bspc {ungrab_pointer,ungrab_pointer,ungrab_pointer}
+
+# ========================================
+
+# previous/next workspace
+super + {Left,Right}
+    bspc cycle_desktop {prev,next}
+
+super + {V,H}
+    bspc flip {vertical,horizontal}
+
+# resizing frames
+alt + {H,J,K,L}
+    bspc push {left,down,up,right}
+
+alt + ctrl + {h,j,k,l}
+    bspc pull {right,up,down,left}
+
+# set the direction to spawn new frame
+alt + {h,j,k,l}
+    bspc presel {left 0.33,down 0.66,up 0.33,right 0.66}
+
+ctrl + alt + {1-9,0}
+    bspc set window_gap {0,3,6,9,15,24,39,63,102,165}
+
+alt + space
+    bspc cancel
+
+# workspace change/send to ===============
+
+super + {1-5}
+    bspc use {1-5}
+
+super + shift + {1-5}
+    bspc send_to {1-5}
+
+# ========================================

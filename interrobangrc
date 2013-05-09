@@ -1,0 +1,45 @@
+## | InterobangRC
+## |
+## | Lines starting with a # are ignored as comments, but this file is
+## | not processed by a shell interpreter.
+
+
+font        -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso8859-1
+geometry    top
+#geometry    400x16+200+200
+foreground  #334359
+background  #202020
+border      #000000
+bangchar    :
+#show options
+
+# | BANGS & TAB COMPLETION
+# | The first listed bang is the default
+# | TAB(bangname) defines completion for that bang and must be *after*
+# |     the bang definition
+# | TAB() defines the default tab completion
+
+# TAB()		compgen -P "%s" -cf %s
+# | Optional "complex" completer
+# |     adds spaces after commands and slashes after urls and escapes
+# |     parentheses and square brackets
+
+TAB() compgen -P "%s" -fc %s | sort -u | while read s; do s=${s/\(/\\(}; s=${s/\)/\\)}; s=${s/\[/\\[}; s=${s/\]/\\]}; [[ -d ${s##* } ]] && echo "$s/" || echo "$s "; done
+
+:term     termite -e %s
+
+:web      firefox %s
+
+:pdf      zathura %s
+TAB(pdf)  compgen -P "%s" -f /mnt/data/Books/%s
+
+:man      termite -e man %s
+
+:archbbs  firefox https://duckduckgo.com/?q=%s%%20site%%3Abbs.archlinux.org
+
+:archwiki firefox https://duckduckgo.com/?q=%s%%20site%%3Awiki.archlinux.org
+
+:echo     echo %s
+
+#!net     <your network tool here>
+#TAB(net)	<complete network names with available essids>
