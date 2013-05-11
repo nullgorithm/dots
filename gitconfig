@@ -1,16 +1,17 @@
-[user]
+  [user]
    name = Luiz F.
    email = luiz.efe20@gmail.com
 
+[github]
+   user = suare
+
 [core]
    editor = vim
-   pager = less -R
-
-[credential]
-   helper = cache
+   pager = less -iRs
 
 [color]
    ui = auto
+   interactive = true
 
 [color "diff"]
    plain = normal
@@ -43,3 +44,6 @@
    header = black bold
    help = magenta bold
    error = red bold
+
+[push]
+	default = simple
