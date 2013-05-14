@@ -1,13 +1,32 @@
-  [user]
+[user]
    name = Luiz F.
    email = luiz.efe20@gmail.com
+
+[branch]
+   autosetupmerge = always
+   autosetuprebase = always
 
 [github]
    user = suare
 
+[rebase]
+   autosquash = true
+
+[apply]
+   ignorewhitespace = change
+   whitespace = nowarn
+
+[push]
+   default = tracking
+
+[pull]
+   rebase = true
+
 [core]
    editor = vim
-   pager = less -iRs
+
+[web]
+   browser = dwb
 
 [color]
    ui = auto
@@ -44,6 +63,3 @@
    header = black bold
    help = magenta bold
    error = red bold
-
-[push]
-	default = simple

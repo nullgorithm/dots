@@ -1,0 +1,56 @@
+let mapleader = ","
+
+set defsearch=google
+set hintchars=adslkjmrhfc
+set hlsearch
+set ignorecase
+set incsearch
+set popups=tab
+set smartcase
+set toolbars=noaddons,nobookmarks,nomenu,nonavigation,tabs
+
+highlight CmdLine font-family: "MonteCarlo" !important; font-size: 11px !important; padding: 1px;
+
+highlight CompItem[selected] background: #ff8939; color: #151515;
+highlight CompTitle background: #151515; color: #bdf271;
+highlight Hint text-transform: uppercase; font-family : "Arial", "Helvetica", "Lucida Grande", "Sans"; font-weight: bold; font-size: 11px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6); color: #302505; padding: 1px 3px 0px 3px; background: -moz-linear-gradient(top, #FFF785, #FFC542); border: 1px #C38A22 solid; -moz-border-radius: 3px; -moz-box-shadow: 0 3px 7px 0px rgba(0,0,0,0.3);
+highlight HintActive background-color: inherit !important
+highlight HintElem background-color: inherit !important
+highlight HintImage opacity: .5 !important;
+highlight MoreMsg color: #151515; background: #b5b5b5;
+highlight NonText background: #151515; color: #b5b5b5;
+highlight Normal background: #151515; color: #b5b5b5;
+highlight Preview color: #444;
+highlight Title background: #151515; color: #bdf271;
+
+" Support paging through a document.
+javascript <<EOF
+  mappings.addUserMap(
+    [modes.NORMAL],
+    ["}"],
+    "Smooth scroll some down",
+    function(count){
+      // 1600 is 80 (the normal scroll amount) * 20, a rough number I found to
+      // work.
+      self.smoothScrollBy(1600 * (count || 1));
+    },
+    {
+      count: true
+    }
+  );
+  mappings.addUserMap(
+    [modes.NORMAL],
+    ["{"],
+    "Smooth scroll some down",
+    function(count){
+      // 1600 is 80 (the normal scroll amount) * 20, a rough number I found to
+      // work. Negative means go up.
+      self.smoothScrollBy(-1600 * (count || 1));
+    },
+    {
+      count: true
+    }
+  );
+EOF
+
+" vim: ft=vimperator
