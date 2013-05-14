@@ -2,22 +2,22 @@
 
 /* default window dimensions (overwritten via -g option): */
 enum {
-	WIN_WIDTH  = 640,
+	WIN_WIDTH  = 550,
 	WIN_HEIGHT = 600
 };
 
 /* bar font:
  * (see X(7) section "FONT NAMES" for valid values)
  */
-static const char * const BAR_FONT = "-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*";
+static const char * const BAR_FONT = "Envy Code R:size=10";
 
 /* colors:
  * (see X(7) section "COLOR NAMES" for valid values)
  */
-static const char * const WIN_BG_COLOR = "#121212";
-static const char * const WIN_FS_COLOR = "#000000";
-static const char * const SEL_COLOR    = "#6F7277";
-static const char * const BAR_BG_COLOR = "#080808";
+static const char * const WIN_BG_COLOR = "#151515";
+static const char * const WIN_FS_COLOR = "#151515";
+static const char * const SEL_COLOR    = "#033747";
+static const char * const BAR_BG_COLOR = "#151515";
 static const char * const BAR_FG_COLOR = "#909295";
 
 #endif
@@ -35,10 +35,8 @@ static const scalemode_t SCALE_MODE = SCALE_DOWN;
  * (first/last value is used as min/max zoom level)
  */
 static const float zoom_levels[] = {
-0.7, 1.5, 3.1, 6.2,
-12.5, 25.0, 50.0, 75.0,
-100.0, 150.0, 200.0, 400.0,
-800.0, 1600.0, 3200.0, 6400.0
+	 12.5,  25.0,  50.0,  75.0,
+	100.0, 150.0, 200.0, 400.0, 800.0
 };
 
 /* default settings for multi-frame gif images: */
@@ -52,7 +50,7 @@ enum {
 #ifdef _THUMBS_CONFIG
 
 /* default dimension of thumbnails (width == height): */
-enum { THUMB_SIZE = 160 };
+enum { THUMB_SIZE = 180 };
 
 #endif
 #ifdef _MAPPINGS_CONFIG

@@ -194,13 +194,14 @@ abstracts = {
   topicsbstart = "{sbstart $*}";
   topicsbend = "{sbend $*}";
 
-  prompt = "%CInsira%Y%9> %_%n";
+  prompt = "%BInsira%Y%9 > %_%n";
 
   sb = "[$*]";
-  sbmode = "(%G+%W$*%n)";
+  sbmode = "(%G+%Y$*%n)";
   sbaway = " (%RzZzZz%n)";
-  sbservertag = ":$0 (change with %B^X%n)";
-  sbnickmode = "$W";
+  sbservertag = ":%y$0%n";
+  sbtag = "%y$0%n";
+  sbnickmode = "%Y$W%n";
 
   # Usercount
   sb_usercount = "{sb %_$0%_ nicks ($1-)}";
@@ -208,7 +209,7 @@ abstracts = {
   sb_uc_ops = "%_@%r$*%n";
   sb_uc_halfops = "%_%%%g$*%n";
   sb_uc_voices = "%_+%y$*%n";
-  sb_uc_normal = "%w$*%n";
+  sb_uc_normal = "$0";
   sb_uc_space = " ";
   # activity in statusbar
 
