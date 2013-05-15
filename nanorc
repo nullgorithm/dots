@@ -45,7 +45,7 @@ set boldtext
 # set const
 
 ## Use cut to end of line by default.
-# set cut
+set cut
 
 ## Set the line length for wrapping text and justifying paragraphs.
 ## If fill is 0 or less, the line length will be the screen width less
