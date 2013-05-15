@@ -35,9 +35,9 @@ TAB(pdf)  compgen -P "%s" -f /mnt/data/Books/%s
 
 :man      termite -e man %s
 
-:archbbs  firefox https://duckduckgo.com/?q=%s%%20site%%3Abbs.archlinux.org
+:archbbs  dwb https://duckduckgo.com/?q=%s%%20site%%3Abbs.archlinux.org
 
-:archwiki firefox https://duckduckgo.com/?q=%s%%20site%%3Awiki.archlinux.org
+:archwiki dwb https://duckduckgo.com/?q=%s%%20site%%3Awiki.archlinux.org
 
 :echo     echo %s
 
