@@ -5,13 +5,14 @@
 # Alias
 source ~/.alias
 
-# Options
+# Options {{{
 shopt -s autocd
 shopt -s cdspell
 shopt -s cmdhist
 shopt -s dotglob
 shopt -s extglob
 shopt -s globstar
+shopt -s hostcomplete
 shopt -s nocaseglob
 shopt -s no_empty_cmd_completion
 shopt -s no_empty_cmd_completion
@@ -23,23 +24,21 @@ shopt -s checkwinsize
 set -o vi
 set -o noclobber
 set show-all-if-ambiguous on
+# }}}
 
-# Completion
+# Completion {{{
 for f in '/usr/share/bash-completion/bash_completion' '/etc/bash_completion'; do
     if [ -e "$f" ]; then
         . "$f"
-    fi
+      fi
 done
 
 complete -cf pacman
-complete -cf sudo
 complete -cf man
-complete -abck i
-complete -c bed
-complete -C finddots dot
+# }}}
 
-# Functions
-sprunge() { curl -F "sprunge=<-" http://sprunge.us <"$1" ;}
+# Functions {{{
+spru() { curl -F "sprunge=<-" http://sprunge.us <"$1" ;}
 
 cpf() { cp "$@" && goto "$_"; }
 mvf() { mv "$@" && goto "$_"; }
@@ -51,12 +50,12 @@ ext() {
           *.tar.gz)    tar xvzf $1    ;;
           *.tar.xz)    tar xvJf $1    ;;
           *.bz2)       bunzip2 $1     ;;
-          *.rar)       unrar x $1     ;;
+          *.rar)       7z x x $1     ;;
           *.gz)        gunzip $1      ;;
           *.tar)       tar xvf $1     ;;
           *.tbz2)      tar xvjf $1    ;;
           *.tgz)       tar xvzf $1    ;;
-          *.zip)       unzip $1       ;;
+          *.zip)       7z x $1       ;;
           *.Z)         uncompress $1  ;;
           *.7z)        7z x $1        ;;
           *.xz)        unxz $1        ;;
@@ -68,47 +67,70 @@ ext() {
   fi
 }
 
+# dir_colors
 if [ -n "$(type -p dircolors)" ]; then
-    eval $(dircolors -b ~/.dir_colors)
+    eval $(dircolors -b ~/.config/LS_COLORS)
 fi
 
-mp() {
+mplayer() {
   /usr/bin/mplayer \
     -msgmodule 1 -msgcolor -include $HOME/.mplayer/config "$@"
 }
 
-cl() {
-if [ -d "$1" ]; then
-    cd "$1"
-    ls++
-    else
-    echo "bash: cl: '$1': Directory not found"
-	alias cd=cl
-fi
+cd() {
+  builtin cd "$1"; ls++
 }
 
-# Prompt
+# Notes
+n() { 
+  local arg files=()
+  for arg; do 
+      files+=( $HOME/".notes/$arg" )
+  done
+  ${EDITOR:-vi} "${files[@]}"; 
+}
+
+nls() {
+  tree -CR --noreport $HOME/.notes | awk '{ 
+    if (NF==1) print $1 
+    else if (NF==2) print $2
+    else if (NF==3) printf "  %s\n", $3 
+  }'
+}
+
+# TAB completion for notes
+_notes() {
+  local files=($HOME/.notes/**/"$2"*)
+  [[ -e ${files[0]} ]] && COMPREPLY=( "${files[@]##$HOME/.notes/}" )
+}
+complete -o default -F _notes n
+
+. $HOME/.z_cd/z.sh
+# }}}
+
+# Prompt {{{
 _prompt_command() {
     builtin history -a
     case "$TERM" in
         rxvt* | xterm*)
-            echo -en "\e]0;Terminal ${PWD//$HOME/~}$(git branch --no-color 2> /dev/null | grep '^\*' | sed 's/\* \(.*\)/ (\1)/')\a"
+            echo -en "\e[m\e[1;33m$(git branch --no-color 2> /dev/null | grep '^\*' | sed 's/\* \(.*\)/ (\1)/') "
             ;;
     esac
 tput ed
 }
 
-export PS1='\[\e[1;35m\]▶\[\e[0m\] '
-export PS2='\[\e[1;30m\]◀\[\e[0m\] '
-export PROMPT_COMMAND='_prompt_command'
+PS1="\[\e[1;35m\]$\[\e[0m\] "
+PS2="\[\e[1;30m\]◀\[\e[0m\] "
+PROMPT_COMMAND='_prompt_command'
+# }}}
 
-# Exports
+# Exports {{{
 export LANG=pt_BR.UTF-8
 export LC_ALL=
 export LC_COLLATE='C'
 export SHELL=/bin/bash
 export EDITOR=vim
-export BROWSER=firefox
+export BROWSER=dwb
 export PAGER=less
 export MOZ_DISABLE_PANGO=0
 export FIREFOX_DSP=none
@@ -128,3 +150,6 @@ export XDG_MUSIC_DIR=/mnt/data/Musics
 export XDG_VIDEOS_DIR=/mnt/data/Videos
 export XDG_PICTURES_DIR=/mnt/data/Pics
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/core_perl:/usr/bin/vendor_perl:$HOME/bin:$HOME/.gem/ruby/2.0.0/bin
+# }}}
+
+# vim: ft=sh:
