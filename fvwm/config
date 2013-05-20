@@ -12,10 +12,12 @@ CursorStyle MENU         left_ptr
 #---- Desktops
 #====================================
 
-DesktopSize 3x1
-DesktopName 0 One
-DesktopName 1 Two
-DesktopName 3 Three
+DesktopSize 5x1
+DesktopName 0 main
+DesktopName 1 www
+DesktopName 2 im
+DesktopName 3 media
+DesktopName 4 misc
 
 EdgeScroll 100 100
 EdgeResistance 150 150
@@ -76,7 +78,7 @@ AddToDecor   MyDecor
 + ButtonStyle All -- UseTitleStyle
 
 Style "*" UseDecor MyDecor
-Style "*" Font "xft:neep:size=6"
+Style "*" Font "xft:Terminus:size=8"
 Style "*" NoTitle
 Style "*" BorderWidth 6, HandleWidth 6
 Style "*" BorderColorset 4
@@ -101,7 +103,7 @@ MenuStyle * VerticalItemSpacing 5 5, VerticalTitleSpacing 2 2
 MenuStyle * MenuColorset 7
 MenuStyle * ActiveFore, Hilight3DOff
 MenuStyle * ActiveColorset 8
-MenuStyle * Font "xft:neep:size=6"
+MenuStyle * Font "xft:Terminus:size=8"
 
 #====================================
 #---- Thumbnails
@@ -213,17 +215,17 @@ Key Tab A M WindowList Root c c NoDeskSort, SelectOnRelease Meta_L
 
 # Applications
 Key Return  A 4 Exec exec urxvt
-Key Space   A 4 Exec exec dmenu_run -fn "Neep:size=6" -p ">" -nb \#151515 -nf \#666666 -sb \#a761c2 -sf \#090909
-Key B       A 4 Exec exec firefox
-Key V       A 4 Exec exec urxvt -e vim
-Key M       A 4 Exec exec urxvt -e ncmpcpp
+Key Space   A 4 Exec exec dmenu_run -fn "Terminus:size=12" -p ">>>" -nb \#151515 -nf \#666666 -sb \#a761c2 -sf \#090909
+Key B       A 4 Exec exec dwb
+Key V       A 4 Exec exec urxvtc -e vim
+Key M       A 4 Exec exec urxvtc -e ncmpcpp
 
 # Multimedia Keys
 Key XF86AudioNext         A A Exec exec mpc next
 Key XF86AudioPrev         A A Exec exec mpc prev
 Key XF86AudioPlay         A A Exec exec mpc toggle
 Key XF86AudioStop         A A Exec exec mpc stop
-Key XF86AudioMedia        A A Exec exec urxvt -e ncmpcpp
+Key XF86AudioMedia        A A Exec exec urxvtc -e ncmpcpp
 Key XF86AudioLowerVolume  A A Exec exec amixer -q sset PCM 1%- unmute
 Key XF86AudioRaiseVolume  A A Exec exec amixer -q sset PCM 1%+ unmute
 Key XF86AudioMute         A A Exec exec amixer -q sset Master toggle
@@ -268,25 +270,25 @@ AddToMenu   FvwmRootMenu
 
 DestroyMenu FvwmProgramsMenu
 AddToMenu   FvwmProgramsMenu
-+ "internetz"      Popup FvwmInternetMenu
-+ "dev"         Popup FvwmDevelopmentMenu
-+ "gfx"       Popup FvwmGraphicMenu
++ "internetz"     Popup FvwmInternetMenu
++ "dev"           Popup FvwmDevelopmentMenu
++ "gfx"           Popup FvwmGraphicMenu
 + "office"        Popup FvwmOfficeMenu
 + "media"         Popup FvwmMediaMenu
 
 DestroyMenu FvwmInternetMenu
 AddToMenu   FvwmInternetMenu
-+ "uzbl"          Exec exec uzbl-tabbed
++ "dwb"           Exec exec dwb
 + "ffox"          Exec exec firefox
-+ "IRC"           Exec exec urxvt -name irc -e weechat-curses
-+ "m@iL"          Exec exec urxvt -name mutt -e mutt
++ "IRC"           Exec exec urxvtc -name irc -e irssi
++ "m@iL"          Exec exec urxvtc -name mutt -e mutt
 + "fzlla"         Exec exec filezilla
 + "jDldr"         Exec exec jdownloader
 
 DestroyMenu FvwmDevelopmentMenu
 AddToMenu   FvwmDevelopmentMenu
-+ "vim"          Exec exec urxvt -e vim
-+ "railz"         Exec exec urxvt -name rails -e launchtmux rails
++ "vim"           Exec exec urxvtc -e vim
++ "railz"         Exec exec urxvtc -name rails -e launchtmux rails
 
 DestroyMenu FvwmGraphicMenu
 AddToMenu   FvwmGraphicMenu
@@ -295,11 +297,11 @@ AddToMenu   FvwmGraphicMenu
 
 DestroyMenu FvwmMediaMenu
 AddToMenu   FvwmMediaMenu
-+ "mpd"           Exec exec urxvt -name ncmpcpp -e ncmpcpp
++ "mpd"           Exec exec urxvtc -name ncmpcpp -e ncmpcpp
 
 DestroyMenu FvwmFilesMenu
 AddToMenu   FvwmFilesMenu
-+ "r0x"          Exec exec rox
++ "r0x"           Exec exec rox
 + "" Nop
 + "w3"            Exec exec rox /home/crshd/www
 + "" Nop
@@ -315,10 +317,10 @@ AddToMenu   FvwmFilesMenu
 
 DestroyMenu FvwmSettingsMenu
 AddToMenu   FvwmSettingsMenu
-+ "FVWM Console"  Module FvwmConsole
-+ "Help"          Popup FvwmManPagesMenu
++ "fvwm console"  Module FvwmConsole
++ "help"          Popup FvwmManPagesMenu
 + "" Nop
-+ "Restart"       Restart
++ "rr"            Restart
 + "" Nop
-+ "Quit"          Quit
++ "quit"          Quit
 
