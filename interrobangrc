@@ -7,9 +7,9 @@
 font   -*-terminus-medium-r-normal--14-140-72-72-c-*-*-*
 geometry  bottom
 #geometry 400x16+200+200
-foreground  #925253
-background  #181818
-border   #000000
+foreground  #dc322f
+background  #002b36
+border #000000
 bangchar  :
 #show   options
 

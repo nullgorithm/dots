@@ -1,0 +1,10 @@
+clear Lock
+add Control = Control_L Control_R
+
+keycode 9 = Escape
+keycode 11 = 2 question 2 question twosuperior
+keycode 22 = BackSpace at
+keycode 36 = Return
+keycode 66 = Control_L Caps_Lock
+keycode 108 = ISO_Level3_Shift
+keycode 135 = slash Menu
