@@ -1,24 +1,24 @@
 # Paths
-music_directory		"/mnt/data/Musics"
-playlist_directory	"~/.mpd/playlists"
-db_file			"~/.mpd/database"
-log_file		"~/.mpd/log"
-pid_file		"~/.mpd/pid"
-state_file		"~/.mpd/state"
+music_directory     "/mnt/data/Musics"
+playlist_directory  "~/.mpd/playlists"
+db_file             "~/.mpd/database"
+log_file            "~/.mpd/log"
+pid_file            "~/.mpd/pid"
+state_file          "~/.mpd/state"
 
 # Options
-auto_update		"yes"
-bind_to_address		"localhost"
-filesystem_charset	"UTF-8"
-gapless_mp3_playback     "yes"
-#group			"nogroup"
-log_level		"default"
-port			"6600"
-#user			"luizf"
-zeroconf_enabled	"no"
+auto_update         "yes"
+bind_to_address     "localhost"
+filesystem_charset  "UTF-8"
+gapless_mp3_playback "yes"
+#group               "nogroup"
+log_level           "default"
+port                "6600"
+#user                "luizf"
+zeroconf_enabled    "no"
 
 input {
-        plugin "curl"
+    plugin "curl"
 }
 
 audio_output {
@@ -29,6 +29,6 @@ audio_output {
 }
 
 audio_output {
-	type		"alsa"
-	name		"My ALSA Device"
+  type    "alsa"
+  name    "My ALSA Device"
 }

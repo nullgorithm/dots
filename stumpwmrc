@@ -28,7 +28,7 @@
 ;; Borders
 (setf *maxsize-border-width*   0
       *transient-border-width* 0
-      *normal-border-width*    5
+      *normal-border-width*    6
       *window-border-style*    :thin
       *float-window-border*    1
       *float-window-title-height* 1)
@@ -135,7 +135,7 @@
 (define-key *top-map* (kbd "s-Right") "gnext")
 
 ;; Urxvt
-(define-key *top-map* (kbd "s-RET") "exec urxvtc")
+(define-key *top-map* (kbd "s-RET") "exec termite")
 (define-key *root-map* (kbd "c") "exec urxvtc -e cat /home/luizf/doc/welcome")
 
 ;; Root keys
@@ -391,31 +391,13 @@ the two undo states."
 (make-web-jump pac       "http://www.archlinux.org/packages/?q=")
 (make-web-jump aur       "http://aur.archlinux.org/packages.php?K=")
 
-;;;; Rules
-;(define-frame-preference "www"
-;                         (0 t t :class "Luakit"))
-
-;(define-frame-preference "gfx"
-;                         (0 t t :class "Gimp"))
-
-;(define-frame-preference "im"
-;                         (0 t t :class "Skype"))
-
-;(define-frame-preference "media"
-;                         (0 t t :class "mplayer2"))
-
 ;;;; Startup
 
 ;; Space for dzen
-(resize-head 0 0 0 1366 753)
+(resize-head 0 0 0 1366 755)
 
 ;; and the own dzen
-(run-shell-command "killall /home/luizf/bin/dzen_stump")
-(run-shell-command "killall /home/luizf/bin/dzen_groups.sh")
-(run-shell-command "killall dzen2")
 (run-shell-command "killall dzen_stump")
-(run-shell-command "killall tail")
-(run-shell-command "killall awk")
-(run-shell-command "/home/luizf/bin/dzen_stump")
+(run-shell-command "dzen_stump")
 
 ;; EOF

@@ -4,16 +4,16 @@ super + space
 
 # terminal
 super + Return
-    termite
+    urxvtc
+
+super + b
+    dwb
 
 super + Q
-    bspc quit 1
+    bspc quit
 
 super + R
     bspc reload_autostart
-
-super + b
-    bspc balance
 
 # media keys
 XF86Audio{RaiseVolume,LowerVolume,Mute}
@@ -47,11 +47,7 @@ ctrl + alt + {q,r,s}
 
 # close window
 super + q
-    bspc close
-
-# kill window
-super + w
-    bspc kill
+    xdotool getactivewindow windowkill
 
 # cycle last layout
 super + t
@@ -101,7 +97,7 @@ alt + ctrl + {h,j,k,l}
 
 # set the direction to spawn new frame
 alt + {h,j,k,l}
-    bspc presel {left 0.33,down 0.66,up 0.33,right 0.66}
+    bspc presel {left,down,up,right}
 
 ctrl + alt + {1-9,0}
     bspc set window_gap {0,3,6,9,15,24,39,63,102,165}

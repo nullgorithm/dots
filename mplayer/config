@@ -1,68 +1,36 @@
-# MPlayer
-
-# Video output
-vo=xv
-
-# Init once for multiple inputs, has many advantages
-fixed-vo=1
-
-# Start in fullscreen mode by default.
-fs=no
-
-# Audio output
-ao=alsa
-channels=2
-mixer-channel="PCM"
-aid=1
-
-# Software scaling
-zoom=1
-
-# Ajust volume differences.
-#a52drc=1
-#af=volnorm
-
-# Aspect ratio
-monitoraspect="16:9"
-
-# No no output
-really-quiet=0
-
-# Buffer cache
-nocache=0
-
-# Double buffering [ TribleBuffering enabled on driver ]
-double=yes
-
-# Frame dropping
-framedrop=0
-hardframedrop=0
-
-# Normal subs
-font="Blue Highway"
-ffactor=1 # Black outline
-subfont-text-scale=2.0 # Font scale
-subpos="70" # Raise subs
-spuaa=4 # Antialias
-unicode=yes
-utf8=yes
-
-# Post-processing
-autoq=100
-
-# Disable lirc
-nolirc=yes
-
-# Do not handle FS atoms
-#fstype=none
-
-# Other
-idx=yes
-stop-xscreensaver=yes
-ass=no
-embeddedfonts=1
-msgcolor=1
-msgmodule=1
-nojoystick=1
-
-# EOF
+alang             = pt
+vo                = xv
+ao                = alsa
+mixer-channel     = PCM
+srate             = 48000
+zoom              = 1
+double            = 1
+idx               = yes
+autoq             = 100
+embeddedfonts     = 1
+softvol           = 1
+ffactor           = 10
+fixed-vo          = 1
+framedrop         = 0
+fs                = 0
+hardframedrop     = 0
+lavdopts          = threads=2
+monitoraspect     = 16:9
+really-quiet      = 0
+sid               = 1
+subfont-encoding  = unicode
+really-quiet      = 0
+msgcolor          = 1
+msgmodule         = 1
+noborder          = 1
+nocache           = 0
+nograbpointer     = 1
+nolirc            = 1
+nojoystick        = 1
+nocache           = 0
+prefer-ipv4       = 1
+sid               = 0
+slang             = pt,en
+use-filename-title=yes
+stop-xscreensaver = 1
+unrarexec         = /usr/bin/unrar

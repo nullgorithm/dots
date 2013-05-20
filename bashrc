@@ -7,19 +7,32 @@ source ~/.alias
 
 # Options {{{
 shopt -s autocd
+shopt -s cdable_vars
+shopt -u checkhash
 shopt -s cdspell
 shopt -s cmdhist
 shopt -s dotglob
 shopt -s extglob
+shopt -s execfail
 shopt -s globstar
+shopt -s nocaseglob
+shopt -s nocasematch
+shopt -s dirspell
 shopt -s hostcomplete
 shopt -s nocaseglob
 shopt -s no_empty_cmd_completion
-shopt -s no_empty_cmd_completion
-shopt -s histappend cmdhist
+shopt -s histappend
+shopt -s histreedit
+shopt -s restricted_shell
+shopt -s huponexit
+shopt -s lastpipe
+shopt -s lithist
 shopt -s progcomp
 shopt -s promptvars
 shopt -s checkwinsize
+shopt -s nullglob
+shopt -s shift_verbose
+shopt -s xpg_echo
 
 set -o vi
 set -o noclobber
@@ -104,8 +117,6 @@ _notes() {
   [[ -e ${files[0]} ]] && COMPREPLY=( "${files[@]##$HOME/.notes/}" )
 }
 complete -o default -F _notes n
-
-. $HOME/.z_cd/z.sh
 # }}}
 
 # Prompt {{{
@@ -119,37 +130,14 @@ _prompt_command() {
 tput ed
 }
 
-PS1="\[\e[1;35m\]$\[\e[0m\] "
+echo "\e[0;33m$(whoami)\e[0;37m//\e[0;32m$(uname -n) :: \e[0;36m${PWD}"
+PS1="\[\e[1;35m\] > \[\e[0m\] "
 PS2="\[\e[1;30m\]◀\[\e[0m\] "
 PROMPT_COMMAND='_prompt_command'
 # }}}
 
 # Exports {{{
-export LANG=pt_BR.UTF-8
-export LC_ALL=
-export LC_COLLATE='C'
-export SHELL=/bin/bash
-export EDITOR=vim
-export BROWSER=dwb
-export PAGER=less
-export MOZ_DISABLE_PANGO=0
-export FIREFOX_DSP=none
-export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='1;32'
-export GROFF_NO_SGR=1
-export LESS='FRSXQ'
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_MUSIC_DIR=/mnt/data/Musics
-export XDG_VIDEOS_DIR=/mnt/data/Videos
-export XDG_PICTURES_DIR=/mnt/data/Pics
-export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/core_perl:/usr/bin/vendor_perl:$HOME/bin:$HOME/.gem/ruby/2.0.0/bin
+source $HOME/.shell/exports
 # }}}
 
 # vim: ft=sh:
