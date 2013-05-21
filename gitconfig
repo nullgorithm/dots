@@ -24,42 +24,50 @@
 
 [core]
    editor = vim
+   pager = less
 
 [web]
    browser = dwb
 
 [color]
-   ui = auto
    interactive = true
+   ui = auto
+   branch = auto
+   diff = auto
+   grep = auto
+   pager = 0
+   showbranch = auto
+   status = auto
 
 [color "diff"]
-   plain = normal
+   plain = 248
    meta = bold
-   frag = cyan bold
-   old = red bold
-   new = green bold
-   commit = yellow bold
-   whitespace = black red
+   frag = 168 bold
+   old = 124
+   new = 142 bold
+   commit = 184 bold
+   whitespace = 23
 
 [color "branch"]
-   current = green bold
-   local = normal
-   remote = red bold
-   plain = normal
+   current = 142 bold
+   local = 245
+   remote = 090
+   plain = 242 reverse
 
 [color "status"]
-   header = normal
-   added = red bold
-   updated = green bold
-   changed = yellow bold
-   untracked = magenta bold
-   nobranch = red
+   header = 111
+   added = 001 bold
+   updated = 113 bold
+   changed = 003 bold
+   added = 106 bold
+   untracked = 090
+   nobranch = 001
 
 [color "grep"]
-   match = yellow bold
+   match = 178 bold
 
 [color "interactive"]
-   prompt = normal
-   header = black bold
-   help = magenta bold
-   error = red bold
+   prompt = 250
+   header = 208 bold
+   help = 212
+   error = 202 bold

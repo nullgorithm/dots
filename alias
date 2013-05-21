@@ -67,7 +67,6 @@ alias gc='git commit -m'
 alias gca='git commit -v -a'
 alias gb='git branch'
 alias gba='git branch -a'
-alias glog="git --no-pager log --color=always --abbrev-commit --graph --date=short --pretty=format:'%C(235)(%C(1)%h%C(235)) │ %C(11)%an%C(235) │ %C(4)%ad %C(7)%s%Creset'"
 alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
 
@@ -92,6 +91,7 @@ alias go='xinit -- vt01'
 alias pkx='pkill X'
 alias gfv='get_flash_videos'
 alias yd='youtube-dl'
+alias snl='sudo netctl start luizf'
 alias starwars='telnet towel.blinkenlights.nl'
 
 alias sh='sudo systemctl halt'
