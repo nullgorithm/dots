@@ -42,13 +42,13 @@ unclutter -noevents -root -idle 1 &
 # Daemons
 # thunar --daemon &
 urxvtd -q -o -f &
-# udiskie &
+udiskie &
 # ( sleep 5 && sxhkd & ) &
 
 pidof mpd >& /dev/null
 if [ $? -ne 0 ]; then
 mpd &
-# fi
+fi
 
 # pidof loliclip >& /dev/null
 # if [ $? -ne 0 ]; then
@@ -67,6 +67,7 @@ mpd &
 # panel dzen2 &
 # exec bspwm -s "$PANEL_FIFO" -p W
 
+VBoxClient-all &
 #exec compiz
 #exec openbox-session
 #exec pekwm

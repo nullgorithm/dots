@@ -1,56 +1,109 @@
-let mapleader = ","
+﻿" vim: ft=vimperator et:
 
+" Vimperator options
+set autocomplete
+set complete=bhS
 set defsearch=google
-set hintchars=adslkjmrhfc
+set editor="sublime_text.exe"
+set noexrc
+set titlestring=Sirens
+set suggestengines=google
+set focuscontent
+set gui=nomenu,nonavigation
+set history=50
+set followhints=1
+set hintchars=adsjlkmqpnfh
+set hintinputs='label,name,value'
+set hm=wordstartswith
 set hlsearch
-set ignorecase
 set incsearch
-set popups=tab
 set smartcase
-set toolbars=noaddons,nobookmarks,nomenu,nonavigation,tabs
+set ignorecase
+set maxitems=10
+set msgs=20
+set newtab=all
+set noapptab
+set noanimations
+set noscrollbars
+set noerrorbells
+set novisualbell
+set nofullscreen
+set online
+set popups=tab
+set showmode
+"set showtabline=0
+set scroll=0
+set shell=/bin/zsh
+set shellcmdflag=-c
+set smallicons
+set status='input,location,history,bookmark,tabcount,position'
+set notabnumbers
+set urlseparator=,\s
+set wildmode=list:full
 
-highlight CmdLine font-family: "MonteCarlo" !important; font-size: 11px !important; padding: 1px;
+" Firefox own settings
+set! general.autoScroll=false
+set! ui.key.generalAccessKey=0
+set! browser.backspace_action=0
+set! browser.cache.disk.enable=false
+set! browser.tabs.closeButtons=2
+set! browser.tabs.closeWindowWithLastTab=false
+set! browser.tabs.loadDivertedInBackground=true
+set! browser.urlbar.filter.javascript=false
+set! browser.urlbar.maxRichResults=10
+set! browser.sessionstore.max_tabs_undo=40
+set! browser.sessionstore.max_concurrent_tabs=0
+set! browser.startup.homepage=http://go.infinise.com
+set! dom.popup_maximum=200
+set! browser.enable_automatic_image_resizing=true
+set! mousewheel.withnokey.sysnumlines=false
+set! mousewheel.withnokey.numlines=6
+set! network.http.pipelining=true
+set! network.http.proxy.pipelining=true
+set! network.http.pipelining.maxrequests=8
+set! network.http.max-connections=64
+set! network.http.max-connections-per-server=32
+set! network.dns.disableIPv6=false
+set! font.name.monospace.x-western="Source Code Pro"
+set! font.name.sans-serif.x-western="Liberation Sans"
+set! font.name.serif.x-western="Source Code Pro"
 
-highlight CompItem[selected] background: #ff8939; color: #151515;
-highlight CompTitle background: #151515; color: #bdf271;
-highlight Hint text-transform: uppercase; font-family : "Arial", "Helvetica", "Lucida Grande", "Sans"; font-weight: bold; font-size: 11px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6); color: #302505; padding: 1px 3px 0px 3px; background: -moz-linear-gradient(top, #FFF785, #FFC542); border: 1px #C38A22 solid; -moz-border-radius: 3px; -moz-box-shadow: 0 3px 7px 0px rgba(0,0,0,0.3);
-highlight HintActive background-color: inherit !important
-highlight HintElem background-color: inherit !important
-highlight HintImage opacity: .5 !important;
-highlight MoreMsg color: #151515; background: #b5b5b5;
-highlight NonText background: #151515; color: #b5b5b5;
-highlight Normal background: #151515; color: #b5b5b5;
-highlight Preview color: #444;
-highlight Title background: #151515; color: #bdf271;
+" Colorscheme
+hi Normal           background: #dddddd !important; foreground: #353535 !important; font-size 8pt !important; font-family: Liberation Sans Narrow !important; padding: 1px !important;
+hi CmdLine          background: #dddddd !important; foreground: #353535 !important; font-size 8pt !important; font-family: Liberation Sans Narrow !important; padding: 1px !important;
+hi StatusLine       font-family: Liberation Sans Narrow !important; font-size: 8pt !important; font-weight: normal !important; color: #484848 !important; background: #dddddd !important;
+"hi StatusLineBroken font-family: Liberation Sans Narrow !important; font-size 9pt !important; font-weight: normal !important; color: #efefef !important; background: #FF9F95 !important;
+"hi StatusLineSecure font-family: Liberation Sans Narrow !important; font-size 9pt !important; font-weight: normal !important; color: #efefef !important; background: #E2FFC7 !important;
 
-" Support paging through a document.
-javascript <<EOF
-  mappings.addUserMap(
-    [modes.NORMAL],
-    ["}"],
-    "Smooth scroll some down",
-    function(count){
-      // 1600 is 80 (the normal scroll amount) * 20, a rough number I found to
-      // work.
-      self.smoothScrollBy(1600 * (count || 1));
-    },
-    {
-      count: true
-    }
-  );
-  mappings.addUserMap(
-    [modes.NORMAL],
-    ["{"],
-    "Smooth scroll some down",
-    function(count){
-      // 1600 is 80 (the normal scroll amount) * 20, a rough number I found to
-      // work. Negative means go up.
-      self.smoothScrollBy(-1600 * (count || 1));
-    },
-    {
-      count: true
-    }
-  );
-EOF
+hi Title            background: #bbbbbb !important; foreground: #202020 !important; font-size 10pt !important; font-family: Liberation Sans Narrow !important;
+hi Hint             color: #363636; background-color: #E6DC5A; border-color: #D6AB00; font-family: Liberation Sans; font-size: 14px; font-weight: bold; border-width: 1px; border-style: solid; padding 0 1px;
+hi Hint::after      content: attr(number);
+hi HintActive       color: #353535; background: #A8CEEA;
+hi HintElem			color: ; background: ; 
+hi HintImage        opacity: .5;
 
-" vim: ft=vimperator
+hi CompGroup 		background: #cccccc; color: #75DAA9;
+hi CompTitle 		background: #cccccc; color: #3BA275; font-weight: bold;
+hi CompItem 		background: #dddddd; color: #303030; padding: 0px 3px;
+hi CompItem[selected] background: #bbbbbb; color: #252525; font-weight: bold;
+hi CompMsg 			background: #dddddd; color: #404040; 
+
+hi ErrorMsg font-family: Liberation Sans Narrow; font-weight: bold; font-size: 11pt; color: #dd0000; background-color: #dddddd; padding: 0px 1px; border: none
+hi ContentSeparator border:none;
+hi Bell             display: none;
+
+" Keybindings
+let mapleader = ";"
+
+noremap d :tabclose!<CR>
+noremap K :tabprevious<CR>
+noremap J :tabnext<CR>
+noremap <C-t> :tabnew<CR>
+noremap <C-w> <Esc>
+noremap <C-q> :quit!
+noremap j 7j
+noremap k 7k
+noremap h 7h
+noremap l 7l
+noremap y Y
+noremap Y y
