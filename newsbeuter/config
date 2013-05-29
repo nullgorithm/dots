@@ -1,10 +1,18 @@
-browser firefox
+browser "dwb %u"
+
 auto-reload yes
-reload-time 15
+reload-time 180
 reload-threads 2
 refresh-on-startup yes
-feedlist-title-format "Feeds"
 
+feedlist-title-format "Feeds list"
+show-keymap-hint no
+
+# Notify
+notify-program "/usr/bin/notify-send"
+notify-format "RSS: %d new articles (%n unread articles, %f unread feeds)"
+
+# Colors
 #highlight  feedlist     "^.* N .*$"     color15   default  bold
 #highlight  articlelist  "^.* N .*$"     color15   default  bold
 highlight  article      "^Feed: .*$"    color3    default
@@ -12,9 +20,15 @@ highlight  article      "^Title: .*$"   color13   default  bold
 highlight  article      "^Author: .*$"  color5    default
 highlight  article      "^Link: .*$"    color6    default
 highlight  article      "^Date: .*$"    color4    default
-color      listnormal                   color7    default
-color      listfocus                    color1    color0  bold
+color      listnormal                   default    default
+color      listfocus                    color9    color0  bold
 color      info                         color7    black
 color      article                      color246  default
+
+# vim-like navigation
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
 
 # vim: ft=conf:
