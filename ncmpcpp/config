@@ -42,7 +42,7 @@ visualizer_in_stereo = "yes"
 ## - 9 - end of current color
 
 /* Custom */
-song_list_format = "{$2%a} $1/ {$8%t} $R {$7%b} $1// {$1%n}$0"
+song_list_format = "{$2%a} $1| “{$4%t}$1” $R $1[[{$5%y}$1] {$7%b}$1] | {$1%n}$0"
 playlist_disable_highlight_delay = "1"
 autocenter_mode = "yes"
 centered_cursor = "yes"
