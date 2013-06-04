@@ -1,4 +1,4 @@
-alang             = pt
+alang             = pt,en
 vo                = xv
 ao                = alsa
 mixer-channel     = PCM
@@ -11,7 +11,7 @@ embeddedfonts     = 1
 softvol           = 1
 ffactor           = 10
 fixed-vo          = 1
-framedrop         = 0
+framedrop         = 1
 fs                = 0
 hardframedrop     = 0
 lavdopts          = threads=2
@@ -31,6 +31,6 @@ nocache           = 0
 prefer-ipv4       = 1
 sid               = 0
 slang             = pt,en
-use-filename-title=yes
+use-filename-title= yes
 stop-xscreensaver = 1
 unrarexec         = /usr/bin/unrar

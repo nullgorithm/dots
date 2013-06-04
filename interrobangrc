@@ -1,43 +1,24 @@
-## | InterobangRC
-## |
-## | Lines starting with a # are ignored as comments, but this file is
-## | not processed by a shell interpreter.
+# InterobangRC
 
+font        -*-terminus-medium-r-normal--14-140-72-72-c-*-*-*
+geometry    1366x16+0+0
+foreground  #863636
+background  #202020
+border      #000000
+bangchar    :
 
-font   -*-terminus-medium-r-normal--14-140-72-72-c-*-*-*
-geometry  bottom
-#geometry 400x16+200+200
-foreground  #dc322f
-background  #002b36
-border #000000
-bangchar  :
-#show   options
+:term       urxvtc -e %s
+:man        urxvtc -e man %s
+:pdf        zathura %s
+:mp         mplayer %s
+:web        dwb %s
+:g          dwb "https://google.com/search?q=%s"
+:img        dwb "https://www.google.com/search?site=&tbm=isch&source=hp&q=%s"
+:wp         dwb "http://pt.wikipedia.org/w/index.php?search=%s"
+:bbs        dwb "https://bbs.archlinux.org/search.php?action=search&show_as=topics&sort_dir=DESC&keywords=%s"
+:awiki      dwb "https://wiki.archlinux.org/index.php?search=%s"
 
-# | BANGS & TAB COMPLETION
-# | The first listed bang is the default
-# | TAB(bangname) defines completion for that bang and must be *after*
-# |     the bang definition
-# | TAB() defines the default tab completion
-
-:term   termite -e %s
-:web    dwb %s
-:pdf    zathura %s
-:man    termite -e man %s
-:archbbs  dwb https://duckduckgo.com/?q=%s%%20site%%3Abbs.archlinux.org
-:archwiki dwb https://duckduckgo.com/?q=%s%%20site%%3Awiki.archlinux.org
-:calc   echo "interrobang ignored \"%s\""
-:?      echo "interrobang ignored \"%s\""
-:fav          %s
-#:net   <your network tool here>
-
-#TAB()   compgen -P "%s" -cf %s
-# | Optional "complex" completer
-# |     adds spaces after commands and slashes after urls and escapes
-# |     parentheses and square brackets
-TAB()    compgen -P "%s" -fc %s | sort -u | while read s; do s=${s/\(/\\(}; s=${s/\)/\\)}; s=${s/\[/\\[}; s=${s/\]/\\]}; [[ -d ${s##* } ]] && echo "$s/" || echo "$s "; done
-#TAB(term)  completion for terminal commands
-#TAB(pdf) compgen -P "%s" -f ~/doc/pdfs/%s
-TAB(calc) S1="%s%s"; S2="${S1/\!calc/}"; echo "!calc $(echo $S2 | bc -l)"
-TAB(?)      ignore="%s%s"; grep -o -E "^\![[:alnum:]]+" ~/.interrobangrc
-#TAB(fav)      pre="%s"; grep "%s" ~/.myprograms | while read match; do echo "${pre}${match}"; done
-#TAB(net) <complete network names with available essids>
+TAB()       compgen -P "%s" -fc %s | sort -u | while read s; do s=${s/\(/\\(}; s=${s/\)/\\)}; s=${s/\[/\\[}; s=${s/\]/\\]}; [[ -d ${s##* } ]] && echo "$s/" || echo "$s "; done
+TAB(calc)   S1="%s%s"; S2="${S1/\!calc/}"; echo "!calc $(echo $S2 | bc -l)"
+TAB(mp)     compgen -P "%s" -f /mnt/data/Porn/%s
+TAB(pdf)    compgen -P "%s" -f /mnt/data/Books/%s
