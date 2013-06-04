@@ -1,0 +1,2 @@
+DMENU="dmenu -fn -*-terminus-medium-r-normal--14-140-72-72-c-*-*-* -i -l 10 -sf #b0b0b0 -nb #202020 -sb #303030 -nf #807777"
+LOLICTRL_DMENU="dmenu -fn -*-terminus-medium-r-normal--14-140-72-72-c-*-*-* -i -l 10 -sf #b0b0b0 -nb #202020 -sb #863636 -nf #807777"
