@@ -3,16 +3,13 @@
 # this is a simple config for herbstluftwm
 
 function hc() {
-    herbstclient "$@"
+  herbstclient "$@"
 }
 
 hc emit_hook reload
 
 # tags
 TAG_NAMES=( {1..5} )
-
-
-
 
 # colors
 hc set frame_border_active_color '#101010'
@@ -44,10 +41,10 @@ hc keybind $Mod-Control-q spawn systemctl poweroff
 hc keybind $Mod-Control-r spawn systemctl reboot
 hc keybind $Mod-q         close
 hc keybind $Mod-Shift-q   spawn sh $HOME/.config/herbstluftwm/hc_close_remove
-hc keybind $Mod-b         spawn luakit
+hc keybind $Mod-b         spawn dwb
 hc keybind $Mod-Return    spawn urxvtc
-hc keybind Menu           spawn dmenu_run -fn "-schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv" -p "Run:" -nb "#151515" -nf "#807777" -sb "#607B8B" -sf "#DDDDDD" 
-hc keybind Print          spawn scrot /mnt/data/%d-%m-%Y_%H:%M.png 
+hc keybind $Mod-o         spawn interrobang
+hc keybind Print          spawn scrot /mnt/data/%d-%m-%Y_%H:%M.png
 
 # cycle through tags
 hc keybind $Mod-period use_index +1 --skip-visible
@@ -62,7 +59,7 @@ hc keybind $Mod-space   cycle_layout 1
 hc keybind $Mod-Shift-s split vertical 0.5
 hc keybind $Mod-s       split horizontal 0.5
 hc keybind $Mod-f       floating toggle
-hc keybind $Mod-F10     fullscreen toggle
+hc keybind $Mod-F11     fullscreen toggle
 hc keybind $Mod-p       pseudotile toggle
 
 # resizing
@@ -102,15 +99,16 @@ hc keybind XF86AudioRaiseVolume spawn amixer -q sset PCM 1%+ unmute
 hc keybind XF86AudioLowerVolume spawn amixer -q sset PCM 1%- unmute
 hc keybind XF86AudioMute        spawn amixer -q sset Master toggle
 
-hc keybind XF86WWW        spawn luakit
+hc keybind XF86WWW        spawn dwb
 hc keybind XF86Calculator spawn xcalc
 hc keybind XF86AudioMedia spawn urxvtc -e ncmpcpp
-hc keybind XF86Mail       spawn urxvtc -e mutt 
-hc keybind XF86Explorer   spawn urxvtc -e ranger 
-hc keybind XF86News       spawn urxvtc -e newsbeuter 
+hc keybind XF86Mail       spawn urxvtc -e mutt
+hc keybind XF86Explorer   spawn urxvtc -e ranger
+hc keybind XF86News       spawn urxvtc -e newsbeuter
 hc keybind XF86PowerOff   spawn systemctl poweroff
 
-TAG_KEYS=( {1..9} 0 )  
+TAG_KEYS=( {1..9} 0 )
+
 hc rename default "${TAG_NAMES[0]}" || true
 for i in ${!TAG_NAMES[@]} ; do
     hc add "${TAG_NAMES[$i]}"
@@ -119,7 +117,7 @@ for i in ${!TAG_NAMES[@]} ; do
         hc keybind "$Mod-$key" use_index "$i"
         hc keybind "$Mod-Shift-$key" move_index "$i"
     fi
-done 
+done
 
 # rules
 hc unrule -F

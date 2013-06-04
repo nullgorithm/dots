@@ -135,8 +135,7 @@
 (define-key *top-map* (kbd "s-Right") "gnext")
 
 ;; Urxvt
-(define-key *top-map* (kbd "s-RET") "exec termite")
-(define-key *root-map* (kbd "c") "exec urxvtc -e cat /home/luizf/doc/welcome")
+(define-key *top-map* (kbd "s-RET") "exec urxvtc")
 
 ;; Root keys
 (define-key *root-map* (kbd "ESC") "abort")

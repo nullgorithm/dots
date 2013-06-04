@@ -5,7 +5,7 @@
 local theme = {}
 
 -- Default settings
-theme.font = "Alterebro Pixel Font 12"
+theme.font = "Terminus 8"
 theme.fg   = "#909090"
 theme.bg   = "#151515"
 
@@ -66,4 +66,5 @@ theme.trust_fg          = "#8C9A4A"
 theme.notrust_fg        = "#A43B27"
 
 return theme
+
 -- vim: et:sw=4:ts=8:sts=4:tw=80

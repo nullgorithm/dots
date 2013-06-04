@@ -37,7 +37,7 @@ draw_graph_borders yes
 
 # -- Text settings -- #
 use_xft yes
-xftfont Libel Suit:style=Regular:size=20
+xftfont Helvetica Neue:style=Regular:size=20
 
 uppercase yes
 

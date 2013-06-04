@@ -13,7 +13,7 @@
 Xft.dpi: 96
 Xft.autohint: true
 Xft.hinting: true
-Xft.hintstyle: hintfull
+Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 Xft.antialias: true
 Xft.rgba: rgb
@@ -23,18 +23,21 @@ Xft.rgba: rgb
 ! U R x v t
 !
 !URxvt*font: xft:Neep:size=6
-! URxvt*font: xft:Terminus for Powerline:size=9
+!URxvt*font: xft:Terminus for Powerline:size=9
 !URxvt*font: xft:Fixed:size=6
 !URxvt*font: xft:MonteCarlo:size=11
 !URxvt*font: xft:DejaVu Sans Mono:size=9
+/* URxvt*font: xft:Source Code Pro:size=8 */
+/* URxvt*boldFont: xft:Source Code Pro:style=Bold:size=7.5 */
+/* URxvt*font: xft:Anonymous Pro:size=8 */
 !URxvt*font: xft:Pragmata TT:size=7
-!URxvt*font: xft:PragmataPro:size=7
+/* URxvt*font: xft:PragmataPro:size=7.5 */
 !URxvt*font: xft:Pragmata:size=7
 !URxvt*font: xft:Mensch:size=6
-!URxvt*font: xft:Envy Code R:size=7
+!URxvt*font: xft:Envy Code R:size=7.5
 !URxvt*font: xft:Termsyn:size=10
 !URxvt*font: xft:Tamsyn:size=9
-! URxvt*font: xft:lime:size=11
+!URxvt*font: xft:lime:size=11
 
 !URxvt*font: -misc-ohsnap-medium-r-normal--11-79-100-100-c-60-iso8859-1
 !URxvt*font: -*-neep-medium-r-semicondensed---11-*-*-*-*-*-*-*
@@ -44,34 +47,33 @@ Xft.rgba: rgb
 !URxvt*font: -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso8859-1
 !URxvt*font: -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
 !URxvt*font: -erus-erusfont-medium-r-normal--11-80-100-100-c-60-iso10646-1
-!URxvt*font: -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1
+URxvt*font: -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1
 !URxvt*font: -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
 
-URxvt*font:     -spectrum-berry-medium-r-normal-sans-11-80-75-75-m-50-iso10646-1
+!URxvt*font:     -spectrum-berry-medium-r-normal-sans-11-80-75-75-m-50-iso10646-1
 !URxvt*boldFont: -spectrum-berry-medium-r-normal-sans-11-80-75-75-m-50-iso10646-1
 
 !URxvt*font:     -misc-fixed-medium-r-normal--9-80-100-100-c-60-iso8859-1
 !URxvt*boldFont: -misc-fixed-medium-r-normal--90-80-100-100-c-60-iso8859-1
 
-! URxvt*font:     -schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv
-! URxvt*boldFont: -schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv
+/* URxvt*font:     -schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv */
+/* URxvt*boldFont: -schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv */
 
 !#define FONT_NORMAL -misc-fixed-medium-r-normal--14-130-75-75-c-70-koi8-r
 !#define FONT_BOLD   -schumacher-clean-bold-r-normal--14-140-75-75-c-80-iso646.1991-irv
 !#define FONT_ITALIC -schumacher-clean-medium-r-normal--14-140-75-75-c-70-iso646.1991-irv
 
-! #define FONT_NORMAL -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
-! #define FONT_NORMAL -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso8859-1
-! #define FONT_BOLD   -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
-!#define FONT_ITALIC -jmk-neep-medium-r-normal--10-80-75-75-c-50-iso8859-1
+/* #define FONT_NORMAL -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252 */
+!#define FONT_NORMAL -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso8859-1
+/* #define FONT_BOLD   -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252 */
+#define FONT_ITALIC -jmk-neep-medium-r-normal--10-80-75-75-c-50-iso8859-1
 
-#define FONT_NORMAL -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1
+#define FONT_NORMAL -xos4-terminus2-medium-r-normal--12-120-72-72-c-60-iso8859-1
 #define FONT_BOLD -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso8859-1
-#define FONT_ITALIC -misc-fixed-medium-r-normal--8-80-75-75-c-50-iso8859-1
 
-! URxvt*font:               FONT_NORMAL
-! URxvt*boldFont:           FONT_BOLD
-! URxvt*italicFont:         FONT_ITALIC
+/* URxvt*font:               FONT_NORMAL */
+/* URxvt*boldFont:           FONT_BOLD */
+/* URxvt*italicFont:         FONT_ITALIC */
 
 URxvt*buffered:           true
 URxvt*cursorBlink:        false
@@ -92,6 +94,7 @@ URxvt*scrollTtyOutput:    true
 URxvt*urgentOnBell:       true
 !URxvt*visualBell:         true
 URxvt*pointerBlank:       false
+!URxvt*letterSpace:        -2
 
 URxvt*termName:           rxvt-unicode-256color
 !URxvt*termName:           xterm-256color
@@ -113,35 +116,17 @@ URxvt.tabbed.tab-bg:      4
 
 ! ---------------------------------------
 
-!*background:     #1f1b18
-*background:     #080808
-*foreground:     #757575
-! *underlineColor: #de5105
-*cursorColor:    #909598
-*cursorColor2:   #201526
+! *background:     #1f1b18
+*background: #151515
+! *background:     #1C1D21
+*foreground:     #807777
+/* *underlineColor: #de5105 */
+*cursorColor:    #007693
 *pointerColor:   #252525
-*pointerColor2:  #201526
-
-! *color0: #121212
-! *color1: #404040
-! *color2: #4d4c4c
-! *color3: #ff8f00
-! *color4: #1165e9
-! *color5: #f73574
-! *color6: #ff3500
-! *color7: #ffffff
-! *color8: #484848
-! *color9: #ff6767
-! *color10: #b03b31
-! *color11: #bdf13d
-! *color12: #5496ff
-! *color13: #b50077
-! *color14: #6be603
-! *color15: #dedede
 
 ! ---------------------------------------
 
-#include "/home/luizf/xcolors/highlander"
+#include "/home/luizf/xcolors/colorshot"
 
 !==============================================================
 !
