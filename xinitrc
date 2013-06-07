@@ -10,33 +10,30 @@ xsetroot -cursor_name left_ptr
 
 # X font paths
 xset +fp $HOME/.fonts
-xset +fp /usr/share/fonts/TTF
 xset +fp /usr/share/fonts/artwiz-fonts
-xset +fp /usr/share/fonts/local
 xset +fp /usr/share/fonts/misc
-xset +fp /usr/local/share/fonts/terminus
 xset +fp /usr/share/fonts/jmk
 xset fp rehash
 
-# Kill left programs
+# Kill all left programs
 killall loliclip
-killall compton
+# killall compton
 killall urxvtd
 
 # Keyboard layout
-( sleep 5 && xmodmap $HOME/.Xmodmap & ) &
+xmodmap $HOME/.Xmodmap
 # xbindkeys &
-# ( sleep 5 && sxhkd & ) &
+# sxhkd &
 
 # Xresources
 xrdb $HOME/.Xresources &
 
 # Wallpaper
-# nitrogen --restore &
+nitrogen --restore &
 # feh --bg-tile "/home/luizf/Patterns/escheresque/escheresque.png" &
-xsetroot -solid "#5C6F69"
+# xsetroot -solid "#5C6F69"
 
-# Pointer hidding
+# Kill the rodent
 unclutter -noevents -root -idle 1 &
 
 # Redshift
@@ -51,6 +48,7 @@ unclutter -noevents -root -idle 1 &
 urxvtd -q -o -f &
 udiskie &
 loliclip -d &
+# VBoxClient-all &
 
 pidof mpd >& /dev/null
 if [ $? -ne 0 ]; then
@@ -59,8 +57,7 @@ fi
 
 # Panels
 # bmpanel2 --theme=darks &
-# tint2&
-# xfce4-panel &
+# tint2 &
 # conky -c ~/.conkyrc &
 
 # [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
@@ -69,20 +66,14 @@ fi
 # panel dzen2 &
 # exec bspwm -s "$PANEL_FIFO" -p W
 
-# VBoxClient-all &
-# exec compiz
 # exec openbox-session
 # exec pekwm
-# exec gnome-session
 # exec herbstluftwm
 # exec i3
 # exec ratpoison
 # exec fvwm
 # exec sawfish
-# exec subtle
-# exec xmonad
-# exec $HOME/bin/dwm-start
 exec $HOME/bin/wmrun.sh
 # exec $HOME/Builds/stumpwm/stumpwm
 
-# vim: ft=sh
+# vim: ft=sh:
