@@ -9,19 +9,19 @@
 #define SHIFT           ShiftMask   /* Shift key */
 
 /** generic settings **/
-#define MASTER_SIZE     0.50
+#define MASTER_SIZE     0.5
 #define SHOW_PANEL      True      /* show panel by default on exec */
 #define TOP_PANEL       True      /* False means panel is on bottom */
 #define PANEL_HEIGHT    14        /* 0 for no space for panel, thus no panel */
 #define DEFAULT_MODE    TILE      /* initial layout/mode: TILE MONOCLE BSTACK GRID FLOAT */
 #define ATTACH_ASIDE    True      /* False means new window is master */
-#define FOLLOW_WINDOW   False     /* follow the window when moved to a different desktop */
+#define FOLLOW_WINDOW   True      /* follow the window when moved to a different desktop */
 #define FOLLOW_MOUSE    False     /* focus the window the mouse just entered */
 #define CLICK_TO_FOCUS  True      /* focus an unfocused window when clicked  */
 #define FOCUS_BUTTON    Button1   /* mouse button to be used along with CLICK_TO_FOCUS */
-#define BORDER_WIDTH    4         /* window border width */
+#define BORDER_WIDTH    5         /* window border width */
 #define FOCUS           "#262935" /* focused window border color    */
-#define UNFOCUS         "#181818" /* unfocused window border color  */
+#define UNFOCUS         "#202224" /* unfocused window border color  */
 #define MINWSZ          50        /* minimum window size in pixels  */
 #define DEFAULT_DESKTOP 0         /* the desktop to focus initially */
 #define DESKTOPS        4         /* number of desktops - edit DESKTOPCHANGE keys to suit */
@@ -37,11 +37,14 @@ static const int initlayouts[] = { TILE, BSTACK, FLOAT, MONOCLE, };
  */
 static const AppRule rules[] = { \
     /*  class     desktop  follow  float */
-    { "MPlayer",     3,    True,   False },
+    { "mpv",         3,    True,   False },
     { "mplayer2",    3,    True,   False },
     { "Gimp",        2,    False,  True  },
     { "dwb",         1,    True,   False },
     { "Skype",       2,    False,  True  },
+    { "sxiv",        3,    False,  True  },
+    { "zathura",     0,    False,  False },
+    { "mcomix",      3,    False,  False },
 };
 
 /* helper for spawning shell commands */
@@ -55,7 +58,7 @@ static const char *termcmd[] = { "urxvtc", NULL };
 static const char *menucmd[] = { "interrobang", NULL };
 static const char *appmenu[] = { "gtkm", NULL };
 static const char *browsercmd[] = { "dwb", NULL };
-static const char *volup[]   = { "dvol", "-i", "5", NULL };
+static const char *volup[] = { "dvol", "-i", "5", NULL };
 static const char *voldown[] = { "dvol", "-d", "5", NULL };
 static const char *volmute[] = { "dvol", "-t", NULL };
 static const char *lolicmd[] = { "lolictrl", NULL };
@@ -63,7 +66,7 @@ static const char *mpdplay[] = { "mpc", "toggle", NULL };
 static const char *mpdnext[] = { "mpc", "next", NULL };
 static const char *mpdprev[] = { "mpc", "prev", NULL };
 static const char *mpdstop[] = { "mpc", "stop", NULL };
-static const char *mpdmenu[] = { "mpm", NULL };
+static const char *mpdmenu[] = { "lolimpdnu", NULL };
 
 #define DESKTOPCHANGE(K,N) \
     {  MOD4,             K,              change_desktop, {.i = N}}, \

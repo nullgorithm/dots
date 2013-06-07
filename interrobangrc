@@ -4,21 +4,21 @@ font        -*-terminus-medium-r-normal--14-140-72-72-c-*-*-*
 geometry    1366x16+0+0
 foreground  #863636
 background  #202020
-border      #000000
+border      #050505
 bangchar    :
 
-:term       urxvtc -e %s
-:man        urxvtc -e man %s
-:pdf        zathura %s
-:mp         mplayer %s
-:web        dwb %s
+:t          urxvtc -e "%s"
+:man        urxvtc -e man "%s"
+:pdf        zathura "%s"
+:mp         mpv "%s"
+:w          dwb "%s"
 :g          dwb "https://google.com/search?q=%s"
 :img        dwb "https://www.google.com/search?site=&tbm=isch&source=hp&q=%s"
+:ddg        dwb "https://duckduckgo.com/?q=%s"
 :wp         dwb "http://pt.wikipedia.org/w/index.php?search=%s"
 :bbs        dwb "https://bbs.archlinux.org/search.php?action=search&show_as=topics&sort_dir=DESC&keywords=%s"
 :awiki      dwb "https://wiki.archlinux.org/index.php?search=%s"
 
 TAB()       compgen -P "%s" -fc %s | sort -u | while read s; do s=${s/\(/\\(}; s=${s/\)/\\)}; s=${s/\[/\\[}; s=${s/\]/\\]}; [[ -d ${s##* } ]] && echo "$s/" || echo "$s "; done
-TAB(calc)   S1="%s%s"; S2="${S1/\!calc/}"; echo "!calc $(echo $S2 | bc -l)"
 TAB(mp)     compgen -P "%s" -f /mnt/data/Porn/%s
 TAB(pdf)    compgen -P "%s" -f /mnt/data/Books/%s
