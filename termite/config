@@ -9,8 +9,8 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Fixed 6
-# font = Meslo LG S 7
+font = Terminus 8
+# font = berry 10
 scrollback_lines = 10000
 search_wrap = true
 #icon_name = terminal
@@ -37,125 +37,34 @@ browser = dwb
 foreground = #757075
 highlight = #2f2f2f
 #background = #B5B7C0
-background = #151515
-cursor = #007693
+background = #1b1c1f
+cursor = #757780
 
-# s7yL3z
-# color0 = #252525
-# color8 = #363636
-# color1 = #7D3022
-# color9 = #A43B27
-# color2 = #727F36
-# color10 = #8C9A4A
-# color3 = #916727
-# color11 = #BB883A
-# color4 = #234C8B
-# color12 = #386FC5
-# color5 = #6C2940
-# color13 = #893A55
-# color6 = #334359
-# color14 = #4A5D74
-# color7 = #cccccc
-# color15 = #efefef
-
-# Raven (dark)
-color0 = #212121
-color8 = #353535
-color1 = #AA645E
-color9 = #E79A93
-color3 = #86773E
-color11 = #BFAE72
-color2 = #488559
-color10 = #7FBD8E
-color6 = #008693
-color14 = #56BFCB
-color4 = #5A7AB0
-color12 = #92B1EB
-color5 = #9C6696
-color13 = #D79CCF
-color7 = #cccccc
-color15 = #efefef
-
-# Molokai
-# color0 =      #252525
-# color8 =      #363636
-# color1 =      #ff6565
-# color9 =      #ff8d8d
-# color2 =      #93d44f
-# color10 =     #c8e7a8
-# color3 =      #eab93d
-# color11 =     #ffc123
-# color4 =      #204a87
-# color12 =     #3465a4
-# color5 =      #ce5c00
-# color13 =     #f57900
-# color6 =      #89b6e2
-# color14 =     #46a4ff
-# color7 =      #cccccc
-# color15 =     #efefef
-
-# Visibone
-# color0 =      #3d3d3d
-# color8 =      #404040
-# color1 =      #CC6666
-# color9 =      #FF9999
-# color2 =      #66CC99
-# color10 =     #99FFCC
-# color3 =      #CC9966
-# color11 =     #FFCC99
-# color4 =      #6699CC
-# color12 =     #99CCFF
-# color5 =      #CC6699
-# color13 =     #FF99CC
-# color6 =      #66CCCC
-# color14 =     #99FFFF
-# color7 =      #CCCCCC
-# color15 =     #FFFFFF
-
-# Invisibone
-# color0 =     #303030
-# color8 =     #686868
-# color9 =     #FFA7DA
-# color1 =     #D370A3
-# color10 =    #A3D572
-# color2 =     #6D9E3F
-# color12 =    #98CBFE
-# color4 =     #6095C5
-# color11 =    #EFBD8B
-# color3 =     #B58858
-# color14 =    #75DAA9
-# color6 =     #3BA275
-# color13 =    #E5B0FF
-# color5 =     #AC7BDE
-# color7 =     #CFCFCF
-# color15 =    #FFFFFF
-
-# Ivory Dark
-# color0 =      #252525
-# color8 =      #353535
-# color7 =      #DBDDE2
-# color15 =     #F7F9FF
-# color1 =      #C4756E
-# color9 =      #F6A299
-# color3 =      #9B8A4B
-# color11 =     #CAB775
-# color2 =      #559A6A
-# color10 =     #82C896
-# color6 =      #019BAA
-# color14 =     #53CAD9
-# color4 =      #6A8DCA
-# color12 =     #98BBFB
-# color5 =      #B577AC
-# color13 =     #E5A4DB
+color0 = #282930
+color8 = #353638
+color1 = #7D3022
+color9 = #A43B27
+color2 = #727F36
+color10 = #8C9A4A
+color3 = #916727
+color11 = #BB883A
+color4 = #234C8B
+color12 = #386FC5
+color5 = #6C2940
+color13 = #893A55
+color6 = #334359
+color14 = #4A5D74
+color7 = #7a7c7f
+color15 = #9a9c9f
 
 # colors from color0 to color254 can be set
 
 [hints]
-font = Fixed 10
+font = Terminus 8
 foreground = #ffffff
 background = #000000
 padding = 2
-border = #dddddd
+border = #ffffff
 border_width = 0.5
 roundness = 1.0
 
