@@ -1,0 +1,49 @@
+# $Id: PKGBUILD 169483 2012-10-22 00:13:27Z eric $
+# Maintainer: Eric Bélanger <eric@archlinux.org>
+# build without gnome-keyring…
+
+pkgbase=msmtp
+pkgname=('msmtp' 'msmtp-mta')
+pkgver=1.4.30
+pkgrel=1
+arch=('i686' 'x86_64')
+groups=('modified')
+license=('GPL3')
+url="http://msmtp.sourceforge.net"
+makedepends=('gsasl')
+source=(http://download.sourceforge.net/sourceforge/msmtp/${pkgbase}-${pkgver}.tar.bz2)
+sha1sums=('fd469bae0c3394b30b771780e62bbd41c4d5d175')
+
+build() {
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  ./configure --prefix=/usr --sysconfdir=/etc --with-ssl=gnutls --without-gnome-keyring
+  make
+  make -C doc html pdf
+}
+
+package_msmtp() {
+  pkgdesc="A mini smtp client"
+  depends=('gsasl')
+  install=msmtp.install
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  make DESTDIR="${pkgdir}" install 
+  make DESTDIR="${pkgdir}" -C doc install-html install-pdf
+
+# Installing example configs and scripts to /usr/share/doc/msmtp
+# as they are not installed by default (Debian and Gentoo do it this way)
+  install -d "${pkgdir}/usr/share/doc/msmtp"
+  cp -r scripts/{find_alias,msmtp-gnome-tool,msmtpqueue,msmtpq,set_sendmail} "${pkgdir}/usr/share/doc/msmtp/"
+  install -D -m644 doc/*.example "${pkgdir}/usr/share/doc/msmtp/"
+
+  install -D -m644 scripts/vim/msmtp.vim "${pkgdir}/usr/share/vim/vimfiles/syntax/msmtp.vim"
+}
+
+package_msmtp-mta() {
+  pkgdesc="A mini smtp client - the regular MTA"
+  depends=('msmtp')
+  provides=('smtp-forwarder')
+
+  install -d "${pkgdir}/usr/sbin"
+  ln -s /usr/bin/msmtp "${pkgdir}/usr/sbin/sendmail"
+}
