@@ -1,52 +1,39 @@
-#!/bin/bash
+#!/bin/sh
 
+## Initiate workspaces:
 FIRST_DESK=1
-REMAINING_DESKS='2 3 4 5'
+REMAINING_DESKS='2 3 4 5 6'
 
 bspc rename Desktop01 $FIRST_DESK
 bspc add $REMAINING_DESKS
 
-bspc rule Gimp 4 floating follow
-bspc rule Inkscape 4 floating follow
-bspc rule Skype 3 floating
-bspc rule Nitrogen 5 floating
+bspc set top_padding  15
 
-bspc set border_width 8
-bspc set window_gap   2
-bspc set top_padding  14
-bspc set split_ratio  0.50
+## Rules:
+bspc rule sxiv floating
+bspc rule chromium 2 follow
+bspc rule Gimp 4 floating
 
-bspc set borderless_monocle    true
-bspc set gapless_monocle       true
-bspc set focus_follows_pointer false
-bspc set adaptative_raise      true
-bspc set apply_shadow_property true
-bspc set focus_by_distance     true
+## Settings:
+#+ focus
+bspc set history_aware_focus true
+bspc set focus_by_distance   false
 
-bspc set focused_border_color "#455055"
-bspc set normal_border_color  "#202020"
+#+ splitting
+bspc set split_ratio         0.50
 
-if [ -e "$BSPWM_BACKUP" ] ; then
-bspc restore "$BSPWM_BACKUP"
-    rm "$BSPWM_BACKUP"
-else
-bspc adopt_orphans
-fi
+#+ decoration
+bspc set border_width        5
+bspc set window_gap          2
+bspc set borderless_monocle  true
+bspc set gapless_monocle     true
 
-if [ -e "$BSPWM_LAYOUT" ] ; then
-    bspc restore_layout "$BSPWM_LAYOUT"
-    rm "$BSPWM_LAYOUT"
-else
-    bspc adopt_orphans
-fi
-
-if [ -e "$BSPWM_HISTORY" ] ; then
-    bspc restore_history "$BSPWM_HISTORY"
-    rm "$BSPWM_HISTORY"
-fi
-
-updatethm
-compton --shadow-exclude '_COMPTON_SHADOW:32c = 0' -bc -t -8 -l -9 -r 6 -o 0.7 -e 0.8
-
-killall sxhkd
-sxhkd
+#+ colors
+bspc set focused_border_color        "#262935"
+bspc set active_border_color         "#5C5955"
+bspc set normal_border_color         "#202224"
+bspc set focused_locked_border_color "#D64C8A"
+bspc set active_locked_border_color  "#A363B2"
+bspc set normal_locked_border_color  "#4F3755"
+bspc set urgent_border_color         "#00C7D8"
+bspc set presel_border_color         "#505052"
