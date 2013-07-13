@@ -1,7 +1,9 @@
 #!/bin/zsh
 
 #< Settings
-fg='#909090'
+name='bspwm'
+
+fg='#909295'
 bg='#1B1C1F'
 fg_fg='^fg()'
 bg_bg='^bg()'
@@ -22,6 +24,11 @@ b_y='0'
 font='-misc-fixedzero-medium-r-semicondensed-*-12-110-75-75-c-60-iso10646-1'
 #>
 
+#< Functions
+function wm_name {
+  print "\ ${fg_fg}\:${name}${fg_fg}${bg_bg}"
+}
+
 function title {
   wname="$(xdotool getactivewindow getwindowname)"
   print "$fg_dark\($fg_white\when $fg_cyan\w $fg_white\($fg_moar_dark\print $fg_dark\“$fg_green$wname$fg_dark\”$fg_white)$fg_dark)"
@@ -35,7 +42,7 @@ function mpd {
 }
 
 function dat {
-  print "$fg_dark\($fg_cyan\date $fg_moar_dark\"$(date +"$fg_white%d$fg_moar_dark\-$fg_dark%m$fg_moar_dark\-$fg_dark%Y$fg_moar_dark/$fg_red%a")$fg_moar_dark\" $fg_moar_dark\"$fg_white$(date +"%H$fg_dark%M")$fg_moar_dark\"$fg_dark\)"
+  print "$fg_dark\(${fg_cyan}cons $fg_moar_dark\"$(date +"$fg_white%d$fg_moar_dark\-$fg_dark%m$fg_moar_dark\-$fg_dark%Y$fg_moar_dark/$fg_red%a")$fg_moar_dark\" $fg_moar_dark\"$fg_white$(date +"%H$fg_dark%M")$fg_moar_dark\"$fg_dark\)"
 }
 
 function volume {
@@ -45,9 +52,14 @@ function volume {
 }
 
 function b_right { print "$(mpd)" "$(volume)" "$(dat)" }
+#>
 
+#< Spawn the bar
 while true; do
   rwidth=$(( $(print ${#${"$(b_right | sed 's.\^[^(]*([^)]*)..g')"}}) * 6 + 6))
-  print " :bspwm $(title) ^pa($((1366 - $rwidth)))$(b_right)"
-  sleep 1s
+  print "$(wm_name) $(title) ^pa($(($b_width - $rwidth)))$(b_right)"
+  sleep 3s
 done | dzen2 -u -x $b_x -y $b_y -ta l -fn $font -bg $bg -fg $fg -w $b_width -h $b_height
+#>
+
+# vim: ft=zsh et ts=2 fdm=marker fmr=#<,#>
