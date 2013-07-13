@@ -16,16 +16,15 @@
 ;; Applications
 "Super-SPC" '(system "gmrun &")
 "Super-RET" '(system "termite &")
-"Super-d" '(system "urxvtc -e ranger &")
+"Super-d" '(system "termite -e ranger &")
 "Super-l" '(system "/home/luizf/bin/mpm &")
-"Super-n" '(system "urxvtc -e ncmpcpp &")
-"Super-t" '(system "urxvtc -e tmux &")
-"Super-T" '(system "urxvtc -e tmux attach &")
+"Super-n" '(system "termite -e ncmpcpp &")
+"Super-t" '(system "termite -e tmux &")
+"Super-T" '(system "termite -e tmux attach &")
 "Super-s" '(jump-or-exec "Skype" "skype" t)
-"Super-e" '(jump-or-exec "Emacs" "emacs" t)
 "Super-v" '(jump-or-exec "gVim" "gvim" t)
 "Super-f" '(jump-or-exec "Thunar" "thunar" t)
-"Super-b" '(jump-or-exec "Firefox" "firefox" t)
+"Super-b" '(jump-or-exec "Chromium" "chromium" t)
 "Print" '(system "scrot '/mnt/data/Scrots/%d-%m-%Y_%H:%M.png' &")
 
 ;; Media Keys
@@ -36,7 +35,6 @@
 "XF86AudioLowerVolume" '(system "amixer set PCM 5%- &")
 "XF86AudioRaiseVolume" '(system "amixer set PCM 5%+ &")
 "XF86AudioMute" '(system "amixer set Master toggle &")
-"XF86AudioMedia" '(system "urxvtc -e pimpd2 -sh &")
 
 ;; WM Functions
 "Super-q" 'delete-window-instance
@@ -70,7 +68,6 @@
 ;; Appearance
 ( defvar-setq default-frame-style 'dynasty )
 ( defvar-setq resize-show-dimensions nil )
-(custom-set-typed-variable (quote default-font) (quote ("Pango" . "Alterebro Pixel Font 12")) (quote font))
 
 ;; Placement & Focus
 ( defvar-setq focus-click-through t )
@@ -94,28 +91,5 @@
 ( defvar-setq window-history-auto-save-dimensions t )
 ( defvar-setq window-history-auto-save-state t )
 ( defvar-setq window-history-ignore-transients nil )
-
-;; Misc/tint2
-(custom-set-typed-variable (quote prompt-color) (quote ("#800077007700" . "#150015001500")) (quote (pair (labelled "Foreground:" color) (labelled "Background:" color))))
-(custom-set-typed-variable (quote match-window-profile) (quote ((((WM_CLASS . "tint2")) (ignore-program-position . #t) (workspace . 5) (new-workspace . #f) (new-viewport . #f) (fixed-position . #f) (fixed-size . #f) (sticky . #f) (sticky-viewport . #f) (focus-when-mapped . #f) (never-focus . #f) (focus-click-through . #f) (frame-type . none) (iconified . #f) (never-iconify . #t) (never-maximize . #t) (window-list-skip . #t) (task-list-skip . #t) (never-delete . #f) (no-history . #t)) (((WM_CLASS . "conky")) (frame-type . none)))) (quote match-window) (quote sawfish.wm.ext.match-window))
-
-;; Startup message
-(defun get-output-string-exec (x)
-  (let* ((stream (make-string-output-stream))
-         (process (make-process stream))
-         (retval (call-process process nil x)))
-    (get-output-stream-string stream)))
-
-(defun kid-display-message (message &optional seconds)
-  "display MESSAGE for SECONDS seconds and make the message disappeared.
-The default display-message don't close the message window automatically"
-  (interactive)
-  (display-message message)
-  (make-timer
-   (lambda ()
-     (display-message)) ; close message window
-   (or seconds 6)))
-
-(kid-display-message (get-output-string-exec "fortune"))
 
 ;; vim: set ft=lisp :

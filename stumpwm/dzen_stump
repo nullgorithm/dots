@@ -7,9 +7,9 @@
 
 # Getting colors from `xrdb -query`
 if [[ $(uname) == 'FreeBSD' ]]; then
-	xrdb=( $(xrdb -query | grep "color[0-9]*:" | sort | cut -f 2-) )
+  xrdb=( $(xrdb -query | grep "color[0-9]*:" | sort | cut -f 2-) )
 else
-	xrdb=( $(xrdb -query | grep -P "color[0-9]*:" | sort | cut -f 2-) )
+  xrdb=( $(xrdb -query | grep -P "color[0-9]*:" | sort | cut -f 2-) )
 fi
 
 declare -A color
@@ -17,8 +17,8 @@ declare -A color
 index=0
 
 for name in black brightgreen brightyellow brightblue brightmagenta brightcyan brightwhite red green yellow blue magenta cyan white grey brightred; do
-	color[${name}]=${xrdb[$index]}
-	((index++))
+  color[${name}]=${xrdb[$index]}
+  ((index++))
 done
 
 #bgcolor='#1f1b18'
@@ -30,7 +30,7 @@ bgcolor='#0F0F0F'
 x=0
 y=768
 width=1366
-height=13
+height=15
 
 #font="-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252"
 #bold="-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252"
@@ -68,15 +68,15 @@ cpu=$(cut -d " " -f 1-3 /proc/loadavg)
 # BATTERY
 #==~==========~=========~=============~~=
 function battery() {
-        bat="$(acpi | awk '{ print $4 }' | sed s/","//g | sed s/"%"//g)"
-        echo -n "$(icon ac1 brightred) ${bat}^fg(#606060)%"
+  bat="$(acpi | awk '{ print $4 }' | sed s/","//g | sed s/"%"//g)"
+  echo -n "$(icon ac1 brightred) ${bat}^fg(#606060)%"
 }
 
 #======~===~==============~===========~==
 # MPD
 #==~==========~=========~=============~~=
 function m() {
-	mpc -f %${1}% current | sed 's/ä/ae/g' | sed 's/ö/oe/g' | sed 's/ü/ue/g'
+  mpc -f %${1}% current | sed 's/ä/ae/g' | sed 's/ö/oe/g' | sed 's/ü/ue/g'
 }
 
 function nowplaying() {
@@ -133,5 +133,4 @@ function uniq_linebuffered() {
 				volume="${cmd[@]:1}" ;;
 		esac
 	done
-} 2> /dev/null | dzen2 -w $width -x $x -y $y -fn "$font" -h $height \
-	-ta l -bg "$bgcolor" -fg '#909090'
+} 2> /dev/null | dzen2 -w $width -x $x -y $y -fn "$font" -h $height -ta l -bg "$bgcolor" -fg '#909090'
