@@ -1,34 +1,44 @@
 #!/bin/sh
 
-## Initiate workspaces:
+#      ___           ___                         ___           ___
+#     /  /\         /  /\          ___          /  /\         /  /\
+#    /  /::\       /  /::\        /  /\        /  /:/_       /  /::|
+#   /  /:/\:\     /__/:/\:\      /  /::\      /  /:/ /\     /  /:|:|
+#  /  /::\ \:\   _\_ \:\ \:\    /  /:/\:\    /  /:/ /:/_   /  /:/|:|__
+# /__/:/\:\_\:| /__/\ \:\ \:\  /  /::\ \:\  /__/:/ /:/ /\ /__/:/_|::::\
+# \  \:\ \:\/:/ \  \:\ \:\_\/ /__/:/\:\_\:\ \  \:\/:/ /:/ \__\/  /~~/:/
+#  \  \:\_\::/   \  \:\_\:\   \__\/  \:\/:/  \  \::/ /:/        /  /:/
+#   \  \:\/:/     \  \:\/:/        \  \::/    \  \:\/:/        /  /:/
+#    \__\::/       \  \::/          \__\/      \  \::/        /__/:/
+#        ~~         \__\/                       \__\/         \__\/
+#                       ~/.config/bspwm/autostart
+#                 Author: suare (http://github.com/suare)
+
+# Initiate workspaces
+
 FIRST_DESK=1
 REMAINING_DESKS='2 3 4 5 6'
 
 bspc rename Desktop01 $FIRST_DESK
 bspc add $REMAINING_DESKS
 
-bspc set top_padding  15
-
-## Rules:
-bspc rule sxiv floating
+# Rules
+bspc rule qtermite floating
 bspc rule chromium 2 follow
 bspc rule Gimp 4 floating
 
-## Settings:
-#+ focus
-bspc set history_aware_focus true
-bspc set focus_by_distance   false
-
-#+ splitting
+# Bspwm own options
 bspc set split_ratio         0.50
+bspc set top_padding         15
 
-#+ decoration
+
+# Decoration
 bspc set border_width        5
-bspc set window_gap          2
+bspc set window_gap          3
 bspc set borderless_monocle  true
 bspc set gapless_monocle     true
 
-#+ colors
+# Colors
 bspc set focused_border_color        "#262935"
 bspc set active_border_color         "#5C5955"
 bspc set normal_border_color         "#202224"

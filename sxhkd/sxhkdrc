@@ -1,116 +1,133 @@
-# app launcher
-super + space
-    interrobang
+#                            ,---,          ,-.
+#                          ,--.' |      ,--/ /|       ,---,
+#                          |  |  :    ,--. :/ |     ,---.'|  __  ,-.
+#    .--.--.    ,--,  ,--, :  :  :    :  : ' /      |   | :,' ,'/ /|
+#   /  /    '   |'. \/ .`| :  |  |,--.|  '  /       |   | |'  | |' | ,---.
+#  |  :  /`./   '  \/  / ; |  :  '   |'  |  :     ,--.__| ||  |   ,'/     \
+#  |  :  ;_      \  \.' /  |  |   /' :|  |   \   /   ,'   |'  :  / /    / '
+#   \  \    `.    \  ;  ;  '  :  | | |'  : |. \ .   '  /  ||  | ' .    ' /
+#    `----.   \  / \  \  \ |  |  ' | :|  | ' \ \'   ; |:  |;  : | '   ; :__
+#   /  /`--'  /./__;   ;  \|  :  :_:,''  : |--' |   | '/  '|  , ; '   | '.'|
+#  '--'.     / |   :/\  \ ;|  | ,'    ;  |,'    |   :    :| ---'  |   :    :
+#    `--'---'  `---'  `--` `--''      '--'       \   \  /          \   \  /
+#                                                 `----'            `----'
+#                           ~/.config/sxhkd/sxhkdrc
+#                   Author: suare (http://github.com/suare)
 
-# terminal
-super + Return
-    urxvtc
+#################
+#=bspwm hotkeys=#
+#################
 
-super + b
-    dwb
-
-super + Q
+super + shift + q
     bspc quit
 
-super + R
-    bspc reload_autostart
-
-# media keys
-XF86Audio{RaiseVolume,LowerVolume,Mute}
-    amixer -q sset PCM {1%+,1%-,toggle}
-
-XF86Audio{Play,Stop,Prev,Next}
-    mpc {toggle,stop,prev,next}
-
-# image viewer
-super + I
-    sxiv -rt "/mnt/data/Porn/Pic"
-
-# color pick
-super + G
-    zenity --color-selection
-
-# move focus
-super + {h,j,k,l}
-    bspc focus {left,down,up,right}
-
-# move frames
-super + shift + {h,j,k,l}
-    bspc shift {left,down,up,right}
-
-# mpd seek
-alt + shift + {0-9}
-    mpc seek {0-9}0%
-
-ctrl + alt + {q,r,s}
-    sudo systemctl {poweroff,reboot,suspend}
-
-# close window
 super + q
-    xdotool getactivewindow windowkill
+    bspc close
 
-# cycle last layout
+super + Delete
+    bspc window kill
+
 super + t
     bspc cycle_layout
 
-# cycle frames
+super + x
+    bspc window --toggle locked
+
+super + BackSpace
+    bspc cancel
+
+super + {f,F}
+    bspc toggle_{floating,fullscreen}
+
+super + {grave,Tab}
+    bspc {alternate,alternate_desktop}
+
+super + {_,shift + }{h,j,k,l}
+    bspc {focus,shift} {left,down,up,right}
+
 super + {comma,period}
     bspc circulate {backward,forward}
 
-# cycle modes
-super + {f,F,x,z}
-    bspc toggle_{floating,fullscreen,locked,visibility}
+super + ctrl + {h,j,k,l}
+    bspc presel {left,down,up,right}
 
-# next/previous frame
-super + {Tab,shift + Tab}
-    bspc cycle {next,prev}
+alt + shift + {h,j,k,l}
+    bspc push {left,down,up,right}
 
-# mouse support ==========================
+ctrl + alt + {h,j,k,l}
+    bspc pull {right,up,down,left}
+
+super + ctrl + {1-9}
+    bspc ratio 0.{1-9}
+
+super + {_,shift + }{1-9,0}
+    bspc {use,send_to} {1-9,0}
+
+#########
+#=Mouse=#
+#########
 
 :button1
     bspc grab_pointer focus
 
-super + button{1,2,3}
+super + button{1-3}
     bspc grab_pointer {move,resize_side,resize_corner}
 
-super + !button{1,2,3}
-    bspc {track_pointer,track_pointer,track_pointer} %i %i
+super + !button{1-3}
+    bspc track_pointer %i %i
 
-super + @button{1,2,3}
-    bspc {ungrab_pointer,ungrab_pointer,ungrab_pointer}
+super + @button{1-3}
+    bspc ungrab_pointer
 
-# ========================================
+##############
+#=Media keys=#
+##############
 
-# previous/next workspace
-super + {Left,Right}
-    bspc cycle_desktop {prev,next}
+super + Down
+    mpc toggle
 
-super + {V,H}
-    bspc flip {vertical,horizontal}
+super + Up
+    mpc stop
 
-# resizing frames
-alt + {H,J,K,L}
-    bspc push {left,down,up,right}
+super + Left
+    mpc prev
 
-alt + ctrl + {h,j,k,l}
-    bspc pull {right,up,down,left}
+super + Right
+    mpc next
 
-# set the direction to spawn new frame
-alt + {h,j,k,l}
-    bspc presel {left,down,up,right}
+super + Prior
+    volume up
 
-ctrl + alt + {1-9,0}
-    bspc set window_gap {0,3,6,9,15,24,39,63,102,165}
+super + Next
+    volume down
 
-alt + space
-    bspc cancel
+super + End
+    volume mute
 
-# workspace change/send to ===============
+##########################
+#=WM independent hotkeys=#
+##########################
 
-super + {1-5}
-    bspc use {1-5}
+super + Return
+    termite
 
-super + shift + {1-5}
-    bspc send_to {1-5}
+super + p
+    interrobang
 
-# ========================================
+super + b
+    chromium
+
+super + shift + i
+    sxiv -rt /mnt/data/Porn/Pics
+
+super + shift + t
+    termite -e tmux attach
+
+Print
+    screenshot
+
+# reload sxhkd
+super + shift + r
+    pkill -USR1 -x sxhkd
+
+# vim: set ts=4:
