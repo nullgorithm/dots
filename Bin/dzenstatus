@@ -1,0 +1,66 @@
+#!/bin/zsh
+
+#< Settings
+name='bspwm'
+
+fg='#909295'
+bg='#1B1C1F'
+fg_fg='^fg()'
+bg_bg='^bg()'
+
+fg_dark='^fg(#707275)'
+fg_moar_dark='^fg(#505255)'
+fg_red='^fg(#8C8CA0)'
+fg_blue='^fg(#3C788C)'
+fg_green='^fg(#1E828C)'
+fg_cyan='^fg(#6E8CA0)'
+fg_white='^fg(#abacaf)'
+
+b_width='1366'
+b_height='15'
+b_x='0'
+b_y='0'
+
+#font='-misc-fixedzero-medium-r-semicondensed-*-12-110-75-75-c-60-iso10646-1'
+font='-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-9'
+#>
+
+#< Functions
+function wm_name {
+  print "\ ${fg_fg}\:${name}${fg_fg}${bg_bg}"
+}
+
+function title {
+  wname="$(xdotool getactivewindow getwindowname)"
+  print "$fg_dark\($fg_white\when $fg_cyan\w $fg_white\($fg_moar_dark\print $fg_dark\"$fg_red$wname$fg_dark\"$fg_white)$fg_dark)"
+}
+
+function mpd {
+  m_a=$(mpc current -f '%artist%')
+  m_A=$(mpc current -f '%album%')
+  m_t=$(mpc current -f '%title%')
+  print "$fg_dark\($fg_cyan\#'$fg_white\($fg_dark\load $fg_dark\($fg_blue\mpd $fg_moar_dark\:title $fg_dark\"$fg_red$m_t$fg_dark\" $fg_moar_dark\:artist $fg_dark\"$fg_cyan$m_a$fg_dark\" $fg_moar_dark\:album $fg_dark\"$fg_blue$m_A$fg_dark\"$fg_dark\)$fg_white\)$fg_dark\)"
+}
+
+function dat {
+  print "$fg_dark\(${fg_cyan}cons $fg_moar_dark\"$(date +"$fg_white%d$fg_moar_dark\-$fg_dark%m$fg_moar_dark\-$fg_dark%Y$fg_moar_dark/$fg_red%a")$fg_moar_dark\" $fg_moar_dark\"$fg_white$(date +"%H$fg_dark%M")$fg_moar_dark\"$fg_dark\)"
+}
+
+function volume {
+  vol="$(amixer get PCM | sed -nr '$ s:.*\[(.+%)].*:\1:p')"
+  state="$(amixer get Master | sed -nr '$ s:.*\[(.+)]$:\1:p')"
+  print "$fg_white\($fg_dark\setf $fg_blue\*alsa* $fg_moar_dark\($fg_dark\"$fg_red$vol$fg_dark\"$fg_moar_dark\) $fg_red$state$fg_white\)"
+}
+
+function b_right { print "$(mpd)" "$(volume)" "$(dat)" }
+#>
+
+#< Spawn the bar
+while true; do
+  rwidth=$(( $(print ${#${"$(b_right | sed 's.\^[^(]*([^)]*)..g')"}}) * 6 + 6))
+  print "$(wm_name) $(title) ^pa($(($b_width - $rwidth)))$(b_right)"
+  sleep 1s
+done | dzen2 -u -x $b_x -y $b_y -ta l -fn $font -bg $bg -fg $fg -w $b_width -h $b_height
+#>
+
+# vim: ft=zsh et ts=2 fdm=marker fmr=#<,#>

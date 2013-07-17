@@ -1,0 +1,19 @@
+#!/bin/sh
+
+up() {
+    amixer -q sset PCM 5+ unmute
+}
+
+down() {
+    amixer -q sset PCM 5- unmute
+}
+
+specify() {
+    amixer -q sset PCM "$1"% unmute
+}
+
+mute() {
+    amixer -q sset Master toggle
+}
+
+"$@"
