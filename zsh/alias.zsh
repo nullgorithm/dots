@@ -109,7 +109,6 @@ alias rm='rm -v'
 alias ln='ln -sr'
 alias grep='grep -Pi --color=auto'
 alias grepp='grep -Pi --color=auto "^|$@"'
-alias cat='skate'
 alias rmvi='rm *.sw*'
 alias prename='prename -v'
 
