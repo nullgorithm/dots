@@ -14,7 +14,7 @@ static const char * const BAR_FONT = "-xos4-terminus-medium-r-normal--12-120-72-
 /* colors:
  * (see X(7) section "COLOR NAMES" for valid values)
  */
-static const char * const WIN_BG_COLOR = "#161616";
+static const char * const WIN_BG_COLOR = "#181818";
 static const char * const WIN_FS_COLOR = "#000000";
 static const char * const SEL_COLOR    = "#262935";
 static const char * const BAR_BG_COLOR = "#1b1c1f";
