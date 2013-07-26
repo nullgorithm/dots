@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+down_dir='~/junk'
+port='9091'
+
+case $1 in
+  --start )
+    transmission-daemon -w $down_dir -p $port
+    print "Daemon started on port \033[0;33m$port\033[1;39m"
+    chromium --newtab localhost:$port
+    ;;
+  --stop )
+    killall transmission-daemon
+    print "Daemon stopped." 
+    ;;
+  * )
+    print "Invalid command. Valid commands are '--start' and '--stop'" 
+    ;;
+esac
