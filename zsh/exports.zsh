@@ -13,6 +13,6 @@ export XDG_DATA_HOME="$HOME/var"
 
 export HISTSIZE=1000
 export SAVEHIST=1000
-export HISTFILE="$HOME/.zsh_hist"
+export HISTFILE="$XDG_DATA_HOME/zsh_hist"
 
 export PATH="/bin:/$HOME/bin:/usr/bin:/usr/bin/core_perl:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/local/bin"
