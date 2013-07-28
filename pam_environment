@@ -1,4 +1,0 @@
-BSPWM_SOCKET=/tmp/bspwm-socket
-PANEL_FIFO=/tmp/panel-fifo
-BSPWM_LAYOUT=/tmp/bspwm.layout
-BSPWM_HISTORY=/tmp/bspwm.history

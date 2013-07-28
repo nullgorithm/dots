@@ -1,66 +1,144 @@
 #!/bin/zsh
 
-#< Settings
-name='bspwm'
+#<Settings
 
-fg='#909295'
-bg='#1B1C1F'
+#<Colors
 fg_fg='^fg()'
 bg_bg='^bg()'
 
-fg_dark='^fg(#707275)'
-fg_moar_dark='^fg(#505255)'
-fg_red='^fg(#8C8CA0)'
-fg_blue='^fg(#3C788C)'
-fg_green='^fg(#1E828C)'
-fg_cyan='^fg(#6E8CA0)'
-fg_white='^fg(#abacaf)'
+# Xresources colors
+xresources="${HOME}/.asd"
 
-b_width='1366'
-b_height='15'
-b_x='0'
-b_y='0'
+if [[ -s ${xresources} ]]; then
+  cat ${xresources} | grep "^*" | while read c; do
+  case "${${(s. .)c:l}[1]}" in
+    '*background:') bg=${${(s. .)c}[-1]} ;;
+    '*foreground:') fg=${${(s. .)c}[-1]} ;;
+    '*color0:') fg_dark=^fg(${${(s. .)c}[-1]}) ;; # black
+    '*color8:') fg_moar_dark=^fg(${${(s. .)c}[-1]}) ;; # black,bold
+    '*color1:') fg_red=^fg(${${(s. .)c}[-1]}) ;; # red
+    '*color9:') fg_moar_red=^fg(${${(s. .)c}[-1]}) ;; # red,bold
+    '*color2:') fg_green=^fg(${${(s. .)c}[-1]}) ;; # green
+    '*color10:') fg_moar_green=^fg(${${(s. .)c}[-1]}) ;; # green,bold
+    '*color3:') fg_yellow=^fg(${${(s. .)c}[-1]}) ;;  # yellow
+    '*color11:') fg_moar_yellow=^fg(${${(s. .)c}[-1]}) ;; # yellow,bold
+    '*color4:') fg_blue=^fg(${${(s. .)c}[-1]}) ;; # blue
+    '*color12:') fg_moar_blue=^fg(${${(s. .)c}[-1]}) ;; # blue,bold
+    '*color5:') fg_magenta=^fg(${${(s. .)c}[-1]}) ;; # magenta
+    '*color13:') fg_moar_magenta=^fg(${${(s. .)c}[-1]}) ;; # magenta,bold
+    '*color6:') fg_cyan=^fg(${${(s. .)c}[-1]}) ;; # cyan
+    '*color14:') fg_moar_cyan=^fg(${${(s. .)c}[-1]}) ;; # cyan,bold
+    '*color7:') fg_white=^fg(${${(s. .)c}[-1]}) ;;  # white
+    '*color15:') fg_moar_white=^fg(${${(s. .)c}[-1]}) ;; # white,bold
+  esac
+ done
+else
+  # Just in case Xresources colors are not available. Let's call it as fallback colors.
+  bg='#151515'
+  fg='#909090'
+  fg_dark='^fg(#808285)'
+  fg_moar_dark='^fg(#404245)'
+  fg_red='^fg(#8A2F58)'
+  fg_moar_red='^fg(#CF4F88)'
+  fg_green='^fg(#287373)'
+  fg_moar_green='^fg(#53A6A6)'
+  fg_yellow='^fg(#914E89)'
+  fg_moar_yellow='^fg(#BF85CC)'
+  fg_blue='^fg(#395573)'
+  fg_moar_blue='^fg(#4779B3)'
+  fg_magenta='^fg(#5E468C)'
+  fg_moar_magenta='^fg(#7F62B3)'
+  fg_cyan='^fg(#2B7694)'
+  fg_moar_cyan='^fg(#47959E)'
+  fg_white='^fg(#899CA1)'
+  fg_moar_white='^fg(#C0C0C0)'
+fi
 
-#font='-misc-fixedzero-medium-r-semicondensed-*-12-110-75-75-c-60-iso10646-1'
-font='-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-9'
+fg_dark='^fg(#808285)'
+fg_moar_dark='^fg(#404245)'
+#>
+
+# Screen size
+b_width="1360" # the monitor resolution minus the numbers of 'b_y' and 'b_x'.
+b_x="3" # the number of window gap
+b_y="3" # set on the window manager.
+b_height="18" # bar height
+
+# Font
+font="-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1"
 #>
 
 #< Functions
 function wm_name {
-  print "\ ${fg_fg}\:${name}${fg_fg}${bg_bg}"
+  name="bspwm"
+  # name="herbstfluft"
+  print "${fg_white}:${name}${fg_fg}${bg_bg}"
 }
 
 function title {
   wname="$(xdotool getactivewindow getwindowname)"
-  print "$fg_dark\($fg_white\when $fg_cyan\w $fg_white\($fg_moar_dark\print $fg_dark\"$fg_red$wname$fg_dark\"$fg_white)$fg_dark)"
+  print "${fg_dark}(${fg_white}when ${fg_blue}w ${fg_white}(${fg_white}print \
+${fg_dark}\"${fg_moar_red}${wname}${fg_dark}\"${fg_white})${fg_dark})"
 }
 
 function mpd {
-  m_a=$(mpc current -f '%artist%')
-  m_A=$(mpc current -f '%album%')
-  m_t=$(mpc current -f '%title%')
-  print "$fg_dark\($fg_cyan\#'$fg_white\($fg_dark\load $fg_dark\($fg_blue\mpd $fg_moar_dark\:title $fg_dark\"$fg_red$m_t$fg_dark\" $fg_moar_dark\:artist $fg_dark\"$fg_cyan$m_a$fg_dark\" $fg_moar_dark\:album $fg_dark\"$fg_blue$m_A$fg_dark\"$fg_dark\)$fg_white\)$fg_dark\)"
+  player_name='mpd'
+  m_a="$(mpc current -f '%artist%')"
+  m_A="$(mpc current -f '%album%')"
+  m_t="$(mpc current -f '%title%')"
+  print "${fg_dark}(${fg_moar_green}#${fg_fg}\'${fg_white}(${fg_dark}load \
+${fg_dark}(${fg_moar_magenta}${player_name} ${fg_moar_dark}:title ${fg_dark} \
+\"${fg_moar_blue}${m_t}${fg_dark}\" ${fg_moar_dark}:artist ${fg_dark} \
+\"${fg_moar_magenta}${m_a}${fg_dark}\"${fg_dark})${fg_white})${fg_dark})"
 }
 
-function dat {
-  print "$fg_dark\(${fg_cyan}cons $fg_moar_dark\"$(date +"$fg_white%d$fg_moar_dark\-$fg_dark%m$fg_moar_dark\-$fg_dark%Y$fg_moar_dark/$fg_red%a")$fg_moar_dark\" $fg_moar_dark\"$fg_white$(date +"%H$fg_dark%M")$fg_moar_dark\"$fg_dark\)"
+function bat {
+  battery="$(awk '{print +$4}' <(acpi -b))"
+
+  if [[ -z `acpi -V | grep "on-line"` ]] then
+    stat="off"
+  else
+    stat="on"
+  fi
+
+  print "${fg_moar_white}(${fg_dark}:battery (${fg_moar_dark}\"${fg_white}\
+${battery}${fg_moar_white}%${fg_moar_dark}\"${fg_dark}) ${fg_cyan}${stat}${fg_moar_white})"
+}
+
+function load {
+  load="$(cat /proc/loadavg | cut -b 1-4)"
+  load15="$(cat /proc/loadavg | cut -b 11-14)"
+  cpu="$(sensors | grep -P "(temp1)" | cut -b 16-17)"
+  print "${fg_dark}(:loadavg ${fg_moar_white}(${fg_moar_green}list \
+${fg_moar_dark}(${fg_dark}1${fg_moar_red} $load${fg_moar_dark}\) \(${fg_dark}15 \
+${fg_moar_red}$load15${fg_moar_dark}\) \(${fg_dark}| ${fg_moar_red}$cpu${fg_white}°C\
+${fg_moar_dark}\)${fg_moar_white}\)${fg_dark}\)"
 }
 
 function volume {
+  audio_name="alsa"
   vol="$(amixer get PCM | sed -nr '$ s:.*\[(.+%)].*:\1:p')"
   state="$(amixer get Master | sed -nr '$ s:.*\[(.+)]$:\1:p')"
-  print "$fg_white\($fg_dark\setf $fg_blue\*alsa* $fg_moar_dark\($fg_dark\"$fg_red$vol$fg_dark\"$fg_moar_dark\) $fg_red$state$fg_white\)"
+  print "${fg_white}(${fg_dark}setf ${fg_moar_green}*$audio_name* \
+${fg_moar_dark}(${fg_dark}\"${fg_moar_red}${vol}${fg_dark}\"${fg_moar_dark}) \
+${fg_moar_blue}${state}${fg_white})"
 }
 
-function b_right { print "$(mpd)" "$(volume)" "$(dat)" }
+function dat {
+  print "${fg_dark}(${fg_moar_yellow}cons ${fg_dark}\"$(date +"${fg_moar_white}%d \
+${fg_moar_dark}-${fg_dark}%m${fg_moar_dark}-${fg_dark}%Y${fg_moar_dark}/${fg_cyan}%a")${fg_dark}\" \
+${fg_dark}\"${fg_moar_white}$(date +"%H${fg_dark}%M")${fg_dark}\"${fg_dark})"
+}
+
+function b_right { print "$(mpd) $(volume) $(dat)" }
 #>
 
 #< Spawn the bar
 while true; do
-  rwidth=$(( $(print ${#${"$(b_right | sed 's.\^[^(]*([^)]*)..g')"}}) * 6 + 6))
-  print "$(wm_name) $(title) ^pa($(($b_width - $rwidth)))$(b_right)"
+  rwidth=$(( $(print ${#${"$(b_right | sed 's.\^[^(]*([^)]*)..g')"}}) * 6))
+  print "$(wm_name) $(load) $(bat) ^pa($(($b_width - $rwidth)))$(b_right)"
   sleep 1s
-done | dzen2 -u -x $b_x -y $b_y -ta l -fn $font -bg $bg -fg $fg -w $b_width -h $b_height
+done | dzen2 -x $b_x -y $b_y -ta l -fn $font -bg $bg -fg $fg -w $b_width -h $b_height
 #>
 
-# vim: ft=zsh et ts=2 fdm=marker fmr=#<,#>
+# vim: ft=zsh et ts=2 fdm=marker fmr=#<,#> :

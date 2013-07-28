@@ -2,8 +2,8 @@
 
 /* default window dimensions (overwritten via -g option): */
 enum {
-	WIN_WIDTH  = 550,
-	WIN_HEIGHT = 600
+  WIN_WIDTH  = 550,
+  WIN_HEIGHT = 600
 };
 
 /* bar font:
@@ -14,10 +14,10 @@ static const char * const BAR_FONT = "-xos4-terminus-medium-r-normal--12-120-72-
 /* colors:
  * (see X(7) section "COLOR NAMES" for valid values)
  */
-static const char * const WIN_BG_COLOR = "#181818";
+static const char * const WIN_BG_COLOR = "#080808";
 static const char * const WIN_FS_COLOR = "#000000";
 static const char * const SEL_COLOR    = "#262935";
-static const char * const BAR_BG_COLOR = "#1b1c1f";
+static const char * const BAR_BG_COLOR = "#151515";
 static const char * const BAR_FG_COLOR = "#525562";
 
 #endif
@@ -35,15 +35,15 @@ static const scalemode_t SCALE_MODE = SCALE_DOWN;
  * (first/last value is used as min/max zoom level)
  */
 static const float zoom_levels[] = {
-  30.0,  50.0,  75.0, 100.0,
-  150.0, 200.0, 400.0, 500.0
+  25.0,  50.0,  75.0, 100.0,
+  150.0, 200.0, 400.0, 500.0, 1000.0
 };
 
 /* default settings for multi-frame gif images: */
 enum {
-	GIF_DELAY    = 100, /* delay time (in ms) */
-	GIF_AUTOPLAY = 1,   /* autoplay when loaded [0/1] */
-	GIF_LOOP     = 1    /* endless loop [0/1] */
+  GIF_DELAY    = 100, /* delay time (in ms) */
+  GIF_AUTOPLAY = 1,   /* autoplay when loaded [0/1] */
+  GIF_LOOP     = 1    /* endless loop [0/1] */
 };
 
 #endif
