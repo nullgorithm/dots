@@ -1,73 +1,83 @@
 [user]
-   name = Luiz F.
-   email = luiz.efe20@gmail.com
+  name = Luiz F.
+  email = luiz.efe20@gmail.com
 
 [branch]
-   autosetupmerge = always
-   autosetuprebase = always
+  autosetupmerge = always
+  autosetuprebase = always
 
 [github]
-   user = suare
+  user = suare
 
 [rebase]
-   autosquash = true
-
-[apply]
-   ignorewhitespace = change
-   whitespace = nowarn
+  autosquash = true
 
 [push]
-   default = tracking
+  default = simple
 
 [pull]
-   rebase = true
+  rebase = true
 
 [core]
-   editor = vim
-   pager = less
+  editor = /usr/bin/vim
+  pager = /usr/bin/vimpager
+  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
+[apply]
+  whitespace = strip
 
 [web]
-   browser = dwb
+  browser = /usr/bin/chromium
+
+## Aliases ##
+
+[alias]
+  comet = commit --amend -C HEAD
+  tree = log --abbrev-commit --date=short --pretty=oneline --decorate --color=always
+  st = status --short
+  whatdidido = diff HEAD
+  add = add --verbose
+  mv = mv --verbose
+
+## Colors ##
 
 [color]
-   interactive = true
-   ui = auto
-   branch = auto
-   diff = auto
-   grep = auto
-   pager = 0
-   showbranch = auto
-   status = auto
+  ui = auto
+  diff = true
+  pager = true
+  status = true
+  interactive = auto
+  branch = true
 
 [color "diff"]
-   plain = 248
-   meta = bold
-   frag = 168 bold
-   old = 124
-   new = 142 bold
-   commit = 184 bold
-   whitespace = 23
+  plain = 248
+  meta = bold
+  frag = 168 bold
+  old = 124
+  new = 142 bold
+  commit = 184 bold
+  whitespace = 23
 
 [color "branch"]
-   current = 142 bold
-   local = 245
-   remote = 090
-   plain = 242 reverse
+  current = 142 bold
+  local = 245
+  remote = 090
+  plain = 242 reverse
 
 [color "status"]
-   header = 111
-   added = 001 bold
-   updated = 113 bold
-   changed = 003 bold
-   added = 106 bold
-   untracked = 090
-   nobranch = 001
+  header = 015 bold
+  added = 007 bold
+  updated = 012 bold
+  changed = 011 bold
+  added = 010 bold
+  untracked = 001
+  nobranch = 001
 
 [color "grep"]
-   match = 178 bold
+  match = 010 bold
 
 [color "interactive"]
-   prompt = 250
-   header = 208 bold
-   help = 212
-   error = 202 bold
+  prompt = 007
+  header = 208 bold
+  help = 002
+  error =  001
