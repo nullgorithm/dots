@@ -1,343 +1,74 @@
-!==============================================================
-!
-! X R E S O U R C E S
-!
+! G l o b a l !
+*saveLines: 4096
 
-! Global
-*saveLines: 1024
+!-----------------------------------------------!
 
-!==============================================================
-!
-! X f t
-!
 Xft.dpi: 96
-Xft.autohint: true
+Xft.autohint: false
 Xft.hinting: true
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 Xft.antialias: true
 Xft.rgba: rgb
 
-!==============================================================
-!
-! U R x v t
-!
-!URxvt*font: xft:Neep:size=6
-!URxvt*font: xft:Terminus for Powerline:size=9
-!URxvt*font: xft:Fixed:size=6
-!URxvt*font: xft:MonteCarlo:size=11
-!URxvt*font: xft:DejaVu Sans Mono:size=9
-/* URxvt*font: xft:Source Code Pro:size=8 */
-/* URxvt*boldFont: xft:Source Code Pro:style=Bold:size=7.5 */
-/* URxvt*font: xft:Anonymous Pro:size=8 */
-!URxvt*font: xft:Pragmata TT:size=7
-/* URxvt*font: xft:PragmataPro:size=7.5 */
-!URxvt*font: xft:Pragmata:size=7
-!URxvt*font: xft:Mensch:size=6
-!URxvt*font: xft:Envy Code R:size=7.5
-!URxvt*font: xft:Termsyn:size=10
-!URxvt*font: xft:Tamsyn:size=9
-!URxvt*font: xft:lime:size=11
+!-----------------------------------------------!
 
-!URxvt*font: -misc-ohsnap-medium-r-normal--11-79-100-100-c-60-iso8859-1
-!URxvt*font: -*-neep-medium-r-semicondensed---11-*-*-*-*-*-*-*
-!URxvt*font: -jmk-neep-medium-r-normal--10-80-75-75-c-50-iso8859-1
-!URxvt*font: -jmk-neep-medium-r-normal--11-100-75-75-c-60-iso8859-1
-!URxvt*font: -artwiz-cure-medium-r-normal--11-110-75-75-p-90-iso8859-1
-!URxvt*font: -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso8859-1
-!URxvt*font: -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
-!URxvt*font: -erus-erusfont-medium-r-normal--11-80-100-100-c-60-iso10646-1
-URxvt*font: -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1
-!URxvt*font: -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+*background: #151515
+*foreground: #909090
 
-!URxvt*font:     -spectrum-berry-medium-r-normal-sans-11-80-75-75-m-50-iso10646-1
-!URxvt*boldFont: -spectrum-berry-medium-r-normal-sans-11-80-75-75-m-50-iso10646-1
+#include "/home/luizf/dots/Xcolors/jwr-dark"
 
-!URxvt*font:     -misc-fixed-medium-r-normal--9-80-100-100-c-60-iso8859-1
-!URxvt*boldFont: -misc-fixed-medium-r-normal--90-80-100-100-c-60-iso8859-1
-
-/* URxvt*font:     -schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv */
-/* URxvt*boldFont: -schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv */
-
-!#define FONT_NORMAL -misc-fixed-medium-r-normal--14-130-75-75-c-70-koi8-r
-!#define FONT_BOLD   -schumacher-clean-bold-r-normal--14-140-75-75-c-80-iso646.1991-irv
-!#define FONT_ITALIC -schumacher-clean-medium-r-normal--14-140-75-75-c-70-iso646.1991-irv
-
-/* #define FONT_NORMAL -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252 */
-!#define FONT_NORMAL -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso8859-1
-/* #define FONT_BOLD   -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252 */
-#define FONT_ITALIC -jmk-neep-medium-r-normal--10-80-75-75-c-50-iso8859-1
-
-#define FONT_NORMAL -xos4-terminus2-medium-r-normal--12-120-72-72-c-60-iso8859-1
-#define FONT_BOLD -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso8859-1
-
-/* URxvt*font:               FONT_NORMAL */
-/* URxvt*boldFont:           FONT_BOLD */
-/* URxvt*italicFont:         FONT_ITALIC */
-
+! U R x v t !
 URxvt*buffered:           true
 URxvt*cursorBlink:        false
 URxvt*cursorUnderline:    false
-
-URxvt*geometry:           75x15
-URxvt*internalBorder:     0
-URxvt*depth:              24
-!URxvt*iconFile:           ~/.config/icons/terminal.png
-
-URxvt*scrollBar:          false
-URxvt*scrollBar_right:    false
-URxvt*scrollstyle:        plain
-URxvt*scrollColor:        #2873a2
-URxvt*scrollWithBuffer:   false
-URxvt*scrollTtyOutput:    true
-
+URxvt*termName:           rxvt-unicode-256color
 URxvt*urgentOnBell:       true
-!URxvt*visualBell:         true
+URxvt*visualBell:         false
 URxvt*pointerBlank:       false
 !URxvt*letterSpace:        -2
+URxvt*internalBorder:     0
+URxvt*depth:              24
+URxvt*scrollBar:          false
+URxvt*scrollBar_right:    false
+URxvt*scrollWithBuffer:   true
+URxvt*scrollTtyOutput:    true
 
-URxvt*termName:           rxvt-unicode-256color
-!URxvt*termName:           xterm-256color
+!-----------------------------------------------!
 
-!URxvt*transparent:        true
-!URxvt*shading:            20
+URxvt*font:     "-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1"
+URxvt*boldFont: "-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1"
 
-! Perl stuff
+!-----------------------------------------------!
+
 URxvt.perl-lib:           /usr/lib/urxvt/perl/
 URxvt.perl-ext-common:    default,matcher
 URxvt.perl-ext:           default,url-select
 URxvt.keysym.M-u:         perl:url-select:select_next
-URxvt.url-select.launcher: /usr/bin/luakit
+URxvt.url-select.launcher: /usr/bin/chromium
 URxvt.matcher.button:     2
 URxvt.tabbed.tabbar-fg:   8
 URxvt.tabbed.tabbar-bg:   0
 URxvt.tabbed.tab-fg:      0
 URxvt.tabbed.tab-bg:      4
 
-! ---------------------------------------
+! X T e r m !
+xterm*faceName:           Terminus:size=8
+xterm*dynamicColors:      true
+xterm*utf8:               2
+xterm*scrollKey:          true
+xterm*scrollTtyOutput:    true
+xterm*scrollBar:          false
+xterm*rightScrollBar:     false
+xterm*jumpScroll:         false
+xterm*multiScroll:        false
+xterm*toolBar:            false
 
-! *background:     #1f1b18
-*background: #151515
-! *background:     #1C1D21
-*foreground:     #807777
-/* *underlineColor: #de5105 */
-*cursorColor:    #007693
-*pointerColor:   #252525
-
-! ---------------------------------------
-
-#include "/home/luizf/xcolors/colorshot"
-
-!==============================================================
-!
-! X t e r m
-!
-xterm*geometry:             80x25
-xterm*faceName:             MonteCarlo:size=11
-!xterm*faceName:             GohuFont:size=9
-xterm*dynamicColors:        true
-xterm*utf8:                 2
-xterm*eightBitInput:        true
-xterm*saveLines:            1024
-xterm*scrollKey:            true
-xterm*scrollTtyOutput:      false
-xterm*scrollBar:            false
-xterm*rightScrollBar:       false
-xterm*jumpScroll:           false
-xterm*multiScroll:          false
-xterm*toolBar:              false
-
-!==============================================================
-!
-! U X t e r m
-!
-UXTerm*renderFont:          true
-UXTerm*allowColorOps:       1
-UXTerm*allowFontOps:        1
-UXTerm*allowTcapOps:        1
-UXTerm*allowTitleOps:       1
-UXTerm*allowWindowOps:      1
-UXTerm*dynamicColors:       1
-
-UXTerm*faceName:            FONT_NORMAL
-UXTerm*font:                FONT_NORMAL
-UXTerm*boldFont:            FONT_BOLD
-UXTerm*italicFont:          FONT_ITALIC
-UXTerm*foreground:          #807777
-UXTerm*background:          #151515
-UXTerm*colorBD:             #ffc200
-UXTerm*colorBDMode:         1
-UXTerm*colorMode:           1
-UXTerm*colorUL:             #efefef
-UXTerm*colorULMode:         1
-
-UXTerm*jumpScroll:          1
-UXTerm*metaSendsEscape:     0
-UXTerm*multiScroll:         1
-UXTerm*vt100.scrollBar:     0
-UXTerm*SaveLines:           1024
-UXTerm*scrollBar:           0
-
-UXTerm*titeInhibit:         1
-UXTerm*termName:            xterm-256color
-
-!==============================================================
-!
-! X F O N T S E L
-!
-XFontSel*sampleText.background:      TEXTBG
+! X f o n t S e l !
 XFontSel*menu*showUnselectable:      false
 XFontSel*MenuButton.shadowWidth:     0
 XFontSel*Toggle*ToggleStyle:         check
 XFontSel*MenuButton*Justify:         left
 XFontSel*MenuButton*MenuButtonStyle: select
 
-.xfontsel.pane.commandBox.quitButton.background:  #252525
-.xfontsel.pane.commandBox.quitButton.foreground:  snow
-.xfontsel.pane.commandBox.ownButton.background:   orange3
-.xfontsel.pane.commandBox.ownButton.foreground:   snow
-.xfontsel.pane.commandBox.countLabel.background:  snow
-.xfontsel.pane.viewPort.sampleText.background:    #252525
-.xfontsel.pane.viewPort.sampleText.foreground:    snow
-.xfontsel.pane.fieldBox.field0.background:        #252525
-.xfontsel.pane.fieldBox.field0.foreground:        snow
-.xfontsel.pane.fieldBox.field1.background:        #252525
-.xfontsel.pane.fieldBox.field1.foreground:        snow
-.xfontsel.pane.fieldBox.field2.background:        #252525
-.xfontsel.pane.fieldBox.field2.foreground:        snow
-.xfontsel.pane.fieldBox.field3.background:        #252525
-.xfontsel.pane.fieldBox.field3.foreground:        snow
-.xfontsel.pane.fieldBox.field4.background:        #252525
-.xfontsel.pane.fieldBox.field4.foreground:        snow
-.xfontsel.pane.fieldBox.field5.background:        #252525
-.xfontsel.pane.fieldBox.field5.foreground:        snow
-.xfontsel.pane.fieldBox.field6.background:        #252525
-.xfontsel.pane.fieldBox.field6.foreground:        snow
-.xfontsel.pane.fieldBox.field7.background:        #252525
-.xfontsel.pane.fieldBox.field7.foreground:        snow
-.xfontsel.pane.fieldBox.field8.background:        #252525
-.xfontsel.pane.fieldBox.field8.foreground:        snow
-.xfontsel.pane.fieldBox.field9.background:        #252525
-.xfontsel.pane.fieldBox.field9.foreground:        snow
-.xfontsel.pane.fieldBox.field10.background:       #252525
-.xfontsel.pane.fieldBox.field10.foreground:       snow
-.xfontsel.pane.fieldBox.field11.background:       #252525
-.xfontsel.pane.fieldBox.field11.foreground:       snow
-.xfontsel.pane.fieldBox.field12.background:       #252525
-.xfontsel.pane.fieldBox.field12.foreground:       snow
-.xfontsel.pane.fieldBox.field13.background:       #252525
-.xfontsel.pane.fieldBox.field13.foreground:       snow
-.xfontsel.pane.fieldBox.foreground:               #000000
-.xfontsel.pane.fieldBox.MenuButton.borderWidth:   1
-.xfontsel.pane.fieldBox.MenuButton.internalHeight: 1
-.xfontsel.pane.fieldBox.MenuButton.internalWidth: 2
-.xfontsel.pane.fieldBox.MenuButton.shapeStyle:    rectangle
-
-!==============================================================
-!
-! D m e n u
-!
-dmenu.font:                     -jmk-neep-medium-r-semicondensed--11-100-75-75-c-50-iso8859-15
-dmenu.foreground:               #808080
-dmenu.background:               #151515
-dmenu.selforeground:            #151515
-dmenu.selbackground:            #ff8939
-
-!==============================================================
-!
-! X C a l c
-!
-xcalc*geometry:                 200x270
-xcalc*font:                     -jmk-neep-medium-r-semicondensed--11-100-75-75-c-50-iso8859-15
-
-! Background
-xcalc*background:               #151515
-xcalc*borderColor:              #111111
-
-! Screen
-xcalc*bevel.vertDistance:       5
-xcalc*bevel.background:         dark khaki
-xcalc*bevel.borderColor:        khaki
-xcalc*screen.background:        dark khaki
-xcalc*screen.foreground:        black
-xcalc*screen.borderColor:       dark khaki
-
-! Buttons =====================================================
-
-! Spacing
-xcalc*button1*vertDistance:     4
-xcalc*button2*vertDistance:     4
-xcalc*button3*vertDistance:     4
-xcalc*button4*vertDistance:     4
-xcalc*button5*vertDistance:     4
-xcalc*button21*vertDistance:    4
-xcalc*button22*vertDistance:    4
-xcalc*button23*vertDistance:    4
-xcalc*button24*vertDistance:    4
-xcalc*button25*vertDistance:    4
-
-! Background
-xcalc*Command.background:       #181818
-xcalc*Command.borderColor:      #202020
-
-! Fix labels
-xcalc*button2.label:            x^2
-xcalc*button3.label:            v-
-xcalc*button20.label:           /
-
-! CE
-xcalc*button4.background:       firebrick4
-xcalc*button4.borderColor:      firebrick3
-
-! AC
-xcalc*button5.background:       firebrick3
-xcalc*button5.borderColor:      firebrick1
-
-! Numpad
-xcalc*button22.background:      #202020
-xcalc*button22.borderColor:     #262626
-xcalc*button23.background:      #202020
-xcalc*button23.borderColor:     #262626
-xcalc*button24.background:      #202020
-xcalc*button24.borderColor:     #262626
-xcalc*button27.background:      #202020
-xcalc*button27.borderColor:     #262626
-xcalc*button28.background:      #202020
-xcalc*button28.borderColor:     #262626
-xcalc*button29.background:      #202020
-xcalc*button29.borderColor:     #262626
-xcalc*button32.background:      #202020
-xcalc*button32.borderColor:     #262626
-xcalc*button33.background:      #202020
-xcalc*button33.borderColor:     #262626
-xcalc*button34.background:      #202020
-xcalc*button34.borderColor:     #262626
-xcalc*button37.background:      #202020
-xcalc*button37.borderColor:     #262626
-xcalc*button40.background:      dark olive green
-xcalc*button40.borderColor:     olive drab
-
-!==============================================================
-!
-! V I M
-!
-vim*font:                       FONT_NORMAL
-vim*boldFont:                   FONT_BOLD
-vim*italicFont:                 FONT_ITALIC
-vim*background:                 #151515
-vim*foreground:                 #ebebeb
-vim*scrollBar:                  false
-vim.iso14755:                   1
-vim.iso14755_52:                1
-vim.skipBuiltinGlyphs:          1
-vim.insecure:                   1
-
-!==============================================================
-!
-! R a t m e n
-!
-ratmen*bgcolor:                 #151515
-ratmen*fgcolor:                 #cccccc
-ratmen*font:                    Fixed
-
-! vim: ft=xdefaults
+!-----------------------------------------------!
