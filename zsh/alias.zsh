@@ -1,3 +1,4 @@
+# Dir aliases
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ~='cd ~'
@@ -5,19 +6,20 @@ alias b='cd /bin'
 alias e='cd /etc'
 alias d='cd /dev'
 alias h='cd $HOME'
-alias cfg='cd $HOME/.config'
+alias cfg='cd ${XDG_CONFIG_HOME}'
 alias m='cd /media'
 alias M='cd /mnt'
 alias D='cd /mnt/data'
 alias u='cd /usr'
 alias us='cd /usr/share'
-alias ss='pwd'
 alias bsr='source $HOME/.bashrc'
 alias sr='source $HOME/.zshrc'
 
+# To make sudo aliases work
 alias sudo='sudo '
 alias s='sudo '
 
+# Pacman/AUR aliases
 alias sp='sudo pacman'
 alias S='sudo pacman -S'
 alias Ss='sudo pacman -Ss'
@@ -25,18 +27,15 @@ alias se='pacman -Q | grep'
 alias Syu='sudo pacman -Syu'
 alias Syuu='sudo pacman -Syuu'
 alias R='sudo pacman -R'
-alias yS='yaourt -S'
-alias pS='packer -S'
-alias pSyu='packer -Syu --auronly'
 alias rsn='sudo pacman -Rsn $(pacman -Qdtq)'
 alias pacs='sudo pacman -Scc'
 alias U='sudo pacman -U'
-alias cdd='cower -d -d'
+alias cdd='cower -d'
 alias cs='cower -s'
 alias ci='cower -i'
 alias cm='cower -m'
 
-alias emc='emacs -nw'
+# Configs aliases
 alias v='vim'
 alias sv='sudo vim'
 alias t='todo -d ~/.config/todo.txt/config'
@@ -46,6 +45,7 @@ alias vx='vim ~/.Xresources'
 alias xin='vim ~/.xinitrc'
 alias xconf='sudo vim /etc/X11/xorg.conf'
 
+# ls family
 alias l='ls++'
 alias ls='ls --color=auto'
 alias lso='ls | pv -qL 10'
@@ -55,52 +55,43 @@ alias lss='ls --color=auto -1 | grep "(^\w*[^_-])"'
 alias ls1='ls -1'
 alias lsa='ls --color=auto --time-style=full-iso'
 
+# I prefer use git aliases on gitconfig
 alias ga='git add'
-alias gs='git status --short -b'
-alias gl='git pull'
-alias gup='git fetch && git rebase'
-alias gp='git push -u'
-alias gd='git diff | mate'
-alias gdv='git diff -w "$@" | vim -R -'
+alias gs='git status'
 alias gc='git commit -m'
-alias gca='git commit -v -a'
-alias gb='git branch'
-alias gba='git branch -a'
-alias gcount='git shortlog -sn'
-alias gcp='git cherry-pick'
 
-alias xr8='xrandr -s 800x600'
-alias xr10='xrandr -s 1024x768'
-alias xr12='xrandr -s 1280x720'
-alias xr13='xrandr -s 1366x768'
-alias xr16='xrandr -s 1600x900'
-alias xr19='xrandr -s 1920x1080'
-
+# Make aliases
+alias mc='make clean'
 alias mt='make test'
 alias smi='sudo make install'
 alias smci='sudo make clean install'
 
+# Shell specific aliases
 alias q='exit'
 alias qq='exit'
 alias :q='exit'
 alias his='history'
 alias cls='clear'
 alias lg='logout'
+
+# Misc
+alias du='du -sh'
 alias go='xinit -- vt01'
 alias pkx='pkill X'
-alias gfv='get_flash_videos'
-alias yd='youtube-dl'
 alias snl='sudo netctl start luizf'
 alias starwars='telnet towel.blinkenlights.nl'
 
-alias sh='sudo systemctl halt'
-alias sd='sudo systemctl poweroff'
-alias rb='sudo systemctl reboot'
+# reboot/shutdown
+alias sd='sudo halt'
+alias rb='sudo reboot'
 
-alias ir='irssi'
+# These names are too long
 alias wee='weechat-curses'
 alias wi='wicd-curses'
+alias gfv='get_flash_videos'
+alias yd='youtube-dl' 
 
+# verbose mode for various commands
 alias mk='mkdir -p'
 alias mkdir='mkdir -p'
 alias cp='cp -v'
@@ -112,6 +103,7 @@ alias grepp='grep -Pi --color=auto "^|$@"'
 alias rmvi='rm *.sw*'
 alias prename='prename -v'
 
+# mpd binds
 alias pl='mpc play'
 alias pa='mpc pause'
 alias st='mpc stop'

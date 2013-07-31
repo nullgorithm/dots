@@ -8,11 +8,12 @@ function cpf() { cp "$@" && goto "$_"; }
 function mvf() { mv "$@" && goto "$_"; }
 function mkf() { mkdir -p $1; cd $1 }
 function pck { print "There are $(pacman -Q | wc -l) packages installed on your system." }
+function sprung() { curl -F "sprunge=<-" http://sprunge.us < "$1" ;}
+function wgot() { wget --no-check-certificate --progress=dot --no-proxy -4 }
 
 # Extract/compress various archive types with a single command
 function ext() {
   case $1 in
-
     e)
       case $2 in
         *.tar.bz2)   tar xvjf $2      ;;
@@ -20,6 +21,7 @@ function ext() {
         *.bz2)       bunzip2 $2       ;;
         *.rar)       unrar x $2       ;;
         *.gz)        gunzip $2        ;;
+        *.xz)        tar xvf $2       ;;
         *.tar)       tar xvf $2       ;;
         *.tbz2)      tar xvjf $2      ;;
         *.tgz)       tar xvzf $2      ;;
@@ -28,7 +30,6 @@ function ext() {
         *.7z)        7z x $2          ;;
         *)           echo "'$2' couldn't be extracted." ;;
       esac ;;
-
     c)
       case $2 in
         *.tar.*)    arch=$2; shift 2;
@@ -36,16 +37,14 @@ function ext() {
           case $arch in
             *.gz)   gzip -9r ${arch%.*}   ;;
             *.bz2)  bzip2 -9zv ${arch%.*} ;;
-          esac                                ;;
+          esac                            ;;
         *.rar)      shift; rar a -m5 -r $@; rar k $1    ;;
         *.zip)      shift; zip -9r $@                   ;;
         *.7z)       shift; 7z a -mx9 $@                 ;;
         *)          echo "Could not compress '$2'."     ;;
       esac ;;
-
     *)
-      echo "Wrong!" ;;
-
+      echo "Wrong! :P" ;;
   esac
 }
 
