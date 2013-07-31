@@ -1,19 +1,21 @@
 #!/bin/sh
 
+channel='PCM'
+
 up() {
-    amixer -q sset PCM 5+ unmute
+  amixer -q sset $channel 5+ unmute
 }
 
 down() {
-    amixer -q sset PCM 5- unmute
+  amixer -q sset $channel 5- unmute
 }
 
 specify() {
-    amixer -q sset PCM "$1"% unmute
+  amixer -q sset $channel "$1"% unmute
 }
 
 mute() {
-    amixer -q sset Master toggle
+  amixer -q sset Master toggle
 }
 
 "$@"

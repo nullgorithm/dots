@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+state=$(awk '/TouchpadOff/ { print $3 }' <(synclient -l))
+
+if [[ "$state" = 0 ]]; then
+  synclient touchpadoff=1 && notify-send "Touchpad OFF"
+else
+  synclient touchpadoff=0 && notify-send "Touchpad ON"
+fi

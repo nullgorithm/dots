@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+scrot ~/junk/$(date +'%d-%m-%Y-%H:%M').png
+notify-send "Cheese!"
