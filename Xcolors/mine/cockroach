@@ -1,62 +1,5 @@
-/*   vim: ft=xdefaults:
-    What: nancy.Xresources
-   Where: $XDG_CONFIG_HOME/Xcolors/nancy.Xresources
-     Who: Magnus Woldrich <m@japh.se>
- Created: 2008-04-24
- Updated: 2012-06-16
-     URL: http://github.com/trapd00r/configs/blob/master/Xcolors
-          http://devel.japh.se/nancy/nancy.png
-   Usage: Include this file from your main X resource file:
-
-     #include <path>/nancy.Xresources
-
-  This X resource file redefines not only the standard ANSI colors but also
-  some of the extended ones (52, 85-88, 231 as of this writing).
-  It will work with any xterm-compatible terminal. If you're using xterm,
-  depending on your setup, you might have to enable one or the other or both
-  of the following resources:
-
-    allowColorOps
-    dynamicColors
-
-  Either way, it'll be a good idea to enable both because it's definitely a
-  must when you're going to play with the utilities and libraries described
-  below.
-
-  urxvt doesn't support redefining of anything but ANSI colors,  but I have
-  patched [0] her to allow for modification of the full 256 color table.
-
-  If you'd want to create your own colorschemes, or if you need to set colors
-  for the current terminal session only, thus not making the changes persistent,
-  take a look at colorcoke [1] and its wiki entry [2].
-
-  If you're a developer you'll find Term::ExtendedColor::Xresources [3]
-  useful.
-
-  You can query the terminal for the current color values, see [3] and
-  rgbterm [4].
-
-  For trying out colorschemes quickly, or for inclusion in other scripts, the
-  xcolor [5] utility might prove useful.
-  It's basically ttycolor [6] for X, requested by a user.
-
-  There's a bunch of example scripts using colorcoke in the scripts/ [7]
-  directory (matrix!).
-
-[0]: http://github.com/trapd00r/rxvt-unicode
-[1]: http://github.com/trapd00r/colorcoke
-[2]: http://github.com/trapd00r/colorcoke/wiki
-[3]: http://github.com/trapd00r/Term-ExtendedColor-Xresources
-[4]: http://github.com/trapd00r/rgbterm
-[5]: http://github.com/trapd00r/Term-ExtendedColor-Xresources/blob/master/bin/xcolor
-[6]: http://github.com/trapd00r/ttycolor
-[7]: http://github.com/trapd00r/colorcoke/tree/master/scripts
-*/
-
-
-
-/**foreground:     #fff
-*background:     #151515
+*foreground:     #ffffff
+*background:     #000000
 *colorBD:        #7e6449
 *colorIT:        #7c7e49
 *colorRV:        #121212
@@ -64,12 +7,12 @@
 *fadeColor:      #000016
 *borderColor:    #1b1d1e
 *underlineColor: #de5105
-*cursorColor:    #e5e5e5
+*cursorColor:    #00A2AD
 *cursorColor2:   #201526
 *pointerColor:   #252525
-*pointerColor2:  #201526*/
+*pointerColor2:  #201526
 
-*color0:         #1b1d1e
+*color0:         #252525
 *color1:         #f92672
 *color2:         #82b414
 *color3:         #fd971f
@@ -77,14 +20,15 @@
 *color5:         #8c54fe
 *color6:         #465457
 *color7:         #ccccc6
-*color8:         #505354
+*color8:         #404040
 *color9:         #ff5995
 *color10:        #b6e354
 *color11:        #feed6c
 *color12:        #0c73c2
 *color13:        #9e6ffe
 *color14:        #899ca1
-*color15:        #f8f8f2
+*color15:        #f8f8f8
+
 *color16:        #000000
 *color17:        #00005f
 *color18:        #000087
