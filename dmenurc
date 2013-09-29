@@ -1,3 +1,0 @@
-DMENU="dmenu -fn Terminus -i -l 10 -sf #b0b0b0 -nb #202020 -sb #365676 -nf #757578"
-LOLICTRL_DMENU="dmenu -fn Terminus -i -l 6 -sf #b0b0b0 -nb #202020 -sb #863636 -nf #454547"
-LOLIMPDNU_DMENU="dmenu -fn Terminus -i -b -l 10 -sf #c0c0c0 -nb #202020 -sb #212836 -nf #505255"
