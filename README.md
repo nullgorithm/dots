@@ -10,7 +10,7 @@
 
 * MUSIC PLAYER: mpd + ncmpcpp
 
-* VIDEO PLAYER: mpv
+* VIDEO PLAYER: mplayer2
 
 * IMAGE VIEWER: sxiv
 
