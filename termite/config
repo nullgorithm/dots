@@ -4,21 +4,20 @@ scroll_on_output = false
 scroll_on_keystroke = true
 audible_bell = false
 visible_bell = false
-mouse_autohide = true
+mouse_autohide = false
 allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Terminus 8
-# font = berry 10
-scrollback_lines = 10000
+font = PragmataPro 7
+scrollback_lines = 1000
 search_wrap = true
 #icon_name = terminal
-geometry = 400x150
+#geometry = 640x480
 
 # 0.0: opaque, 1.0: transparent
 transparency = 0.0
-pseudo_transparency = false
+pseudo_transparency = true
 
 # "system", "on" or "off"
 cursor_blink = off
@@ -27,45 +26,64 @@ cursor_blink = off
 cursor_shape = block
 
 # $BROWSER is used by default
-browser = dwb
+browser = chromium
 
 # word characters used for word selection
 # (default if unset: all graphic non-punctuation/space characters)
 #word_chars = -A-Za-z0-9,./?%&#:_=+@~
 
 [colors]
-foreground = #757075
-highlight = #2f2f2f
-#background = #B5B7C0
-background = #1b1c1f
-cursor = #757780
+foreground = #858585
+foreground_bold = #bfbfbf
+#foreground_dim = #888888
+background = #050505
+cursor = #757575
 
-color0 = #282930
-color8 = #353638
-color1 = #7D3022
-color9 = #A43B27
-color2 = #727F36
-color10 = #8C9A4A
-color3 = #916727
-color11 = #BB883A
-color4 = #234C8B
-color12 = #386FC5
-color5 = #6C2940
-color13 = #893A55
-color6 = #334359
-color14 = #4A5D74
-color7 = #7a7c7f
-color15 = #9a9c9f
+# if unset, will reverse foreground and background
+highlight = #2f2f2f
 
 # colors from color0 to color254 can be set
+# color0 = #212121
+# color1 = #8A2F58
+# color2 = #287373
+# color3 = #914E89
+# color4 = #395573
+# color5 = #5E468C
+# color6 = #2B7694
+# color7 = #899CA1
+# color8 = #353535
+# color9 = #CF4F88
+# color10 = #53A6A6
+# color11 = #BF85CC
+# color12 = #4779B3
+# color13 = #7F62B3
+# color14 = #47959E
+# color15 = #C0C0C0
+
+color0 =  #1c1c1c
+color8 =  #3d3a3a
+color1 =  #d770af
+color9 =  #d28abf
+color2  = #9acc79
+color10 = #8fb676
+color3 =  #d0d26b
+color11 = #c8bc45
+color4  = #77b6c5
+color12 = #8fa7b9
+color5 =  #a488d9
+color13 = #bd89de
+color6 =  #7fcab3
+color14 = #6ec2a8
+color7 =  #8d8d8d
+color15 = #dad3d3
 
 [hints]
-font = Terminus 8
-foreground = #ffffff
-background = #000000
-padding = 2
-border = #ffffff
-border_width = 0.5
-roundness = 1.0
+#font = Monospace 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
 
-# vim: ft=conf:
+# vim: ft=dosini
