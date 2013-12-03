@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 autoload -U vcs_info && vcs_info
+autoload -U colors && colors
 
 local FMT_ACTION="%F{8}(%F{3}%a%F{8}%f)"
 local FMT_BRANCH="%F{11}%B%b%%b%f"
@@ -25,7 +26,9 @@ zstyle ':vcs_info:svn:*' actionformats "%F{14}(${FMT_REPO}%F{14}) ${FMT_BRANCH} 
 precmd() {
   vcs_info
   RPROMPT=${vcs_info_msg_0_}
-  PS1="${PS_EXIT} ${PS_VENV}${PS_PENV}%F{14}%~ %F{11}»%f "
+  #PS1="${PS_EXIT} ${PS_VENV}${PS_PENV}%F{12}%~ %F{11}»%f "
+  PS1="${PS_EXIT} ${PS_VENV}${PS_PENV}%F{8}<%F{12}%d%F{8}>
+ %F{11}»%f "
   [ $VIRTUAL_ENV ] && local PS_VENV="%F{10}(venv:%f%B${VIRTUAL_ENV##*/}%b%F{10})%f %B$(python -V 2>&1 | cut -d ' ' -f 2)%b "
   [ $PENV_ENV ] && local PS_PENV="%F{11}(venv:%f%B${PENV_ENV##*/}%b%F{11})%f %B$(perl -v | sed -e '2!d' -e 's/.*v\([5-6]\.[0-9]\{2\}\.[0-9]*\).*/\1/')%b "
 }

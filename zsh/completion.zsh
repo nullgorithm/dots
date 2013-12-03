@@ -1,11 +1,8 @@
-#!/bin/zsh
-
-autoload -U compinit && compinit
-
 zstyle '*'                                          single-ignored show
 zstyle ':completion:*'                              verbose true
 zstyle ':completion:*:functions'                    ignored-patterns '_*'
 zstyle ':completion:*:descriptions'                 format "- %d -"
+zstyle ':completion:*' 								menu select=2
 zstyle ':completion:*:descriptions'                 format "%{$c1%}%d%{$reset_color%}"
 zstyle ':completion:*:corrections'                  format "%{$c3%}%d%{$reset_color%}"
 zstyle ':completion:*:messages'                     format "%{$c1%}%d%{$reset_color%}"
