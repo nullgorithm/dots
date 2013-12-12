@@ -1,0 +1,79 @@
+# Window geometry
+padding.width: 0
+padding.height: 0
+border.width: 1
+window.client.padding.width: 0
+window.client.padding.height: 0
+window.handle.width: 3
+
+# Border colors
+window.active.border.color: #000000
+window.inactive.border.color: #000000
+menu.border.color: #000000
+window.active.client.color: #000000
+window.inactive.client.color: #000000
+
+# Window title justification
+window.label.text.justify: Center
+
+# Active window
+window.active.title.bg: Flat Gradient Vertical
+window.active.title.bg.color: #84CEC9
+window.active.title.bg.colorTo: #5FA09C
+
+window.active.label.bg: Parentrelative
+window.active.label.text.color: #ffffff
+
+window.active.handle.bg: Flat Gradient Vertical
+window.active.handle.bg.color: #282828
+window.active.handle.bg.colorTo: #181818
+
+window.active.grip.bg: Flat Gradient Vertical
+window.active.grip.bg.color: #282828
+window.active.grip.bg.colorTo: #181818
+
+window.active.button.unpressed.bg: Parentrelative
+window.active.button.unpressed.image.color: #000
+
+window.active.button.pressed.bg: Parentrelative
+window.active.button.pressed.image.color: #000
+
+window.active.button.disabled.bg: Parentrelative
+window.active.button.disabled.image.color: #000
+
+window.active.button.hover.bg: Parentrelative
+window.active.button.hover.image.color: #fff
+
+# Inactive window
+window.inactive.title.bg: Flat Solid
+window.inactive.title.bg.color: #181818
+
+window.inactive.button.unpressed.bg: Parentrelative
+window.inactive.button.unpressed.image.color: #606060
+
+window.inactive.handle.bg: Flat Solid
+window.inactive.handle.bg.color: #151515
+
+window.inactive.grip.bg: Flat Solid
+window.inactive.grip.bg.color: #151515
+
+# Menus
+menu.title.bg: Flat Solid
+menu.title.bg.color: #121212
+menu.items.bg: Flat Gradient Vertical
+menu.items.bg.color: #202020
+menu.items.bg.colorTo: #121212
+menu.items.active.bg: Flat Solid
+menu.items.active.bg.color: #282828
+menu.items.active.text.color: #bbbbbb
+menu.title.text.color: #aaaaaa
+menu.items.text.color: #808080
+menu.separator.color: #303030
+menu.title.text.justify: Center
+
+# OSD
+osd.bg: Flat Gradient Horizontal
+osd.bg.color: #181818
+osd.bg.colorTo: #252525
+osd.unhilight.bg: Flat Solid
+osd.unhilight.bg.color: #202020
