@@ -1,0 +1,4 @@
+update_interval 1
+
+TEXT
+ ^bg(\#282828) ^fg(\#A94F3C)^i(/home/samus/etc/icons/!.xbm) ^bg()^fg(\#888) “^fg()${exec tail -n1 ~/.todo/notes/todo.txt}^fg(\#888)”
