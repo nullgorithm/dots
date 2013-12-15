@@ -1,144 +1,25 @@
-#!/bin/zsh
+#!/bin/sh
 
-#<Settings
-
-#<Colors
-fg_fg='^fg()'
-bg_bg='^bg()'
-
-# Xresources colors
-xresources="${HOME}/.asd"
-
-if [[ -s ${xresources} ]]; then
-  cat ${xresources} | grep "^*" | while read c; do
-  case "${${(s. .)c:l}[1]}" in
-    '*background:') bg=${${(s. .)c}[-1]} ;;
-    '*foreground:') fg=${${(s. .)c}[-1]} ;;
-    '*color0:') fg_dark=^fg(${${(s. .)c}[-1]}) ;; # black
-    '*color8:') fg_moar_dark=^fg(${${(s. .)c}[-1]}) ;; # black,bold
-    '*color1:') fg_red=^fg(${${(s. .)c}[-1]}) ;; # red
-    '*color9:') fg_moar_red=^fg(${${(s. .)c}[-1]}) ;; # red,bold
-    '*color2:') fg_green=^fg(${${(s. .)c}[-1]}) ;; # green
-    '*color10:') fg_moar_green=^fg(${${(s. .)c}[-1]}) ;; # green,bold
-    '*color3:') fg_yellow=^fg(${${(s. .)c}[-1]}) ;;  # yellow
-    '*color11:') fg_moar_yellow=^fg(${${(s. .)c}[-1]}) ;; # yellow,bold
-    '*color4:') fg_blue=^fg(${${(s. .)c}[-1]}) ;; # blue
-    '*color12:') fg_moar_blue=^fg(${${(s. .)c}[-1]}) ;; # blue,bold
-    '*color5:') fg_magenta=^fg(${${(s. .)c}[-1]}) ;; # magenta
-    '*color13:') fg_moar_magenta=^fg(${${(s. .)c}[-1]}) ;; # magenta,bold
-    '*color6:') fg_cyan=^fg(${${(s. .)c}[-1]}) ;; # cyan
-    '*color14:') fg_moar_cyan=^fg(${${(s. .)c}[-1]}) ;; # cyan,bold
-    '*color7:') fg_white=^fg(${${(s. .)c}[-1]}) ;;  # white
-    '*color15:') fg_moar_white=^fg(${${(s. .)c}[-1]}) ;; # white,bold
-  esac
- done
-else
-  # Just in case Xresources colors are not available. Let's call it as fallback colors.
-  bg='#151515'
-  fg='#909090'
-  fg_dark='^fg(#808285)'
-  fg_moar_dark='^fg(#404245)'
-  fg_red='^fg(#8A2F58)'
-  fg_moar_red='^fg(#CF4F88)'
-  fg_green='^fg(#287373)'
-  fg_moar_green='^fg(#53A6A6)'
-  fg_yellow='^fg(#914E89)'
-  fg_moar_yellow='^fg(#BF85CC)'
-  fg_blue='^fg(#395573)'
-  fg_moar_blue='^fg(#4779B3)'
-  fg_magenta='^fg(#5E468C)'
-  fg_moar_magenta='^fg(#7F62B3)'
-  fg_cyan='^fg(#2B7694)'
-  fg_moar_cyan='^fg(#47959E)'
-  fg_white='^fg(#899CA1)'
-  fg_moar_white='^fg(#C0C0C0)'
-fi
-
-fg_dark='^fg(#808285)'
-fg_moar_dark='^fg(#404245)'
-#>
-
-# Screen size
-b_width="1360" # the monitor resolution minus the numbers of 'b_y' and 'b_x'.
-b_x="3" # the number of window gap
-b_y="3" # set on the window manager.
-b_height="18" # bar height
+# Sizes
+bar_height="14"
+bar_width="1366" # monitor total width value here
+resolution_width="$(( $bar_width / 2 ))"
+resolution_height="768"
 
 # Font
-font="-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1"
-#>
+font="PragmataPro"
+font_size="7"
 
-#< Functions
-function wm_name {
-  name="bspwm"
-  # name="herbstfluft"
-  print "${fg_white}:${name}${fg_fg}${bg_bg}"
-}
+# Color definitions
+color_bg="#151515"
+color_fg="#ddd"
 
-function title {
-  wname="$(xdotool getactivewindow getwindowname)"
-  print "${fg_dark}(${fg_white}when ${fg_blue}w ${fg_white}(${fg_white}print \
-${fg_dark}\"${fg_moar_red}${wname}${fg_dark}\"${fg_white})${fg_dark})"
-}
+# Sources
+conky_right="/home/samus/junk/conky_right"
+conky_left="/home/samus/junk/conky_left"
 
-function mpd {
-  player_name='mpd'
-  m_a="$(mpc current -f '%artist%')"
-  m_A="$(mpc current -f '%album%')"
-  m_t="$(mpc current -f '%title%')"
-  print "${fg_dark}(${fg_moar_green}#${fg_fg}\'${fg_white}(${fg_dark}load \
-${fg_dark}(${fg_moar_magenta}${player_name} ${fg_moar_dark}:title ${fg_dark} \
-\"${fg_moar_blue}${m_t}${fg_dark}\" ${fg_moar_dark}:artist ${fg_dark} \
-\"${fg_moar_magenta}${m_a}${fg_dark}\"${fg_dark})${fg_white})${fg_dark})"
-}
+# Spawn the bar
+dzen_cmd="dzen2 -fn $font-$font_size -h $bar_height -bg $color_bg -fg $color_fg -y $resolution_height"
 
-function bat {
-  battery="$(awk '{print +$4}' <(acpi -b))"
-
-  if [[ -z `acpi -V | grep "on-line"` ]] then
-    stat="off"
-  else
-    stat="on"
-  fi
-
-  print "${fg_moar_white}(${fg_dark}:battery (${fg_moar_dark}\"${fg_white}\
-${battery}${fg_moar_white}%${fg_moar_dark}\"${fg_dark}) ${fg_cyan}${stat}${fg_moar_white})"
-}
-
-function load {
-  load="$(cat /proc/loadavg | cut -b 1-4)"
-  load15="$(cat /proc/loadavg | cut -b 11-14)"
-  cpu="$(sensors | grep -P "(temp1)" | cut -b 16-17)"
-  print "${fg_dark}(:loadavg ${fg_moar_white}(${fg_moar_green}list \
-${fg_moar_dark}(${fg_dark}1${fg_moar_red} $load${fg_moar_dark}\) \(${fg_dark}15 \
-${fg_moar_red}$load15${fg_moar_dark}\) \(${fg_dark}| ${fg_moar_red}$cpu${fg_white}°C\
-${fg_moar_dark}\)${fg_moar_white}\)${fg_dark}\)"
-}
-
-function volume {
-  audio_name="alsa"
-  vol="$(amixer get PCM | sed -nr '$ s:.*\[(.+%)].*:\1:p')"
-  state="$(amixer get Master | sed -nr '$ s:.*\[(.+)]$:\1:p')"
-  print "${fg_white}(${fg_dark}setf ${fg_moar_green}*$audio_name* \
-${fg_moar_dark}(${fg_dark}\"${fg_moar_red}${vol}${fg_dark}\"${fg_moar_dark}) \
-${fg_moar_blue}${state}${fg_white})"
-}
-
-function dat {
-  print "${fg_dark}(${fg_moar_yellow}cons ${fg_dark}\"$(date +"${fg_moar_white}%d \
-${fg_moar_dark}-${fg_dark}%m${fg_moar_dark}-${fg_dark}%Y${fg_moar_dark}/${fg_cyan}%a")${fg_dark}\" \
-${fg_dark}\"${fg_moar_white}$(date +"%H${fg_dark}%M")${fg_dark}\"${fg_dark})"
-}
-
-function b_right { print "$(mpd) $(volume) $(dat)" }
-#>
-
-#< Spawn the bar
-while true; do
-  rwidth=$(( $(print ${#${"$(b_right | sed 's.\^[^(]*([^)]*)..g')"}}) * 6))
-  print "$(wm_name) $(load) $(bat) ^pa($(($b_width - $rwidth)))$(b_right)"
-  sleep 1s
-done | dzen2 -x $b_x -y $b_y -ta l -fn $font -bg $bg -fg $fg -w $b_width -h $b_height
-#>
-
-# vim: ft=zsh et ts=2 fdm=marker fmr=#<,#> :
+conky -c $conky_right | $dzen_cmd -x $resolution_width -ta r &
+conky -c $conky_left | $dzen_cmd -w $resolution_width -ta l
