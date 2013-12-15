@@ -1,7 +1,7 @@
 update_interval 1
 
 TEXT
-^bg(\#282828) ^fg(\#5C8B7D)^i(/home/samus/etc/icons/volume_on.xbm) ^bg()^fg() ${exec amixer get PCM | sed -nr '$ s:.*\[(.+%)].*:\1:p'} \
-^bg(\#282828) ^fg(\#5BB4B5)^i(/home/samus/etc/icons/headphones.xbm) ^bg()^fg()${if_mpd_playing} \
+^fg(\#000)^r(1x15)^fg(\#444)^r(1x15)^bg(\#303030) ^fg(\#5C8B7D)^i(/home/samus/etc/icons/volume_on.xbm) ^fg(\#000)^r(1x15)^fg(\#444)^r(1x15)^bg(\#202020)^fg()^bg(\#202020) ${exec amixer get PCM | sed -nr '$ s:.*\[(.+%)].*:\1:p'} \
+^fg(\#000)^r(1x15)^fg(\#444)^r(1x15)^bg(\#303030) ^fg(\#5BB4B5)^i(/home/samus/etc/icons/headphones.xbm) ^fg(\#000)^r(1x15)^fg(\#444)^r(1x15)^fg()^bg(\#202020)${if_mpd_playing} \
 '${mpd_title}' by '${mpd_artist}' ${else} - nothing to see here - ${endif}\
-^fg(\#A482C1)^bg(\#282828) ^i(/home/samus/etc/icons/clock1.xbm) ^bg()^fg() ${exec fuzzyclock} \
+^fg(\#000)^r(1x15)^fg(\#444)^r(1x15)^bg(\#303030) ^fg(\#A482C1)^i(/home/samus/etc/icons/clock1.xbm) ^fg(\#000)^r(1x15)^fg(\#444)^r(1x15)^fg()^bg(\#202020) ${exec fuzzyclock} ^fg(\#000)^r(1x15)^fg(\#444)^r(1x15) ^fg()${time %d}^fg(\#888)${time -%m-%y} \
