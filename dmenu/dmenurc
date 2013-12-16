@@ -1,3 +1,2 @@
-DMENU="dmenu -fn Terminus -i -l 10 -sf #b0b0b0 -nb #202020 -sb #365676 -nf #757578"
-LOLICTRL_DMENU="dmenu -fn Terminus -i -l 6 -sf #b0b0b0 -nb #202020 -sb #863636 -nf #454547"
-LOLIMPDNU_DMENU="dmenu -fn Terminus -i -b -l 10 -sf #c0c0c0 -nb #202020 -sb #212836 -nf #505255"
+DMENU="dmenu -fn PragmataPro -i -sf #aaa -nb #151515 -sb #222 -nf #888"
+XCMENUCTRL_DMENU="dmenu -fn PragmataPro -i -l 8 -sf #aaa -nb #151515 -sb #222 -nf #888"

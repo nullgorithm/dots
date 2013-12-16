@@ -14,18 +14,16 @@
 
 ( bind-keys global-keymap
 ;; Applications
-"Super-SPC" '(system "gmrun &")
-"Super-RET" '(system "termite &")
-"Super-d" '(system "termite -e ranger &")
-"Super-l" '(system "/home/luizf/bin/mpm &")
-"Super-n" '(system "termite -e ncmpcpp &")
-"Super-t" '(system "termite -e tmux &")
-"Super-T" '(system "termite -e tmux attach &")
-"Super-s" '(jump-or-exec "Skype" "skype" t)
-"Super-v" '(jump-or-exec "gVim" "gvim" t)
+"Super-r" '(system "gmrun &")
+"Super-RET" '(system "urxvtc &")
+"Super-d" '(system "urxvtc -e ranger &")
+"Super-l" '(system "oblogout &")
+"Super-n" '(system "urxvtc -e ncmpcpp &")
+"Super-t" '(system "sublime_text &")
+"Super-T" '(system "urxvtc -e tmux attach &")
 "Super-f" '(jump-or-exec "Thunar" "thunar" t)
-"Super-b" '(jump-or-exec "Chromium" "chromium" t)
-"Print" '(system "scrot '/mnt/data/Scrots/%d-%m-%Y_%H:%M.png' &")
+"Super-b" '(jump-or-exec "Firefox" "firefox" t)
+"Print" '(system "scrot '~/img/%d-%m-%Y_%H:%M.png' &")
 
 ;; Media Keys
 "XF86AudioPrev" '(system "mpc prev &")
@@ -38,9 +36,9 @@
 
 ;; WM Functions
 "Super-q" 'delete-window-instance
-"Super-m" 'maximize-window
-"Super-M" 'unmaximize-window
-"Super-i" 'iconify-window
+"Super-w" 'maximize-window
+"Super-W" 'unmaximize-window
+"Super-e" 'iconify-window
 "Super-TAB" 'cycle-windows
 "Super-Left" 'previous-workspace
 "Super-Right" 'next-workspace
@@ -62,7 +60,6 @@
 ( bind-keys window-keymap
 "Super-Button1-Move" 'move-window-interactively
 "Super-Button3-Move" 'resize-window-interactively
-
 "Super-f" 'maximize-window-fullscreen-toggle )
 
 ;; Appearance
@@ -84,12 +81,10 @@
 ( defvar-setq left-right-edge-move-action 'flip-workspace )
 
 ;; Workspaces
-( defvar-setq workspace-names '( "Main" "WWW" "Media" "IM" "Misc" ) )
+( defvar-setq workspace-names '( "unum" "duo" "tres" "quattuor" "quinque" ))
 
 ;; Window History
 ( defvar-setq window-history-auto-save-position t )
 ( defvar-setq window-history-auto-save-dimensions t )
 ( defvar-setq window-history-auto-save-state t )
 ( defvar-setq window-history-ignore-transients nil )
-
-;; vim: set ft=lisp :
