@@ -1,9 +1,0 @@
-Color = always
-#ConnectTimeout =
-#IgnoreOOD
-#IgnorePkg =
-#IgnoreRepo =
-TargetDir = ~/Builds
-#MaxThreads =
-
-# vim: set noet syn=conf
