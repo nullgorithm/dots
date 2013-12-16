@@ -1,24 +1,54 @@
-! G l o b a l !
+! G L O B A L --------------------------------- !
 *saveLines: 4096
-
-!-----------------------------------------------!
 
 Xft.dpi: 96
 Xft.autohint: false
 Xft.hinting: true
-Xft.hintstyle: hintslight
+Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 Xft.antialias: true
 Xft.rgba: rgb
 
-!-----------------------------------------------!
-
+! bg/fg
 *background: #151515
 *foreground: #909090
 
-#include "/home/luizf/dots/Xcolors/jwr-dark"
+! black
+*color0: #37372F
+*color8: #424238
 
-! U R x v t !
+! red
+*color1: #CC6633
+*color9: #D6855C
+
+! green
+*color2: #86A24E
+*color10: #9CB668
+
+! yellow
+*color3: #CB9752
+*color11: #D8B17D
+
+! blue
+*color4: #A49E84
+*color12: #BEBAA7
+
+! magenta
+*color5: #AE81DF
+*color13: #D3BAED
+
+! cyan
+*color6: #809EA3
+*color14: #A0B7BA
+
+! white
+*color7: #74705D
+*color15: #8B866F
+
+! U R X V T ----------------------------------- !
+
+URxvt*font:               "xft:PragmataPro:size=7"
+
 URxvt*buffered:           true
 URxvt*cursorBlink:        false
 URxvt*cursorUnderline:    false
@@ -26,7 +56,7 @@ URxvt*termName:           rxvt-unicode-256color
 URxvt*urgentOnBell:       true
 URxvt*visualBell:         false
 URxvt*pointerBlank:       false
-!URxvt*letterSpace:        -2
+URxvt*letterSpace:        -2
 URxvt*internalBorder:     0
 URxvt*depth:              24
 URxvt*scrollBar:          false
@@ -34,41 +64,15 @@ URxvt*scrollBar_right:    false
 URxvt*scrollWithBuffer:   true
 URxvt*scrollTtyOutput:    true
 
-!-----------------------------------------------!
-
-URxvt*font:     "-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1"
-URxvt*boldFont: "-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1"
-
-!-----------------------------------------------!
-
 URxvt.perl-lib:           /usr/lib/urxvt/perl/
 URxvt.perl-ext-common:    default,matcher
 URxvt.perl-ext:           default,url-select
 URxvt.keysym.M-u:         perl:url-select:select_next
-URxvt.url-select.launcher: /usr/bin/chromium
-URxvt.matcher.button:     2
-URxvt.tabbed.tabbar-fg:   8
-URxvt.tabbed.tabbar-bg:   0
-URxvt.tabbed.tab-fg:      0
-URxvt.tabbed.tab-bg:      4
+URxvt.url-select.launcher: /usr/bin/firefox
 
-! X T e r m !
-xterm*faceName:           Terminus:size=8
-xterm*dynamicColors:      true
-xterm*utf8:               2
-xterm*scrollKey:          true
-xterm*scrollTtyOutput:    true
-xterm*scrollBar:          false
-xterm*rightScrollBar:     false
-xterm*jumpScroll:         false
-xterm*multiScroll:        false
-xterm*toolBar:            false
-
-! X f o n t S e l !
+! x F O N T S E L ----------------------------- !
 XFontSel*menu*showUnselectable:      false
 XFontSel*MenuButton.shadowWidth:     0
 XFontSel*Toggle*ToggleStyle:         check
 XFontSel*MenuButton*Justify:         left
 XFontSel*MenuButton*MenuButtonStyle: select
-
-!-----------------------------------------------!
