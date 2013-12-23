@@ -1,2 +1,0 @@
-DMENU="dmenu -fn PragmataPro -i -sf #aaa -nb #151515 -sb #222 -nf #888"
-XCMENUCTRL_DMENU="dmenu -fn PragmataPro -i -l 8 -sf #aaa -nb #151515 -sb #222 -nf #888"
