@@ -75,5 +75,11 @@ menu.title.text.justify: Center
 osd.bg: Flat Gradient Horizontal
 osd.bg.color: #181818
 osd.bg.colorTo: #252525
-osd.unhilight.bg: Flat Solid
+osd.unhilight.bg: Flat Gradient Vertical
 osd.unhilight.bg.color: #202020
+osd.unhilight.bg.colorTo: #151515
+
+window.active.label.bg: Parentrelative
+window.active.label.text.color: #ccc
+window.inactive.label.bg: Parentrelative
+window.inactive.label.text.color: #777
