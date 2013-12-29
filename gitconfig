@@ -7,7 +7,7 @@
   autosetuprebase = always
 
 [github]
-  user = suare
+  user = luizfl
 
 [rebase]
   autosquash = true
@@ -27,7 +27,7 @@
   whitespace = strip
 
 [web]
-  browser = /usr/bin/chromium
+  browser = /usr/bin/firefox
 
 ## Aliases ##
 
@@ -35,7 +35,7 @@
   comet = commit --amend -C HEAD
   tree = log --abbrev-commit --date=short --pretty=oneline --decorate --color=always
   st = status --short
-  whatdidido = diff HEAD
+  whathaveidone = diff HEAD
   add = add --verbose
   mv = mv --verbose
 
