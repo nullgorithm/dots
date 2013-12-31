@@ -1,31 +1,34 @@
 #!/bin/sh
 
-# X stuff
-xset m 0 0
-xset r rate 200 50
+export _XINIT_WM="${@-"openbox"}"
+
+# X11 stuff {{{
+# Keyboard layout
 setxkbmap br
+# Kill X with Ctrl-Alt-Backspace
 setxkbmap -option terminate:ctrl_alt_bksp
+# Key repeat rate
+xset r rate 250 50
+# Root window doesn't have a 'x' as cursor
 xsetroot -cursor_name left_ptr
-xrdb -load $HOME/.Xresources
+# Load Xresources
+xrdb -load $XDG_CONFIG_HOME/X11/Xresources
+# Xmodmap
+xmodmap $XDG_CONFIG_HOME/X11/xmodmaprc
+# }}}
 
-# Wallpaper
-# nitrogen --restore &
-xsetroot -solid "#5C6F69" &
+# Apps {{{
+start() {
+  # Set wallpaper
+  nitrogen --restore &
+  # Hide the pointer
+  unclutter -root -idle 1 &
+  # Composite
+  compton &
+  # Tint2
+  tint2 &
+  # Dzen bar
+  dzenstatus &
+} # }}}
 
-# Hide mouse
-unclutter -noevents -root -idle 1 &
-
-# Desktop compositing
-compton &
-
-# Daemons
-thunar --daemon &
-urxvtd -q -o -f &
-
-# Panels
-tint2 &
-dzenstatus &
-
-# WM
-# exec herbstluftwm
-exec openbox
+start; $_XINIT_WM
