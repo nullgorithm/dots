@@ -1,0 +1,41 @@
+[default]
+ao                  = alsa
+af                  = volnorm,extrastereo
+ass                 = 0
+autoq               = 100
+autosync            = 1
+border              = 1
+channels            = 2
+double              = 1
+ffactor             = 0.75
+fixed-vo            = 1
+font                = "Lucida Grande:style=Regular"
+fontconfig          = 1
+framedrop           = 1
+fs                  = 0
+heartbeat-cmd       = "xautolock -disable"
+idx                 = 1
+joystick            = 0
+keepaspect          = 0
+lirc                = 0
+monitoraspect       = 16:9
+mouse-movements     = 1
+msgmodule           = 1
+msgcolor            = 1
+noterm-osd          = 1
+osd-duration        = 2000
+prefer-ipv4         = 1
+softvol             = 1
+spuaa               = 4
+stop-xscreensaver   = 1
+subfont-blur        = 0
+subfont-encoding    = unicode
+subfont-osd-scale   = 1.2
+subfont-outline     = 0
+subfont-text-scale  = 2.2
+unicode             = 1
+use-filename-title  = 1
+utf8                = 1
+vf                  = pp=de,hqdn3d
+vo                  = xv
+zoom                = 1
