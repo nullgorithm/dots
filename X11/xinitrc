@@ -1,24 +1,31 @@
 #!/bin/sh
 
-export _XINIT_WM="${@-"openbox"}"
+export PATH=$PATH:/home/samus/bin
+export _XINIT_WM="${@-"bspwm"}"
 
 # X11 stuff {{{
 # Keyboard layout
 setxkbmap br
 # Kill X with Ctrl-Alt-Backspace
 setxkbmap -option terminate:ctrl_alt_bksp
+# Set the compose key
+setxkbmap -option "compose:menu"
 # Key repeat rate
 xset r rate 250 50
 # Root window doesn't have a 'x' as cursor
 xsetroot -cursor_name left_ptr
 # Load Xresources
 xrdb -load $XDG_CONFIG_HOME/X11/Xresources
+# Load colortheme
+# xrdb -merge $XDG_CONFIG_HOME/X11/colortheme
 # Xmodmap
 xmodmap $XDG_CONFIG_HOME/X11/xmodmaprc
 # }}}
 
 # Apps {{{
 start() {
+  # Redshift for my eyes
+  redshift &
   # Set wallpaper
   nitrogen --restore &
   # Hide the pointer
@@ -26,9 +33,13 @@ start() {
   # Composite
   compton &
   # Tint2
-  tint2 &
+  # tint2 &
   # Dzen bar
-  dzenstatus &
+  # dzenstatus
+  panel &
+  statusbar &
+  # Keybindings daemon for bspwm
+  sxhkd -c $XDG_CONFIG_HOME/bspwm/keybindings &
 } # }}}
 
 start; $_XINIT_WM

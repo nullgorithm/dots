@@ -1,10 +1,13 @@
+*background:         #151515
+*foreground:         #cccccc
+
 !BLK
 *color0:             #666666
 *color8:             #999999
 
 !RED
 *color1:             #CC6666
-*color9:           #FF9999
+*color9:             #FF9999
 
 !GRN
 *color2:             #66CC99
