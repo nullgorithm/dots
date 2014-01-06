@@ -1,7 +1,7 @@
 #!/bin/sh
 
-export PATH=$PATH:/home/samus/bin
-export _XINIT_WM="${@-"bspwm"}"
+# export PATH=$PATH:$HOME/bin
+export _XINIT_WM="${@-"bspwm_run"}"
 
 # X11 stuff {{{
 # Keyboard layout
@@ -16,8 +16,8 @@ xset r rate 250 50
 xsetroot -cursor_name left_ptr
 # Load Xresources
 xrdb -load $XDG_CONFIG_HOME/X11/Xresources
-# Load colortheme
-# xrdb -merge $XDG_CONFIG_HOME/X11/colortheme
+# Load color scheme
+xrdb -merge $XDG_CONFIG_HOME/X11/colortheme
 # Xmodmap
 xmodmap $XDG_CONFIG_HOME/X11/xmodmaprc
 # }}}
@@ -31,15 +31,25 @@ start() {
   # Hide the pointer
   unclutter -root -idle 1 &
   # Composite
-  compton &
+  # compton &
   # Tint2
   # tint2 &
-  # Dzen bar
-  # dzenstatus
+  # Dzen bar (generic)
+  # dzenstatus &
+  # Dzen bars for bspwm
   panel &
   statusbar &
   # Keybindings daemon for bspwm
   sxhkd -c $XDG_CONFIG_HOME/bspwm/keybindings &
-} # }}}
+} 
 
-start; $_XINIT_WM
+left() {
+  killall redshift
+  killall dzen2
+  killall sxhkd
+}
+# }}}
+
+start &
+$_XINIT_WM
+left; sleep 1
