@@ -1,0 +1,56 @@
+#!/bin/zsh
+
+# Colors {{{
+xrdb=( $(xrdb -query | grep -P "color[0-9]*:" | sort | cut -f 2-) )
+
+declare -A color
+index=0
+
+for name in black brightgreen brightyellow brightblue brightmagenta brightcyan brightwhite red green yellow blue magenta cyan white grey brightred; do
+  color[${name}]=${xrdb[$index]}
+  ((index++))
+done
+
+bg="#181512"
+bg2="#2B2825"
+bg3="#282522"
+fg="#DDDDDD" # }}}
+# Options {{{
+font="Source Code Pro:size=7"
+bar_height="15"
+res_width="$(( 1366 / 2 ))"
+res_height="768" # }}}
+# Icons {{{
+iconpath="$HOME/dots/icons"
+
+icon() {
+  echo "^fg(#000)^r(1x15)^fg(#444)^r(1x15)^bg(${bg2}) \
+^fg(${color[${2}]})^i(${iconpath}/${1}.xbm) ^fg(#000)^r(1x15)^fg()\
+^fg(#444)^r(1x15)^fg()^bg(${bg3})" 
+} # }}}
+# Functions {{{
+hour() {
+  echo "$(icon clock1 green) $(fuzzyclock) ^fg(#000)^r(1x15)\
+^fg(#444)^r(1x15) ^fg()$(date +'%d')^fg(#888)$(date +'-%m-%y')"
+}
+
+music() {
+  echo "^ca(1, mpc toggle)$(icon note1 blue) \
+$(mpc current -f %title%) ^fg(#888)by \
+^fg()$(mpc current -f %artist%)"
+}
+
+mem() {
+  echo "$(icon memory red) $(awk '/^-/ {print $3}' <(free -m))^fg(#888) Mb"
+}
+
+cpusage() {
+  set -- $(cat /proc/loadavg)
+  echo "$(icon cpu magenta) $1 $2 $3"
+} # }}}
+# Spawn {{{
+while true; do
+  echo "$(cpusage) $(mem) ^ca(1, mpc toggle)$(music)^ca() ^ca(1, orage)$(hour)^ca() "
+  sleep 1s
+done | exec dzen2 -fn ${font} -ta r -w ${res_width} -bg ${bg} -fg ${fg} \
+-h ${bar_height} -x ${res_width} -y ${res_height} -dock > /dev/null # }}}

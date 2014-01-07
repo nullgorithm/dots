@@ -1,0 +1,94 @@
+# bspwm specific {{{
+# Quit bspwm
+super + shift + q
+  bspc quit 1
+# Close active window
+super + q
+  bspc window -c
+# Kill active window
+super + Delete
+  bspc window -k
+# Toggle floating/fullscreen
+super + {f,shift + f}
+  bspc window -t {floating,fullscreen}
+# Toggle tiling/monocle
+super + t
+  bspc desktop -l next
+# Cycle between workspaces
+super + {p,n}
+  bspc desktop -f {prev,next}.occupied
+# Change workspace focus/send window to another workspace
+super + {_,shift + }{1-9,0}
+  bspc {desktop -f,window -d} ^{1-9,10}
+# Ratios for manual splitting
+ctrl + alt + {1-9}
+  bspc window --ratio 0.{1-9}
+# Focus/swap windows
+super + {_,shift + }{h,j,k,l}
+  bspc window -{f,s} {left,down,up,right}
+# Directions to manually split
+ctrl + alt + {h,j,k,l}
+  bspc window -p {left,down,up,right}
+# Enlarge window
+alt + {h,j,k,l}
+  bspc window --edge {left -10,down +10,up -10,right +10}
+# Shrink window
+alt + shift + {h,j,k,l}
+  bspc window --edge {right -10,up +10,down -10,left +10}
+# Rotate windows
+alt + {_,shift +,control +} r
+  bspc desktop --rotate {90,180,270}
+# Flip layout
+super + {_,shift +} s
+  bspc desktop --flip {vertical,horizontal}
+# Circulate all windows backward/forward
+super + {_,shift +} c
+  bspc desktop -C {forward,backward}
+# Hide/unhide all windows
+super + d
+  bspc control --toggle-visibility
+# Lock active window
+super + x
+  bspc window -t locked
+# Balance frames
+super + u
+  bspc desktop -B
+# Pointer click to focus window
+~button1
+  bspc pointer -g focus
+# Other stuff with the pointer
+super + button{1-3}
+  bspc pointer -g {move,resize_side,resize_corner}
+super + !button{1-3}
+  bspc pointer -t %i %i
+super + @button{1-3}
+  bspc pointer -u
+# }}}
+# Non bspwm specific {{{
+# Terminal emulator
+super + Return
+  urxvt
+# Web browser
+super + b
+  firefox
+# App launcher
+super + r
+  dmenu_run
+# Reload sxhkd config
+super + shift + r
+  pkill -USR1 -x sxhkd && notify-send "Config reloaded"
+# mpd controls
+super + Left
+  mpc prev
+super + Right
+  mpc next
+super + Up
+  mpc stop
+super + Down
+  mpc toggle
+# volume control
+super + Prior
+  vol -i 5
+super + Next
+  vol -d 5
+# }}}
