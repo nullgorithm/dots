@@ -1,0 +1,124 @@
+" $HOME/.vimrc
+
+set runtimepath=~/etc/vim,~/etc/vim/bundle/vundle,$VIMRUNTIME
+
+" Vundle {{{
+set nocompatible              " be iMproved
+filetype off                  " required!
+
+call vundle#rc("~/etc/vim/bundle")
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" My bundles here:
+"
+" original repos on GitHub
+"Bundle 'Shougo/neocomplcache.vim'
+"Bundle 'bling/vim-airline'
+Bundle 'scrooloose/syntastic'
+"Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-surround'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'kien/ctrlp.vim'
+Bundle 'mattn/emmet-vim'
+Bundle 'w0ng/vim-hybrid'
+
+filetype plugin indent on     " required!
+syntax on
+" }}}
+" Vim options {{{
+set t_Co=256
+let g:hybrid_use_Xresources=1
+colorscheme hybrid
+
+if $TERM == 'linux'
+  set t_Co=8
+  set nolist
+endif
+
+if has('gui_running')
+  set guifont=PragmataPro\ 7
+
+  set guicursor+=a:blinkon0
+  set guioptions-=T
+  set guioptions-=l
+  set guioptions-=L
+  set guioptions-=r
+  set guioptions-=R
+
+  colorscheme eroison
+endif
+
+set autochdir
+set autoindent
+set autoread
+set backspace=start,indent,eol
+set confirm
+set clipboard+=unnamed
+set cmdheight=2
+set cursorline
+set expandtab
+set foldcolumn=0
+set foldenable
+set foldlevel=0
+set foldmethod=marker
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set lazyredraw
+set list
+set listchars+=tab:->
+set listchars+=trail:·
+set listchars+=eol:<
+set listchars+=precedes:«
+set listchars+=extends:»
+set magic
+set modeline
+set modelines=2
+set mouse=a
+set nobackup
+set noerrorbells
+set norelativenumber
+set noswapfile
+set nowrap
+set nowritebackup
+set number
+" set paste
+set preserveindent
+set scrolloff=4
+set sidescroll=4
+set shiftwidth=2
+set shortmess=aIoOT
+set showbreak=↪
+set showcmd
+set softtabstop=2
+set smartcase
+set smarttab
+set splitbelow
+set tabstop=2
+set title
+set ttyfast
+set undofile
+set undodir=~/var/vim
+set virtualedit=all
+set wildmenu
+set wildchar=<Tab>
+set wildmode=list:longest,full
+set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g,.git,.svn,*.so,.hg
+" }}}
+" Autocmds {{{
+if has("autocmd")
+  " always jump to the last cursor position
+  autocmd BufReadPost * if line("'\"")>0 && line("'\"")<=line("$")|exe "normal g`\""|endif
+endif
+" }}}
+" Sources {{{
+source ~/etc/vim/user/plugins.vim
+source ~/etc/vim/user/keybindings.vim
+source ~/etc/vim/user/statusline.vim
+source ~/etc/vim/user/abbreviations.vim
+source ~/etc/vim/user/highlights.vim
+" }}}
