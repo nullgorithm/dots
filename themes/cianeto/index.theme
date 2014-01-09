@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=darks
+Type=X-GNOME-Metatheme
+Comment="darks" Theme, Version 0.1
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=darks

@@ -17,11 +17,10 @@ window.inactive.client.color: #000000
 window.label.text.justify: Center
 
 # Active window
-window.active.title.bg: Raised Solid
+window.active.title.bg: Raised Gradient Horizontal
 window.active.title.bg.color: #863636
-
-window.active.label.bg: Parentrelative
-window.active.label.text.color: #ffffff
+window.active.title.bg.colorTo: #662626
+window.active.title.bg.border.color: #8b3636
 
 window.active.handle.bg: Flat Gradient Vertical
 window.active.handle.bg.color: #282828
@@ -44,7 +43,7 @@ window.active.button.hover.bg: Parentrelative
 window.active.button.hover.image.color: #fff
 
 # Inactive window
-window.inactive.title.bg: Raised Solid
+window.inactive.title.bg: Flat Solid
 window.inactive.title.bg.color: #151515
 
 window.inactive.button.unpressed.bg: Parentrelative
@@ -62,9 +61,9 @@ menu.title.bg.color: #121212
 menu.items.bg: Flat Gradient Vertical
 menu.items.bg.color: #202020
 menu.items.bg.colorTo: #121212
-menu.items.active.bg: Raised Solid
-menu.items.active.bg.color: #222
-menu.items.active.text.color: #bbbbbb
+menu.items.active.bg: Flat Solid
+menu.items.active.bg.color: #303030
+menu.items.active.text.color: #dddddd
 menu.title.text.color: #aaaaaa
 menu.items.text.color: #808080
 menu.separator.color: #303030
@@ -78,6 +77,6 @@ osd.unhilight.bg: Flat Solid
 osd.unhilight.bg.color: #151515
 
 window.active.label.bg: Parentrelative
-window.active.label.text.color: #ccc
+window.active.label.text.color: #eee
 window.inactive.label.bg: Parentrelative
-window.inactive.label.text.color: #777
+window.inactive.label.text.color: #555
