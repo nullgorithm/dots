@@ -70,11 +70,7 @@ set incsearch
 set laststatus=2
 set lazyredraw
 set list
-set listchars+=tab:->
-set listchars+=trail:·
-set listchars+=eol:<
-set listchars+=precedes:«
-set listchars+=extends:»
+set listchars=tab:>-,trail:·,eol:<,precedes:«,extends:»
 set magic
 set modeline
 set modelines=2
@@ -105,7 +101,6 @@ set undofile
 set undodir=~/var/vim
 set virtualedit=all
 set wildmenu
-set wildchar=<Tab>
 set wildmode=list:longest,full
 set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g,.git,.svn,*.so,.hg
 " }}}

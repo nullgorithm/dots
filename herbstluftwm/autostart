@@ -1,131 +1,115 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
-function hc() {
-    herbstclient "$@"
-}
+#+ Startup {{{
+hc() { CMD=($CMD , $@) }
 
 hc emit_hook reload
 hc keyunbind --all
-
-# 0.01 for better sizes
-RESIZESTEP=0.01
-
-# Tag names
-TAG_NAMES=( {1..5} )
-
-# Frame/window settings
-hc set frame_gap 3
-hc set frame_border_active_color '#505050'
-hc set frame_border_normal_color '#121212'
-hc set frame_bg_normal_color '#181818'
-hc set frame_bg_active_color '#181818'
-
-hc set window_border_normal_color '#101215'
-hc set window_border_active_color '#303335'
-hc set frame_border_width 4
-hc set window_border_width 3
-hc set window_border_inner_width 1
-hc set window_gap 0
-
-hc set always_show_frame 1
-hc set frame_padding 2
-hc set smart_window_surroundings 1
-hc set smart_frame_surroundings 1
-hc set mouse_recenter_gap 0
-
-# Keybindings
-Mod=Mod4
-hc keybind $Mod-Shift-q quit
-hc keybind $Mod-Shift-r reload
-hc keybind $Mod-q close
-
-TAG_KEYS=( {1..5} 0 )
-
-hc rename default "${TAG_NAMES[0]}" || true
-for i in ${!TAG_NAMES[@]} ; do
-    hc add "${TAG_NAMES[$i]}"
-    key="${TAG_KEYS[$i]}"
-    if ! [ -z "$key" ] ; then
-        hc keybind "$Mod-$key" use_index "$i"
-        hc keybind "$Mod-Shift-$key" move_index "$i"
-    fi
-done
-
-# Applications
-hc keybind $Mod-b             spawn chromium
-hc keybind $Mod-Shift-i       spawn sxiv -rt /mnt/data/Porn/Pic
-hc keybind $Mod-p             spawn dmenu_run
-hc keybind $Mod-Return        spawn urxvtc
-hc keybind $Mod-c             spawn lolictrl
-hc keybind $Mod-Shift-Return  spawn urxvtc -fn '-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso8859-1'
-hc keybind Print              spawn screenshot
-
-# Layouting
-hc keybind $Mod-d       remove
-hc keybind $Mod-space   cycle_layout 1
-hc keybind $Mod-s       split horizontal 0.5
-hc keybind $Mod-Shift-s split vertical 0.5
-hc keybind $Mod-f       floating toggle
-hc keybind $Mod-Shift-f fullscreen toggle
-hc keybind $Mod-Shift-p pseudotile toggle
-
-# Resizing
-hc keybind $Mod-Control-h resize left   +$RESIZESTEP
-hc keybind $Mod-Control-j resize down   +$RESIZESTEP
-hc keybind $Mod-Control-k resize up     +$RESIZESTEP
-hc keybind $Mod-Control-l resize right  +$RESIZESTEP
-
-# Mouse
 hc mouseunbind --all
-hc mousebind $Mod-Button1 move
-hc mousebind $Mod-Button2 resize
-hc mousebind $Mod-Button3 zoom
-
-# Focus
-hc keybind $Mod-BackSpace   cycle_monitor
-hc keybind $Mod-Tab         cycle_all +1
-hc keybind $Mod-Shift-Tab   cycle_all -1
-#hc keybind $Mod-c           cycle
-hc keybind $Mod-h           focus left
-hc keybind $Mod-j           focus down
-hc keybind $Mod-k           focus up
-hc keybind $Mod-l           focus right
-hc keybind $Mod-i           jumpto urgent
-hc keybind $Mod-Shift-h     shift left
-hc keybind $Mod-Shift-j     shift down
-hc keybind $Mod-Shift-k     shift up
-hc keybind $Mod-Shift-l     shift right
-
-# Media keys
-hc keybind $Mod-Down  spawn mpc toggle
-hc keybind $Mod-Up    spawn mpc stop
-hc keybind $Mod-Left  spawn mpc prev
-hc keybind $Mod-Right spawn mpc next
-hc keybind $Mod-Prior spawn volume up
-hc keybind $Mod-Next  spawn volume down
-hc keybind $Mod-End   spawn volume mute
-
-# Rules
 hc unrule -F
-hc rule focus=off # normally do not focus
+hc unsetenv HCT
+Mod="Mod4"
+# }}}
+#+ Default applications {{{
+LAUNCHER="dmenu_run"
+TERM="urxvt"
+BROWSER="firefox"
+# }}}
+#+ Keyboard {{{
+resizestep=0.01
 
-hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
-hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' manage=off
-hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
-hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
+hc keybind $Mod-Control-space   split explode
+hc keybind $Mod-space           cycle_layout 1
+hc keybind $Mod-BackSpace       cycle_monitor
+hc keybind $Mod-Tab             cycle_all +1
+hc keybind $Mod-Shift-Tab       cycle_all -1
+hc keybind $Mod-Return          spawn "$TERM"
+hc keybind $Mod-Left            spawn "mpc prev"
+hc keybind $Mod-Down            spawn "mpc toggle"
+hc keybind $Mod-Up              spawn "mpc stop"
+hc keybind $Mod-Right           spawn "mpc next"
+hc keybind $Mod-period          use_index +1 --skip-visible
+hc keybind $Mod-comma           use_index -1 --skip-visible
+hc keybind $Mod-b               spawn "$BROWSER"
+hc keybind $Mod-c               cycle
+hc keybind $Mod-d               remove
+hc keybind $Mod-f               floating toggle
+hc keybind $Mod-Shift+f         fullscreen toggle
+hc keybind $Mod-g               spawn gcolor2
+hc keybind $Mod-h               focus left
+hc keybind $Mod-j               focus down
+hc keybind $Mod-k               focus up
+hc keybind $Mod-l               focus right
+hc keybind $Mod-Shift-h         shift left
+hc keybind $Mod-Shift-j         shift down
+hc keybind $Mod-Shift-k         shift up
+hc keybind $Mod-Shift-l         shift right
+hc keybind $Mod-Control-h       resize left   +"$resizestep"
+hc keybind $Mod-Control-j       resize down   +"$resizestep"
+hc keybind $Mod-Control-k       resize up     +"$resizestep"
+hc keybind $Mod-Control-l       resize right  +"$resizestep"
+hc keybind $Mod-p               pseudotile toggle
+hc keybind $Mod-q               close
+hc keybind $Mod-r               spawn "$LAUNCHER"
+hc keybind $Mod-Shift-r         reload
+hc keybind $Mod-s               split bottom 0.5
+hc keybind $Mod-Shift-s         split right 0.5
+hc keybind $Mod-Shift-q         quit
+hc keybind $Mod-u               jumpto urgent
 
-# unlock, just to be sure
-hc unlock
+hc mousebind $Mod-Button1 move
+hc mousebind $Mod-Button2 zoom
+hc mousebind $Mod-Button3 resize
+# }}}
+#+ Tags {{{
+tag_names=( {1..5} )
+tag_keys=( {1..5} )
 
-herbstclient set tree_style '╾│ ├└╼─┐'
-
-# Statusbar
-panel=~/bin/dzenstatus
-hc set_monitors 1366x747+0+21
-
-[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
-    # start it on each monitor
-    killall dzen2
-    $panel $monitor &
+hc rename default "${tag_names[1]}"
+for ((i=1; i<$((${tag_keys[-1]}+1)); i++)); do
+  [[ $i -gt ${tag_keys[1]} ]] && hc add ${tag_names[$i]}
+  hc keybind Mod4-${i[-1]} use ${tag_names[$i]}
+  hc keybind Mod4-Shift-${i[-1]} move ${tag_names[$i]}
 done
+# }}}
+#+ Rules {{{
+# Focus on new clients
+hc rule focus=on
+
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(FULLSCREEN|FS)' fullscreen=on
+# }}}
+#+ Options {{{
+hc set focus_follows_mouse        0
+hc set raise_on_focus             0
+hc set raise_on_click             1
+
+hc set frame_border_width         1
+hc set window_border_width        5
+hc set window_border_inner_width  1
+hc set always_show_frame          1
+hc set frame_bg_transparent       0
+hc set frame_transparent_width    0
+hc set frame_gap                  2
+hc set window_gap                 -2
+hc set frame_padding              2
+hc set smart_window_surroundings  0
+hc set smart_frame_surroundings   0
+hc set mouse_recenter_gap         0
+
+hc set frame_border_active_color  "#020202"
+hc set frame_border_normal_color  "#080808"
+hc set frame_bg_normal_color      "#100D0A"
+hc set frame_bg_active_color      "#181512"
+hc set window_border_normal_color "#25221F"
+hc set window_border_active_color "#585250"
+# }}}
+#+ Unknown {{{
+hc unlock
+hc set tree_style "╾│ ├└╼─┐"
+# }}}
+
+herbstclient chain ${CMD}&
+
+# killall dzen2 && ${HOME}/bin/dzen2_herbst

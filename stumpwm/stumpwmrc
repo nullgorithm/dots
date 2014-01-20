@@ -1,10 +1,8 @@
 ;; vim: ft=lisp
-;;    M Y  S T U M P W M R C    ;;
 
-;;;; Standard settings
-
+;;;; Startup
 (in-package :stumpwm)
-(set-contrib-dir "/home/luizf/Builds/stumpwm/contrib")
+(set-contrib-dir "/home/samus/etc/stumpwm/contrib")
 (load-module "window-tags")
 
 ;; Startup message
@@ -21,9 +19,9 @@
       *scratchpad-group-name* ".scratch")
 
 ;;;; Appearance
-
 ;; Default font
-(set-font "-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1")
+;(set-font "-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1")
+(set-font "-misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1")
 
 ;; Borders
 (setf *maxsize-border-width*   0
@@ -49,12 +47,12 @@
 ;;;; Keyboard/Mouse
 
 ;; Focus policy (:click or :sloppy)
-(setq *mouse-focus-policy* :click)
+(setq *mouse-focus-policy* :sloppy)
 
 ;; The prefix key
 (set-prefix-key (kbd "s-a"))
 
-;; Group change with "s-*"
+;; Group change with "s-[1-9]"
 (dotimes (i 9)
   (define-key *top-map* (kbd (format nil "s-~A" (1+ i)))
               (format nil "go-group ~A" (1+ i)))
@@ -130,31 +128,28 @@
 (define-key *top-map* (kbd "s-f") "fselect")
 (define-key *top-map* (kbd "s-u") "undo")
 (define-key *top-map* (kbd "s-y") "redo")
-(define-key *top-map* (kbd "s-p") "exec interrobang")
+(define-key *top-map* (kbd "s-p") "exec dmenu_run")
 (define-key *top-map* (kbd "s-Left") "gprev")
 (define-key *top-map* (kbd "s-Right") "gnext")
 
-;; Urxvt
-(define-key *top-map* (kbd "s-RET") "exec urxvtc")
+;; Terminal
+(define-key *top-map* (kbd "s-RET") "exec urxvt")
 
 ;; Root keys
 (define-key *root-map* (kbd "ESC") "abort")
 (define-key *root-map* (kbd "Up") "lastmsg")
 (define-key *root-map* (kbd "b") "exec firefox")
-(define-key *root-map* (kbd "e") "exec emacs")
-(define-key *root-map* (kbd "g") "exec ~/bin/google_dmenu")
-(define-key *root-map* (kbd "n") "exec urxvtc -e ncmpcpp")
-(define-key *root-map* (kbd "t") "exec urxvtc -e tmux")
-(define-key *root-map* (kbd "T") "exec urxvtc -e tmux attach")
-(define-key *root-map* (kbd "v") "exec urxvtc -e vim")
+(define-key *root-map* (kbd "n") "exec urxvt -e ncmpcpp")
+(define-key *root-map* (kbd "t") "exec urxvt -e tmux")
+(define-key *root-map* (kbd "T") "exec urxvt -e tmux attach")
+(define-key *root-map* (kbd "v") "exec urxvt -e vim")
 
 ;; Media keys
 (define-key *top-map* (kbd "XF86AudioPlay") "exec mpc toggle")
 (define-key *top-map* (kbd "XF86AudioNext") "exec mpc next")
 (define-key *top-map* (kbd "XF86AudioPrev") "exec mpc prev")
 (define-key *top-map* (kbd "XF86AudioStop") "exec mpc stop")
-(define-key *top-map* (kbd "XF86AudioMedia") "exec urxvtc -e ncmpcpp")
-
+(define-key *top-map* (kbd "XF86AudioMedia") "exec urxvt -e ncmpcpp")
 (define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec amixer -q sset PCM 1%+ unmute")
 (define-key *top-map* (kbd "XF86AudioLowerVolume") "exec amixer -q sset PCM 1%- unmute")
 (define-key *top-map* (kbd "XF86AudioMute") "exec spawn amixer -q sset Master toggle")
@@ -174,8 +169,7 @@
                      "lightskyblue4")); 9 user
 (update-color-map (current-screen))
 
-;; A hook needed for the dzen2 config
-;; It'll create a log file while the focused workspace change
+;; A hook needed for dzen2 config
 (defmacro replace-hook (hook fn)
   `(remove-hook ,hook ,fn)
   `(add-hook ,hook ,fn))
@@ -183,13 +177,13 @@
 (replace-hook *focus-group-hook* 'callback-groupchange)
 
 (defun callback-groupchange (new-group old-group)
-  (with-open-file (file (format nil "/home/luizf/.config/stumpwm/stumpwm.log")
+  (with-open-file (file (format nil "/home/samus/etc/stumpwm/stumpwm.log")
                         :direction         :output
                         :if-exists         :append
                         :if-does-not-exist :create)
     (format file "Workspace change: ~A to ~A~%" (group-name old-group) (group-name new-group))))
 
-;; Useful, will show the keys being pressed
+;; Useful, show the keys being pressed
 (defun print-key-seq (seq) (format nil "^B^9*~{~a~^ ~}^n^1*" (mapcar 'print-key seq)))
 (defun display-bindings-for-keymaps (key-seq &rest keymaps)
 "Display key-bindings for a given keymap, using a simple and clean format."
@@ -216,7 +210,7 @@
 (setf *shell-program* (getenv "SHELL"))
 (defcommand-alias exec run-shell-command)
 
-;;
+;
 
 (defun focus-frame (group f)
 "Focus frame but do not show-frame-indicator in certain cases."
@@ -377,7 +371,7 @@ the two undo states."
   `(defcommand ,name (search)
                ((:rest ,(concatenate 'string (symbol-name name) ": ")))
                "Search web"
-               (run-shell-command (format nil "luakit '~A'"
+               (run-shell-command (format nil "firefox -new-tab '~A'"
                                           (concat ,url-prefix (substitute #\+ #\Space search))))))
 
 (make-web-jump imdb      "http://www.imdb.com/find?q=")
@@ -393,10 +387,10 @@ the two undo states."
 ;;;; Startup
 
 ;; Space for dzen
-(resize-head 0 0 0 1366 755)
+; (resize-head 0 0 0 1366 755)
 
 ;; and the own dzen
-(run-shell-command "killall dzen_stump")
-(run-shell-command "dzen_stump")
+; (run-shell-command "killall dzen_stump")
+; (run-shell-command "dzen_stump")
 
 ;; EOF

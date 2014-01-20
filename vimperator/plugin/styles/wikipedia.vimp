@@ -1,0 +1,62 @@
+style -name=wikipedia wikipedia.org <<EOM
+
+#mw-head, #mw-panel, #mw-head-base,
+#mw-page-base, #footer-info-lastmod,
+#footer-info-copyright, #footer-places,
+#footer-icons, #destaques1, #coordinates,
+#siteSub, #localNotice, #centralNotice,
+#siteNotice, #footer, #mw-jump, #top {
+    display: none !important;
+}
+
+* {
+    font-family: "DejaVu Serif" !important;
+}
+
+a {
+    color: #106040 !important;
+    font-style: italic !important;
+}
+
+a:hover {
+    background: #154525 !important;
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+body {
+    background: #eee !important;
+}
+
+#firstHeading {
+    margin: 0 !important;
+    color: #202020 !important;
+    font-size: 31pt !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    text-shadow: 2px 3px 0px #ccc !important;
+    padding-top: 0 !important;
+    padding-bottom: 10px !important;
+}
+
+#content {
+    background: #fff !important;
+    color: #444 !important;
+    margin: auto !important;
+    font-size: 10pt !important;
+    width: 800px !important;
+    border: 0 !important;
+    box-shadow: 0 0 48px #aaa !important;
+}
+
+table, #toc, blockquote,
+#catlinks {
+    background: #f9f9f9 !important;
+    border: 1px solid #dfdfdf !important;
+}
+
+table {
+    border: none !important;
+}
+
+EOM

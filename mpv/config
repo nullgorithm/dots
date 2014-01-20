@@ -1,52 +1,19 @@
 # Write your default config options here!
 
-# Options
-af                    = drc
-aid                   = auto
-alang                 = pt,en
 ao                    = alsa
-aspect                = 16:9
-ass                   = yes
-ass-hinting           = none
-ass-shaper            = simple
-ass-style-override    = yes
-audio-display         = attachment
-autosub               = yes
-autosub-match         = fuzzy
-border                = yes
-cache                 = auto
-channels              = 2
-correct-pts           = yes
-embeddedfonts         = no
+channels              = 6
+# af                    = equalizer=9:7:4:2:2:2:4:6:8
+af                    = drc
+softvol               = yes
+vo                    = opengl-hq
 framedrop             = yes
-heartbeat-cmd         = "xautolock -disable"
-heartbeat-interval    = 60
+#aspect                = 16:9
+#keepaspect            = yes
 idx                   = yes
-joystick              = no
-keepaspect            = no
 lirc                  = no
-mouse-movements       = yes
 msgmodule             = yes
 msgcolor              = yes
-ontop                 = yes
-osc                   = yes
-osd-bar               = yes
-osd-color             = "#ddddee"
-osd-border-color      = "#121212"
-osd-border-size       = 1.5
-osd-font              = "Lucida Grande:style=Bold"
-osd-level             = 1
-playing-msg           = "File: ${filename}"
-save-position-on-quit = yes
-screenshot-format     = png
-softvol               = yes
-stop-screensaver      = yes
-sub-gray              = yes
-term-osd              = auto
-title                 = "${filename}"
-vo                    = opengl-hq
 
-# Video settings
 brightness            = 10
 contrast              = 30
 saturation            = -42
