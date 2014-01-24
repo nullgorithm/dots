@@ -1,36 +1,34 @@
 # Paths {{{
-music_directory       "/data/Musics"
-playlist_directory    "/data/Musics/Playlists"
-db_file               "~/var/mpd/db"
-log_file              "~/var/mpd/log"
-pid_file              "~/var/mpd/pid"
-state_file            "~/var/mpd/state"
+     music_directory "/data/Musics"
+  playlist_directory "/data/Musics/Playlists"
+             db_file "~/var/mpd/db"
+            log_file "~/var/mpd/log"
+            pid_file "~/var/mpd/pid"
+          state_file "~/var/mpd/state"
 # }}}
 # Options {{{
-auto_update           "yes"
-bind_to_address       "localhost"
-filesystem_charset    "UTF-8"
-gapless_mp3_playback  "yes"
-log_level             "default"
-mixer_type            "software"
-port                  "6600"
-restore_paused        "no"
-zeroconf_enabled      "no"
+         auto_update "yes"
+     bind_to_address "localhost"
+  filesystem_charset "UTF-8"
+gapless_mp3_playback "yes"
+           log_level "default"
+                port "6600"
+      restore_paused "no"
+    zeroconf_enabled "no"
 # }}}
 # Input/Output {{{
 input {
   plugin "curl"
 }
-
+# ncmpcpp visualizer
 audio_output {
-  type                "fifo"
-  name                "my_fifo"
-  path                "/tmp/mpd.fifo"
-  format              "44100:16:2"
+  type "fifo"
+  name "my_fifo"
+  path "~/var/mpd/mpd.fifo"
+  format "44100:16:2"
 }
-
 audio_output {
-  type                "alsa"
-  name                "My ALSA Device"
+  type "pulse"
+  name "MPD PulseAudio Output"
 }
 # }}}
