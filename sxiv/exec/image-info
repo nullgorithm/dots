@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+print "$(basename "$1") ($(du -Hh "$1" | cut -f 1)) [$(identify -format '%wx%h' "$1")]"
