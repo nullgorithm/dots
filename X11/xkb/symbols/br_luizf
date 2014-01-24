@@ -1,0 +1,47 @@
+// vim: set ft=xkb:
+
+default
+
+xkb_symbols "abnt2" {
+  include "latin"
+  name[Group1]="Portuguese (Brazil)";
+
+  key <AE01> { [ exclam, 1, onesuperior ] };
+  key <AE02> { [ at, 2, twosuperior, onehalf ] };
+  key <AE03> { [ numbersign, 3, threesuperior, threequarters ] };
+  key <AE04> { [ dollar, 4, sterling, onequarter ] };
+  key <AE05> { [ percent, 5, cent, threeeighths ] };
+  key <AE06> { [ asciicircum, 6, notsign, diaeresis ] };
+  key <AE07> { [ ampersand, 7 ] };
+  key <AE08> { [ asterisk, 8 ] };
+  key <AE09> { [ parenleft, 9 ] };
+  key <AE10> { [ parenright, 0, slash ] };
+  key <AE12> { [ equal, plus, section, dead_ogonek ] };
+
+  key <AD01> { [ q, Q, slash, slash ] };
+  key <AD02> { [ w, W, question, question ] };
+  key <AD03> { [ e, E, EuroSign, EuroSign ] };
+  key <AD04> { [ r, R, registered, registered ] };
+  key <AD11> { [ dead_acute, dead_grave, acute, grave ] };
+  key <AD12> { [ bracketleft, braceleft, ordfeminine, dead_macron ] };
+
+  key <AC07> { [ j, J, slash ] };
+  key <AC10> { [ ccedilla, Ccedilla, dead_acute, dead_doubleacute] };
+  key <AC11> { [ dead_tilde, dead_circumflex, asciitilde, asciicircum ] };
+  key <BKSL> { [ bracketright, braceright, masculine, masculine ] };
+
+  key <TLDE> { [apostrophe, quotedbl, notsign, notsign ] };
+
+  key <LSGT> { [ backslash, bar, masculine, dead_breve ] };
+  key <AB03> { [ c, C, copyright, copyright ] };
+  key <AB07> { [ m, M, mu, mu ] };
+  key <AB10> { [ semicolon, colon, dead_belowdot, dead_abovedot ] };
+
+  // ABNT-2 keyboard has this special key
+  key <AB11> { [ slash, question, degree, questiondown ] };
+
+  modifier_map Mod3 { Scroll_Lock };
+
+  include "kpdl(comma)"
+  include "level3(ralt_switch)"
+};

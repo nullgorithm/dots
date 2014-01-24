@@ -1,31 +1,56 @@
-! G L O B A L --------------------------------- !
+! G L O B A L --------------------------------- {{{
 *saveLines: 4096
+! }}}
+! U R X V T ----------------------------------- {{{
+!URxvt*font:                 -misc-fixed-medium-r-semicondensed--12-90-100-100-c-60-iso8859-1
+!URxvt*boldFont:             -misc-fixed-medium-r-semicondensed--12-90-100-100-c-60-iso8859-1
+!URxvt*italicFont:           -misc-fixed-medium-r-normal--8-60-100-100-c-50-iso8859-1
+!URxvt*font:                 -misc-fixed-medium-r-normal--10-*-*-*-*-*-*-*
+!URxvt*boldFont:             -misc-fixed-medium-r-normal--10-*-*-*-*-*-*-*
+!URxvt*font:                 -*-flicked-*-*-*-*-*-*-*-*-*-*-*-*
+!URxvt*boldFont:             -*-flicked-*-*-*-*-*-*-*-*-*-*-*-*
+!URxvt*italicFont:           -*-flicked-*-*-*-*-*-*-*-*-*-*-*-*
+!URxvt*font:                 -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1
+!URxvt*boldFont:             -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso8859-1
+!URxvt*font:                 -schumacher-clean-medium-r-normal--12-120-75-75-c-60-iso8859-1
+!URxvt*boldFont:             -schumacher-clean-bold-r-normal--12-120-75-75-c-60-iso646.1991-irv
 
-! U R X V T ----------------------------------- !
+!URxvt*font:                 xft:PragmataPro:size=7
+!URxvt*boldFont:             xft:PragmataPro:size=7:style=Bold
+URxvt*font:                 xft:Source Code Pro:size=7
+URxvt*boldFont:             xft:Source Code Pro:size=7.5:style=Bold
 
-URxvt*font:               xft:PragmataPro:size=7
-URxvt*buffered:           true
-URxvt*cursorBlink:        false
-URxvt*cursorUnderline:    false
-URxvt*termName:           rxvt-unicode-256color
-URxvt*urgentOnBell:       true
-URxvt*visualBell:         false
-URxvt*pointerBlank:       false
-URxvt*letterSpace:        0
-URxvt*internalBorder:     2
-URxvt*scrollBar:          false
-URxvt*scrollBar_right:    false
-URxvt*scrollWithBuffer:   true
-URxvt*scrollTtyOutput:    true
-URxvt.perl-lib:           /usr/lib/urxvt/perl/
-URxvt.perl-ext-common:    default,matcher
-URxvt.perl-ext:           default,url-select
-URxvt.keysym.M-u:         perl:url-select:select_next
-URxvt.url-select.launcher: /usr/bin/firefox
-
-! X F O N T S E L ----------------------------- !
+URxvt*buffered:             true
+URxvt*cursorBlink:          false
+URxvt*cursorUnderline:      false
+URxvt*termName:             rxvt-unicode-256color
+URxvt*urgentOnBell:         true
+URxvt*visualBell:           false
+URxvt*pointerBlank:         false
+URxvt*letterSpace:          0
+URxvt*internalBorder:       0
+URxvt*scrollBar:            false
+URxvt*scrollWithBuffer:     true
+URxvt*scrollTtyOutput:      true
+URxvt*perl-lib:             /usr/lib/urxvt/perl/
+URxvt*perl-ext-common:      default,matcher
+URxvt*perl-ext:             default,url-select
+URxvt*keysym.M-u:           perl:url-select:select_next
+URxvt*url-select.launcher:  /usr/bin/firefox
+URxvt*transparency:         false
+! }}}
+! X F O N T S E L ----------------------------- {{{
 XFontSel*menu*showUnselectable:      false
 XFontSel*MenuButton.shadowWidth:     0
 XFontSel*Toggle*ToggleStyle:         check
-XFontSel*MenuButton*Justify:         left
+XFontSel*MenuButton*Justify:         center
 XFontSel*MenuButton*MenuButtonStyle: select
+! }}}
+! X C L O C K --------------------------------- {{{
+xclock*analog:        true
+xclock*majorColor:    #AA9080
+xclock*minorColor:    #504030
+xclock*minuteColor:   #CCBBAA
+xclock*hourColor:     #AA9080
+xclock*secondColor:   #AA9080
+! }}}

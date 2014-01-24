@@ -58,12 +58,11 @@ nnoremap <silent> <C-q> :xall
 " Firefox options {{{
 set! accessibility.typeaheadfind.autostart='false'
 set! accessibility.typeaheadfind='false'
-set! browser.ctrlTab.previews='false'
-set! browser.display.use_system_colors='true'
+set! browser.display.use_system_colors='false'
 set! browser.download.dir='~/junk'
 set! browser.fullscreen.animateUp=0
 set! browser.newtabpage.columns=4
-set! browser.newtabpage.rows=5
+set! browser.newtabpage.rows=4
 set! browser.startup.homepage='file:///home/samus/dots/startpage/startpage.html'
 set! browser.tabs.animate='false'
 set! browser.tabs.closeWindowWithLastTab='false'

@@ -1,27 +1,30 @@
-#!/bin/sh
-
-# export PATH=$PATH:$HOME/bin
-export _XINIT_WM="${@-"bspwm_run"}"
+export _XINIT_WM="${@-"bspwm"}"
 
 # X11 stuff {{{
 # Keyboard layout
 setxkbmap br
+
 # Kill X with Ctrl-Alt-Backspace
 setxkbmap -option terminate:ctrl_alt_bksp
+
 # Set the compose key
 setxkbmap -option "compose:menu"
+
 # Key repeat rate
 xset r rate 250 50
+
 # Root window doesn't have a 'x' as cursor
 xsetroot -cursor_name left_ptr
+
 # Load Xresources
-xrdb -load $XDG_CONFIG_HOME/X11/Xresources
+[[ -f $XDG_CONFIG_HOME/X11/Xresources ]] && xrdb -load $XDG_CONFIG_HOME/X11/Xresources
+
 # Load color scheme
-xrdb -merge $XDG_CONFIG_HOME/X11/colortheme
+[[ -f $XDG_CONFIG_HOME/X11/colortheme ]] && xrdb -merge $XDG_CONFIG_HOME/X11/colortheme
+
 # Xmodmap
 xmodmap $XDG_CONFIG_HOME/X11/xmodmaprc
 # }}}
-
 # Apps {{{
 start() {
   # Redshift for my eyes
@@ -30,23 +33,13 @@ start() {
   nitrogen --restore &
   # Hide the pointer
   unclutter -root -idle 1 &
-  # Composite
-  # compton &
-  # Tint2
-  # tint2 &
-  # Dzen bar (generic)
-  # dzenstatus &
-  # Dzen bars for bspwm
-  panel &
-  statusbar &
-  # Keybindings daemon for bspwm
-  sxhkd -c $XDG_CONFIG_HOME/bspwm/keybindings &
-} 
+}
 
 left() {
   killall redshift
   killall dzen2
   killall sxhkd
+  # killall compton
 }
 # }}}
 
