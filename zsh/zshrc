@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+# zsh dir
+ZSH="${HOME}/.config/zsh"
+
+# Debug mode
+DEBUG=1488
+debug() {
+  [[ "$DEBUG" > 0 ]] && print "DEBUG: $1";
+}
+
+# Source files
+for f in ${ZSH}/*.zsh; do
+  source $f
+  debug "loading $f"
+done
+
+# LS_COLORS
+[[ -f ${ZSH}/LS_COLORS ]] && eval $( dircolors -b ${ZSH}/LS_COLORS )
