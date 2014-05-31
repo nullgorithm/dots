@@ -1,0 +1,24 @@
+update_interval 3
+short_units yes
+
+TEXT
+[\
+  # Loadavg
+  {"full_text": "AVG", "color": "\#268BD2", "separator": false, "separator_block_width": 5},\
+  {"full_text": "${loadavg}", "color": "\#CCCCCC", "separator_block_width": 15},\
+  # Memory
+  {"full_text": "MEM", "color": "\#859900", "separator": false, "separator_block_width": 5},\
+  {"full_text": "${mem} / ${memmax}", "color": "\#CCCCCC", "separator_block_width": 15},\
+  # HD
+  {"full_text": "HDD", "color": "\#2AA198", "separator": false, "separator_block_width": 5},\
+  {"full_text": "${fs_used /} / ${fs_size /}", "color": "\#CCCCCC", "separator_block_width": 15},\
+  # Battery
+  {"full_text": "BAT", "color": "\#D24A4A", "separator": false, "separator_block_width": 5},\
+  {"full_text": "${battery_percent BAT0}%", "color": "\#CCCCCC", "separator_block_width": 15},\
+  # Pulseaudio
+  {"full_text": "VOL", "color": "\#D33682", "separator": false, "separator_block_width": 5},\
+  {"full_text": "${exec ~/.i3/get_volume}", "color": "\#CCCCCC", "separator_block_width": 15},\
+  # Date
+  {"full_text": "${time %a %d %b}", "color": "\#CCCCCC", "separator_block_width": 15},\
+  {"full_text": "${time %I:%M}", "color": "\#CCCCCC"}
+],

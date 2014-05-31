@@ -1,29 +1,28 @@
-" $HOME/.vimrc
-
 set runtimepath=~/etc/vim,~/etc/vim/bundle/vundle,$VIMRUNTIME
 
 " Vundle {{{
 set nocompatible              " be iMproved
 filetype off                  " required!
 
-call vundle#rc("~/etc/vim/bundle")
+call vundle#begin("~/etc/vim/bundle")
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " My bundles here:
 "
 " original repos on GitHub
-"Bundle 'Shougo/neocomplcache.vim'
-"Bundle 'bling/vim-airline'
-Bundle 'scrooloose/syntastic'
-"Bundle 'Valloric/YouCompleteMe'
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'w0ng/vim-hybrid'
+"Plugin 'Shougo/neocomplcache.vim'
+"Plugin 'bling/vim-airline'
+Plugin 'itchyny/lightline.vim'
+Plugin 'scrooloose/syntastic'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'kien/ctrlp.vim'
+"Plugin 'mattn/emmet-vim'
+Plugin 'w0ng/vim-hybrid'
+
+call vundle#end()
 
 filetype plugin indent on     " required!
 syntax on
@@ -39,7 +38,7 @@ if $TERM == 'linux'
 endif
 
 if has('gui_running')
-  set guifont=PragmataPro\ 7
+  set guifont=Meslo\ LG\ M\ for\ Powerline\ 8
 
   set guicursor+=a:blinkon0
   set guioptions-=T
@@ -47,9 +46,11 @@ if has('gui_running')
   set guioptions-=L
   set guioptions-=r
   set guioptions-=R
-
-  colorscheme eroison
+  set guioptions-=m
 endif
+
+set background=dark
+colorscheme hybrid
 
 set autochdir
 set autoindent
@@ -57,7 +58,7 @@ set autoread
 set backspace=start,indent,eol
 set confirm
 set clipboard+=unnamed
-set cmdheight=2
+" set cmdheight=2
 set cursorline
 set expandtab
 set foldcolumn=0
@@ -78,6 +79,7 @@ set mouse=a
 set nobackup
 set noerrorbells
 set norelativenumber
+set noshowmode
 set noswapfile
 set nowrap
 set nowritebackup
@@ -97,8 +99,8 @@ set splitbelow
 set tabstop=2
 set title
 set ttyfast
-set undofile
-set undodir=~/var/vim
+"set undofile
+"set undodir=~/var/vim
 set virtualedit=all
 set wildmenu
 set wildmode=list:longest,full
@@ -113,7 +115,4 @@ endif
 " Sources {{{
 source ~/etc/vim/user/plugins.vim
 source ~/etc/vim/user/keybindings.vim
-source ~/etc/vim/user/statusline.vim
-source ~/etc/vim/user/abbreviations.vim
-source ~/etc/vim/user/highlights.vim
 " }}}

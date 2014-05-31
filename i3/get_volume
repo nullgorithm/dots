@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+$(ponymix is-muted)
+
+if [[ $? -eq 1 ]]; then
+  echo "$(ponymix get-volume)%"
+else
+  echo "mute"
+fi

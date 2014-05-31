@@ -1,48 +1,28 @@
-export _XINIT_WM="${@-"bspwm"}"
+#!/bin/sh
 
-# X11 stuff {{{
-# Keyboard layout
-setxkbmap br
+export _XINIT_WM="${@-"openbox"}"
 
-# Kill X with Ctrl-Alt-Backspace
+eval `dbus-launch --sh-syntax --exit-with-session`
+
+setxkbmap -layout br
 setxkbmap -option terminate:ctrl_alt_bksp
-
-# Set the compose key
-setxkbmap -option "compose:menu"
-
-# Key repeat rate
-xset r rate 250 50
-
-# Root window doesn't have a 'x' as cursor
+setxkbmap -option compose:rwin
+xset r rate 340 40
+xset b off
+xset s off
+xset -dpms
 xsetroot -cursor_name left_ptr
+xrdb -load "$HOME/etc/X11/Xresources"
+xrdb -merge "$HOME/etc/X11/colortheme"
+xmodmap "$HOME/etc/X11/xmodmaprc" &
 
-# Load Xresources
-[[ -f $XDG_CONFIG_HOME/X11/Xresources ]] && xrdb -load $XDG_CONFIG_HOME/X11/Xresources
+autocutsel -fork &
+unclutter -root -idle 2 &
+nitrogen --restore &
 
-# Load color scheme
-[[ -f $XDG_CONFIG_HOME/X11/colortheme ]] && xrdb -merge $XDG_CONFIG_HOME/X11/colortheme
+if [ "$_XINIT_WM" == "openbox" ]; then
+  tint2 &
+  compton -b &
+fi
 
-# Xmodmap
-xmodmap $XDG_CONFIG_HOME/X11/xmodmaprc
-# }}}
-# Apps {{{
-start() {
-  # Redshift for my eyes
-  redshift &
-  # Set wallpaper
-  nitrogen --restore &
-  # Hide the pointer
-  unclutter -root -idle 1 &
-}
-
-left() {
-  killall redshift
-  killall dzen2
-  killall sxhkd
-  # killall compton
-}
-# }}}
-
-start &
 $_XINIT_WM
-left; sleep 1

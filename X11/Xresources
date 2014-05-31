@@ -14,11 +14,17 @@
 !URxvt*boldFont:             -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso8859-1
 !URxvt*font:                 -schumacher-clean-medium-r-normal--12-120-75-75-c-60-iso8859-1
 !URxvt*boldFont:             -schumacher-clean-bold-r-normal--12-120-75-75-c-60-iso646.1991-irv
+URxvt*font:                 -lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1
+URxvt*boldFont:             -lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1
+!URxvt*boldFont:             -lucy-tewi-bold-r-normal--11-90-75-75-p-58-iso10646-1
 
-!URxvt*font:                 xft:PragmataPro:size=7
-!URxvt*boldFont:             xft:PragmataPro:size=7:style=Bold
-URxvt*font:                 xft:Source Code Pro:size=7
-URxvt*boldFont:             xft:Source Code Pro:size=7.5:style=Bold
+
+!URxvt*font:                 xft:PragmataPro:size=8
+!URxvt*boldFont:             xft:PragmataPro:size=8:style=Bold
+!URxvt*font:                 xft:Meslo LG L:size=7
+!URxvt*boldFont:             xft:Meslo LG L:size=7:style=bold
+!URxvt*font:                 xft:Source Code Pro:size=8
+!URxvt*boldFont:             xft:Source Code Pro:size=8:style=Bold
 
 URxvt*buffered:             true
 URxvt*cursorBlink:          false
@@ -27,7 +33,7 @@ URxvt*termName:             rxvt-unicode-256color
 URxvt*urgentOnBell:         true
 URxvt*visualBell:           false
 URxvt*pointerBlank:         false
-URxvt*letterSpace:          0
+!URxvt*letterSpace:          -2
 URxvt*internalBorder:       0
 URxvt*scrollBar:            false
 URxvt*scrollWithBuffer:     true

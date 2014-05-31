@@ -1,19 +1,6 @@
-# Write your default config options here!
-
-ao                    = alsa
-channels              = 6
-# af                    = equalizer=9:7:4:2:2:2:4:6:8
-af                    = drc
-softvol               = yes
-vo                    = opengl-hq
-framedrop             = yes
-#aspect                = 16:9
-#keepaspect            = yes
-idx                   = yes
-lirc                  = no
-msgmodule             = yes
-msgcolor              = yes
-
-brightness            = 10
-contrast              = 30
-saturation            = -42
+ao = pulse
+vo = opengl-hq:swapinterval=1
+msgmodule = yes
+msgcolor = yes
+no-border = yes
+stop-screensaver = yes

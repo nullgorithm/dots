@@ -19,15 +19,15 @@
   rebase = true
 
 [core]
-  editor = /usr/bin/vim
-  pager = /usr/bin/vimpager
+  editor = vim
+  pager = less
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
 [apply]
   whitespace = strip
 
 [web]
-  browser = /usr/bin/firefox
+  browser = firefox
 
 ## Aliases ##
 

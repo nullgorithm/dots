@@ -1,33 +1,101 @@
 #!/usr/bin/env zsh
 
 setopt aliases \
+  allexport \
   appendhistory \
   autocd \
+  autocontinue \
   autolist \
   automenu \
   autonamedirs \
   autoremoveslash \
+  autoresume \
+  badpattern \
   banghist \
+  bareglobqual \
+  bgnice \
+  bsdecho \
+  caseglob \
+  chaselinks \
+  checkjobs \
   completealiases \
   completeinword \
   correct \
-  correctall \
+  cshjunkieloops \
+  debugbeforecmd \
   equals \
+  exec \
   extendedglob \
+  flowcontrol \
+  glob \
+  globalrcs \
   globdots \
+  hashcmds \
+  hashdirs \
+  hashlistall \
   histignoredups \
+  hup \
+  listtypes \
+  longlistjobs \
+  markdirs \
+  monitor \
+  multibyte \
+  multifuncdef \
   multios \
+  notify \
+  nomatch \
+  promptbang \
+  promptcr \
+  promptsp \
+  promptpercent \
+  promptsubst \
+  rcs \
+  shortloops \
   vi \
   zle
 
-unsetopt bashautolist \
+unsetopt allexport \
+  bashautolist \
+  bashrematch \
   beep \
   caseglob \
+  cbases \
+  cdablevars \
+  chasedots \
+  clobber \
+  correctall \
+  cshjunkiehistory \
+  cshjunkiequotes \
   dvorak \
   emacs \
+  errexit \
+  errreturn \
   extendedhistory \
+  globassign \
+  globalexport \
   histbeep \
+  ksharrays \
+  kshautoload \
+  kshglob \
   listbeep \
+  localoptions \
+  localtraps \
+  mailwarning \
   menucomplete \
   nullglob \
-  verbose
+  overstrike \
+  pathdirs \
+  posixaliases \
+  posixbuiltins \
+  posixidentifiers \
+  sharehistory \
+  shglob \
+  shnullcmd \
+  shoptionletters \
+  shwordsplit \
+  singlelinezle \
+  trapsasync \
+  transientrprompt \
+  typesetsilent \
+  verbose \
+  xtrace

@@ -1,5 +1,0 @@
-update_interval 3
-
-TEXT
-^fg(\#d75756)${cpu}^fg(\#555)% ^bg(\#0d0d0d) ^fg(\#688c7d)${exec mem}^fg(\#555)MB ^bg() \
-^fg(\#ccc)${exec fuzzyclock} ^bg(\#0d0d0d) ${time %d}^fg(\#666)${time -%m-%y} ^bg() \

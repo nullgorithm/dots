@@ -1,39 +1,26 @@
 #!/usr/bin/env zsh
 
+precmd() { print -Pn "\e]0;%n@%M:%~\a" }
+
 # cd() { builtin cd "$@"; ls++ }
 mvf() { mv -v "$@"; cd "$@" }
 cpf() { cp -v "$@"; cd "$@" }
 mkf() { mkdir -v "$@"; cd "$@" }
 xfont() { xrdb -query | grep "font" }
 
-upf() { 
+upf() {
   mkfontdir "$HOME/.fonts"
   mkfontscale "$HOME/.fonts"
   fc-cache -v
 }
 
-lsd() {
-  vdir --human-readable --color --group-directories-first\
-    --indicator-style=slash
-}
-
-pkgs() {
-  print "There are $(tput setaf 3)$(pacman -Q | wc -l)$(tput sgr0)\
- packages installed in this system."
-}
-
-cfg() {
-  case "$1" {
-    'bspwm') { "$EDITOR" "${XDG_CONFIG_HOME}/bspwm/bspwmrc" } ;;
-    'infinality') { sudoedit "/etc/profile.d/infinality-settings.sh" } ;;
-    'ncmpcpp') { "$EDITOR" "${HOME}/.ncmpcpp/config" } ;;
-    'pacman') { sudoedit "/etc/pacman.conf" } ;;
-    'tmux') { "$EDITOR" "${HOME}/.tmux.conf" } ;;
-    'vim') { "$EDITOR" "${HOME}/.vimrc" } ;;
-    'x11') { sudoedit "/etc/X11/xorg.conf" } ;;
-    'xresources') { "$EDITOR" "${XDG_CONFIG_HOME}/X11/Xresources" } ;;
-    'xinit') { "$EDITOR" "${XDG_CONFIG_HOME}/X11/xinitrc" } ;;
-    'zsh') { "$EDITOR" "${HOME}/.zshrc" } ;;
-    *) { print "Unknown application ("$1")" } ;;
-  }
+man() {
+  env LESS_TERMCAP_mb=$'\E[01;31m' \
+  LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+  LESS_TERMCAP_me=$'\E[0m' \
+  LESS_TERMCAP_se=$'\E[0m' \
+  LESS_TERMCAP_so=$'\E[38;5;246m' \
+  LESS_TERMCAP_ue=$'\E[0m' \
+  LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+  man "$@"
 }

@@ -1,4 +1,0 @@
-update_interval 1
-
-TEXT
- ^fg(\#000)^r(1x15)^fg(\#444)^r(1x15)^bg(\#303030) ^fg(\#A94F3C)^i(/home/samus/dots/icons/world.xbm) ^fg(\#000)^r(1x15)^fg(\#444)^r(1x15)^fg(\#888)^bg(\#202020) “^fg()${exec tail -n1 ~/.todo/notes/todo.txt}^fg(\#888)” ^fg(\#000)^r(1x15)^fg(\#444)^r(1x15)\

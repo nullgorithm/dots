@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-[[ -n $(/usr/bin/ncmpcpp) ]] && mpd; /usr/bin/ncmpcpp || /usr/bin/ncmpcpp

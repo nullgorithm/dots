@@ -1,0 +1,22 @@
+*background:             #002b36
+*foreground:             #CCCCCC
+*cursorColor:            #DDDDDD
+*pointerColorBackground: #DDDDDD
+*pointerColorForeground: #303030
+
+*color0:  #073642 /* black */
+*color1:  #D25A5A /* red */
+*color2:  #859900 /* green */
+*color3:  #b58900 /* yellow */
+*color4:  #268bd2 /* blue */
+*color5:  #d33682 /* magenta */
+*color6:  #2aa198 /* cyan */
+*color7:  #CCCCCC /* white */
+*color8:  #1D434D /* bright black */
+*color9:  #EF7B7B /* bright red */
+*color10: #ADBB4B /* bright green */
+*color11: #E3BB3F /* bright yellow */
+*color12: #4DB5FF /* bright blue */
+*color13: #FF4DA3 /* bright magenta */
+*color14: #3DCCC1 /* bright cyan */
+*color15: #DDDDDD /* bright white */

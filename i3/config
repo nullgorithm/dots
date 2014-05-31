@@ -1,129 +1,156 @@
-# Mod key
+# Mod1 or Mod4
 set $mod Mod4
 
-# Font
-font pango:PragmataPro 7
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. ISO 10646 = Unicode
+font -misc-fixed-medium-r-normal--8-80-75-75-c-50-iso8859-1
+#font -lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1
+#font pango:Meslo LG L 7
 
-# Focus follows mouse?
+# should focus follow mouse?
 focus_follows_mouse yes
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# apps
+bindsym $mod+Return exec urxvt
+bindsym $mod+Shift+a exec pavucontrol
+bindsym $mod+b exec firefox
+bindsym $mod+f exec thunar
+bindsym $mod+g exec gcolor2
+bindsym $mod+F12 exec oblogout
+
 # kill focused window
 bindsym $mod+q kill
 
-# Applications
-bindsym $mod+p exec gmrun
-bindsym $mod+Return exec urxvtc
-bindsym $mod+b exec firefox
-bindsym $mod+g exec zenity --color-selection
+# start dmenu (a program launcher)
+bindsym $mod+p exec dmenu_run
+bindsym $mod+Shift+p exec i3-dmenu-desktop
 
-# Change focus
+# change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# Alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# Move focused window
+# move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# split in horizontal/vertical orientation
-bindsym $mod+s split v
-bindsym $mod+Shift+s split h
+# split in horizontal orientation
+bindsym $mod+equal split h
 
-# Enter fullscreen mode for the focused container
+# split in vertical orientation
+bindsym $mod+minus split v
+
+# enter fullscreen mode for the focused container
 bindsym $mod+Shift+f fullscreen
 
-# change container layout (stacked, tabbed, toggle split, floating)
+# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+F1 layout stacking
 bindsym $mod+F2 layout tabbed
 bindsym $mod+F3 layout toggle split
-bindsym $mod+f floating toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# Focus the parent container
+# focus the parent container
 bindsym $mod+a focus parent
 
-# Focus the child container
-#bindsym $mod+d focus child
+# focus the child container
+bindsym $mod+d focus child
 
-# Switch to workspace
-bindsym $mod+1 workspace un
-bindsym $mod+2 workspace deux
-bindsym $mod+3 workspace trois
-bindsym $mod+4 workspace quatre
-bindsym $mod+5 workspace cinq
+# switch to workspace
+bindsym $mod+1 workspace I
+bindsym $mod+2 workspace II
+bindsym $mod+3 workspace III
+bindsym $mod+4 workspace IV
+bindsym $mod+5 workspace V
+bindsym $mod+6 workspace VI
+bindsym $mod+7 workspace VII
+bindsym $mod+8 workspace VIII
+bindsym $mod+9 workspace IX
+bindsym $mod+0 workspace X
 
-# Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace un
-bindsym $mod+Shift+2 move container to workspace deux
-bindsym $mod+Shift+3 move container to workspace trois
-bindsym $mod+Shift+4 move container to workspace quatre
-bindsym $mod+Shift+5 move container to workspace cinq
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace I
+bindsym $mod+Shift+2 move container to workspace II
+bindsym $mod+Shift+3 move container to workspace III
+bindsym $mod+Shift+4 move container to workspace IV
+bindsym $mod+Shift+5 move container to workspace V
+bindsym $mod+Shift+6 move container to workspace VI
+bindsym $mod+Shift+7 move container to workspace VII
+bindsym $mod+Shift+8 move container to workspace VIII
+bindsym $mod+Shift+9 move container to workspace IX
+bindsym $mod+Shift+0 move container to workspace X
 
-# Reload the configuration file
-bindsym $mod+Shift+r reload
+# reload the configuration file
+bindsym $mod+Shift+c reload
 
-# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# Exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Resize window (you can also use the mouse for that)
+# resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        bindsym h resize shrink width 1 px or 1 ppt
-        bindsym j resize grow height 1 px or 1 ppt
-        bindsym k resize shrink height 1 px or 1 ppt
-        bindsym l resize grow width 1 px or 1 ppt
+  bindsym h resize shrink width 1 px or 1 ppt
+  bindsym j resize grow height 1 px or 1 ppt
+  bindsym k resize shrink height 1 px or 1 ppt
+  bindsym l resize grow width 1 px or 1 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 1 px or 1 ppt
-        bindsym Down resize grow height 1 px or 1 ppt
-        bindsym Up resize shrink height 1 px or 1 ppt
-        bindsym Right resize grow width 1 px or 1 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 bindsym $mod+u mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-        # status_command i3status -c ~/.i3/i3bar
-        # position          top
-        # workspace_buttons yes
-        # tray_output       primary
-        # colors {
-        # background #151515
-        # statusline #afafaf
-        # focused_workspace  #313131 #313131 #cccccc
-        # active_workspace   #ffffff #333333
-        # inactive_workspace #212121 #212121 #656565
-        # urgent_workspace   #ffffff #dddddd #900000
-    # }
-# }
+# scratchpad
+bindsym $mod+bracketleft scratchpad show
+bindsym $mod+Shift+bracketleft move scratchpad
 
-## Window border style
-new_window 2pixel
+# Looks
+bar {
+  status_command ~/.i3/i3conky
+  position top
+  workspace_buttons yes
+  tray_output primary
+  colors {
+    background #002b36
+    separator #1D434D
+    focused_workspace #D25A5A #D25A5A #EEEEEE
+    active_workspace #D25A5A #D25A5A #BBBBBB
+    inactive_workspace #002b36 #002b36 #BBBBBB
+    urgent_workspace #d33682 #d33682 #fdf6e3
+  }
+}
 
-# Class                     Border      Backgr.     Text        Indicator
-client.focused              #033747     #033747     #121212     #586e75
-client.focused_inactive     #202020     #202020     #505050     #073642
-client.unfocused            #202020     #202020     #353535     #073642
+new_window pixel 1
+hide_edge_borders both
+
+client.focused          #586E74 #586E74 #fdf6e3 #586E74
+client.focused_inactive #073642 #073642 #eee8d5 #073642
+client.unfocused        #073642 #073642 #93a1a1 #073642
+client.urgent           #d33682 #d33682 #fdf6e3 #d33682
+
+# rules
+assign [instance="firefox"] → II
+
+for_window [instance="oblogout"] floating enable
+for_window [instance="thunar"] floating enable
+for_window [instance="sxiv"] floating enable
+for_window [instance="pavucontrol"] floating enable
+for_window [instance="lxappearance"] floating enable
+for_window [instance="gcolor2"] floating enable
+
+# auto start
+exec urxvt
+exec i3-msg 'workspace II; exec firefox; workspace I'
