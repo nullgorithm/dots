@@ -1,0 +1,63 @@
+#!/usr/bin/env zsh
+
+. statusbar_settings
+
+# Functions {{{
+icon() {
+  iconpath="${HOME}/dots/icons"
+  print "^bg(${c_bg})^fg(#305660)⮂^bg(#305660) ^fg()^i(${iconpath}/$1.xbm) ^fg(${c_bg})⮂^fg()^bg(${c_bg})"
+}
+
+x_date() {
+  print "`icon clock1 ${c_green}` `date +'%a'` ^fg(${c_fg2})`date +'%d %b'` ^fg(${c_fg3})⮃ ^fg()`date +'%H:%M'`"
+}
+
+x_mpd() {
+  mpd_format=`mpc current --format "%title% - %artist%" 2>/dev/null`
+  [[ -z ${mpd_format} ]] && mpd_format="nothing to see here"
+  print "`icon note1 ${c_blue}` ${mpd_format} ^fg(${c_fg2})(`get_volume`)"
+}
+
+x_mem() {
+  print "`icon memory ${c_green}` `awk '/^-/ {print $3}' <(free -m)`^fg(${c_fg2})M"
+}
+
+x_cpu() {
+  set -- `cat /proc/loadavg`
+  print "`icon cpu ${c_yellow}` $1 ^fg(${c_fg2})$2 $3"
+}
+
+x_bat() {
+  bat=`acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g'`
+  bat_status=`acpi -b | sed 's/.*: \([a-zA-Z]*\),.*/\1/gi'`
+  case "${bat}" {
+    [0-9]) { bat_icon="battery_horz1" } ;;
+    [7]*|[8]*|[9]*|100) { bat_icon="battery_horz3" } ;;
+    [6]*|[5]*|[4]*) { bat_icon="battery_horz2" } ;;
+    [3]*|[2]*|[1]*) { bat_icon="battery_horz1" } ;;
+  }
+  [[ ${bat_status} != "Discharging" ]] && bat_icon="ac2"
+  print "`icon ${bat_icon} ${c_red}` ${bat}^fg(${c_fg2})%"
+}
+
+x_wifi() {
+  interface="wlp2s0"
+  quality=`iwconfig ${interface} | grep "Link Quality" | awk '{gsub(/[=/]/," "); print $3}'`
+  quality_max=`iwconfig ${interface} | grep "Link Quality" | awk '{gsub(/[=/]/," "); print $4}'`
+  essid=`iwgetid -r`
+  if [[ -z ${essid} ]] && wifi="not connected" || wifi="${essid} ${quality}^fg(${c_fg2})/${quality_max}"
+  print "`icon wifi ${c_magenta}` ${wifi}"
+}
+
+x_kbmap() {
+  layout=`setxkbmap -print | awk -F "+" '/xkb_symbols/ {print $2}' | tr 'a-z' 'A-Z'`
+  print "^bg()^fg(${c_bg3})⮂^bg(${c_bg3})^fg(${c_fg2}) ${layout} "
+}
+# }}}
+
+# Spawn the bar {{{
+while true; do
+  print "`x_cpu` `x_mem` `x_bat` `x_wifi` `x_mpd` `x_date` `x_kbmap`"
+  sleep 3s
+done | exec dzen2 -fn ${font} -ta r -w ${res_width} -bg ${c_bg} -fg ${c_fg} -h ${bar_height}
+# }}}

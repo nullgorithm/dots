@@ -1,0 +1,29 @@
+#!/usr/bin/env zsh
+
+if [[ "$#" -eq 0 ]] {
+  print "Usage: ${0##*/} PICTURES"
+  exit 2
+}
+
+[[ "$1" == '--' ]] && shift
+
+abspath() {
+  case "$1" {
+    /*) { printf "%s\n" "$1" } ;;
+    *)  { printf "%s\n" "$PWD/$1" } ;;
+  }
+}
+
+listfiles() {
+  find -L `dirname "${target}"` -maxdepth 1 -type f -iregex\
+    '.*\(jpe?g\|bmp\|png\|gif\)$' -print0 | sort -z
+}
+
+target=`abspath "$1"`
+count=`listfiles | grep -m 1 -ZznF "${target}" | cut -d: -f1`
+
+if [[ -n "${count}" ]] {
+  listfiles | xargs -0 sxiv -n "${count}" --
+} else {
+  sxiv -- "$@" # fallback
+}

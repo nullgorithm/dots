@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+
+font="tewi:size=9"
+bar_height=14
+res_width=`xdpyinfo | grep "dimensions" | awk '{print $2}' | awk -Fx '{print $1}'`
+res_height=`xdpyinfo | grep "dimensions" | awk '{print $2}' | awk -Fx '{print $2}'`
+
+c_bg="#002b36"
+c_bg2="#073642"
+c_bg3="#1D434D"
+c_fg="#acc1c6"
+c_fg2="#55767F"
+c_fg3="#325963"
+c_red="#D25A5A"
+c_green="#859900"
+c_yellow="#b58900"
+c_blue="#268bd2"
+c_magenta="#d33682"
+c_cyan="#2aa198"
+c_white="#e8eaed"

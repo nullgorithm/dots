@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+main() {
+  local ARGS=
+  local FONT=
+  [[ "$@" != *-fn ]] && FONT="tewi-9"
+  [[ "$@" != *-nb ]] && ARGS="$ARGS -nb #073642"
+  [[ "$@" != *-nf ]] && ARGS="$ARGS -nf #AEC6CC"
+  [[ "$@" != *-sb ]] && ARGS="$ARGS -sb #4C6E77"
+  [[ "$@" != *-sf ]] && ARGS="$ARGS -sf #CEE6EC"
+  [[ -n "$FONT" ]] && {
+    /usr/bin/dmenu -b -fn "$FONT" $ARGS "$@"; return;
+  } || { /usr/bin/dmenu $ARGS "$@"; return; }
+}
+
+main "$@"

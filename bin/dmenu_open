@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+folders=(
+  ~/junk
+  ~/vids
+  ~/img
+  ~/docs
+)
+
+find ${folders} | sed 's/ /\\ /g' | sort --ignore-case | dmenu -i -l 15 -p "open:" | xargs exo-open

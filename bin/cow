@@ -1,14 +1,15 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
-cd $HOME/junk/compilation && cower -d "$1"
+cd $HOME/compile && cower --download "$1"
 builddir="$_"
-cd "$builddir" && ${EDITOR:-vim} PKGBUILD
+cd "${builddir}" && ${EDITOR:-nano} PKGBUILD
 makepkg -sic && cd - &>/dev/null
 
-    read -p "Remove Build directory? [Y/n]? " yn
-    if [ "$yn" = "y" ]; then
-        printf "\n%s\n" "Removing build directory..."
-        rm -rf "$builddir"
-    else
-        printf "%s\n" "Build completed."
-    fi
+print "Remove build directory? [Y/n]"
+read "$yn"
+if [[ "$yn" = "y" ]] {
+  print "Removing build directory..."
+  rm -rf "$builddir"
+} else {
+  print "Build completed."
+}

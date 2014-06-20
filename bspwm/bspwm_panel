@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+
+. statusbar_settings
+bspc config top_padding $bar_height
+
+b_workspaces() {
+  NORMIFS=$IFS
+  FIELDIFS=":"
+  PADDING="  "
+  while read -r line; do
+    case $line in
+      W*)
+        wm_infos="$PADDING"
+        IFS=$FIELDIFS
+        set -- ${line#?}
+        while [ $# -gt 0 ]; do
+          item=$1
+          case $item in
+            [OoFfUu]*)
+              name=${item#?}
+              case $item in
+                O*)
+                  # focused occupied desktop
+                  FG=$c_fg
+                  BG=#544C45
+                  wm_infos="$wm_infos^fg(${FG})*^fg()$PADDING"
+                  ;;
+                F*)
+                  # focused free desktop
+                  FG=$c_fg
+                  BG=#544C45
+                  wm_infos="$wm_infos^fg(${FG})-^fg()$PADDING"
+                  ;;
+                U*)
+                  # focused urgent desktop
+                  FG=$c_fg
+                  BG=#544C45
+                  ;;
+                o*)
+                  # occupied desktop
+                  FG=$c_fg2
+                  BG=#2B2825
+                  wm_infos="$wm_infos^fg(${FG})+^fg()$PADDING"
+                  ;;
+                f*)
+                  # free desktop
+                  FG=$c_fg3
+                  BG=#2B2825
+                  wm_infos="$wm_infos^fg(${FG})-^fg()$PADDING"
+                  ;;
+                u*)
+                  # urgent desktop
+                  FG=$c_red
+                  BG=#DDCCBB
+                  ;;
+              esac
+            #wm_infos="$wm_infos^ca(1, bspc desktop --focus $name)^ca(2, bspc window --to-desktop $name)^fg($FG)$name^fg()$PADDING^ca()^ca()"
+            ;;
+            esac
+            shift
+          done
+        IFS=$NORMIFS
+      ;;
+    esac
+    printf "%s\n" "$wm_infos"
+  done
+}
+
+b_button="^bg($c_fg2)^fg($c_bg)⮀ ^ca(1, 9menu)^fg($c_bg)^i($HOME/dots/icons/arch2.xbm) ^ca()^bg($c_bg)^fg($c_fg2)⮀"
+
+while true; do
+  bspc control --get-status | echo "$b_button$(b_workspaces)$(window_name 50)"
+  sleep 1s
+done | dzen2 -fn $font -h $bar_height -ta left -bg $c_bg -fg $c_fg -dock -expand right

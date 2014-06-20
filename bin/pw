@@ -1,0 +1,74 @@
+#!/usr/bin/env zsh
+# Dependencies: hdparm | xorg-xbacklight | xorg-xset
+
+if [[ "$UID" != 0 ]] {
+  print "Run this script as root."
+  exit 1
+}
+
+BRIGHTNESS="0"
+WIFI_CARD="wlp2s0"
+
+case "$1" {
+  "on")
+    # Monitor powersave
+    xbacklight -set ${BRIGHTNESS}
+    xset +dpms
+    xset dpms 0 0 120
+    # Bus
+    for i ( /sys/bus/*/devices/*/power/control ) { print "auto" > ${i} }
+    # USB autosuspend
+    for i ( /sys/bus/usb/devices/*/power/autosuspend ) { print 1 > ${i} }
+    for i ( /sys/bus/usb/devices/*/power/control ) { print "auto" > ${i} }
+    # CPU
+    for i ( /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor ) { print "powersave" > ${i} }
+    # aspm
+    print "powersave" > /sys/module/pcie_aspm/parameters/policy
+    # Kernel write mode
+    print 5 > /proc/sys/vm/laptop_mode
+    print 90 > /proc/sys/vm/dirty_ratio
+    print 1 > /proc/sys/vm/dirty_background_ratio
+    print 60000 > /proc/sys/vm/dirty_expire_centisecs
+    print 60000 > /proc/sys/vm/dirty_writeback_centisecs
+    # HDD powersave
+    hdparm -S 6 -B 254 -a 2048 /dev/sda &>/dev/null
+    for i ( /sys/class/scsi_host/host*/link_power_management_policy ) { print "min_power" > ${i} }
+    # Sound card powersave
+    print 1 > /sys/module/snd_hda_intel/parameters/power_save
+    print "Y" > /sys/module/snd_hda_intel/parameters/power_save_controller
+    # Wifi powersave
+    iw dev ${WIFI_CARD} set power_save on &>/dev/null
+    ;;
+  "off")
+    # Monitor powersave
+    xbacklight -set 100
+    xset -dpms
+    # Bus
+    for i ( /sys/bus/*/devices/*/power/control ) { print "on" > ${i} }
+    # USB autosuspend
+    for i ( /sys/bus/usb/devices/*/power/autosuspend ) { print 600 > ${i} }
+    for i ( /sys/bus/usb/devices/*/power/control ) { print "auto" > ${i} }
+    # CPU
+    #for i ( /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor ) { print "ondemand" > ${i} }
+    # aspm
+    print "default" > /sys/module/pcie_aspm/parameters/policy
+    # kernel write mode
+    print 0 > /proc/sys/vm/laptop_mode
+    print 30 > /proc/sys/vm/dirty_ratio
+    print 30 > /proc/sys/vm/dirty_background_ratio
+    print 600 > /proc/sys/vm/dirty_expire_centisecs
+    print 600 > /proc/sys/vm/dirty_writeback_centisecs
+    # HDD powersave
+    hdparm -S 0 -B 254 -a 2048 /dev/sda &>/dev/null
+    for i ( /sys/class/scsi_host/host*/link_power_management_policy ) { print max_performance > ${i} }
+    # Sound card powersave
+    print 0 > /sys/module/snd_hda_intel/parameters/power_save
+    print "Y" > /sys/module/snd_hda_intel/parameters/power_save_controller
+    # Wifi powersave
+    iw dev ${WIFI_CARD} set power_save off &>/dev/null
+    ;;
+  *)
+    print "Valid arguments are \"on\" and \"off\"."
+    exit 2
+    ;;
+}

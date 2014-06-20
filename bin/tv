@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+laptop="LVDS1"
+screen="HDMI1"
+external=`xrandr --query | awk '/HDMI1/ {print $2}'`
+
+if [[ "${external}" == "connected" ]] {
+  xrandr --output "${laptop}" --auto --primary \
+    --output "${screen}" --auto --right-of "${laptop}"
+  print "turning on ${screen}"
+} else {
+  xrandr --output "${laptop}" --auto \
+    --output "${screen}" --off
+  print "resetting ${laptop}"
+}
