@@ -1,13 +1,12 @@
-" vim: ft=vim noexpandtab ts=2 sw=2:
+" vim: ft=vim:
 
 " Options {{{
-colorscheme watchmen
-
+colorscheme soleil
 set activate=all
 set noanimations
 set autocomplete=true
-set complete=slh
-set defsearch=google
+set complete=lh
+set defsearch=duckduckgo
 set noerrorbells
 set followhints=1
 set nofullscreen
@@ -27,34 +26,34 @@ set shellcmdflag=-c
 set showmode
 set showstatuslinks=1
 set smartcase
-set status=input,location,bookmark,tabcount,history
+set status=input,location,bookmark,position,history
 set verbose=0
 set novisualbell
 set wildmode=list:full
 " }}}
+
 " Keybindings {{{
 let mapleader=";"
 let g:smooziee_scroll_amount="85"
 
 nnoremap <silent> <leader>gg :googleUrlShortener<CR>
-nnoremap <silent> <F1>	:tabgroups switch 1<CR>
-nnoremap <silent> <F2>	:tabgroups switch 2<CR>
-nnoremap <silent> <F3>	:tabgroups switch 3<CR>
-nnoremap <silent> <F4>	:tabgroups switch 4<CR>
+nnoremap <silent> <F1>  :tabgroups switch 1<CR>
+nnoremap <silent> <F2>  :tabgroups switch 2<CR>
+nnoremap <silent> <F3>  :tabgroups switch 3<CR>
+nnoremap <silent> <F4>  :tabgroups switch 4<CR>
 nnoremap <silent> <F12> :source ~/.vimperatorrc<CR>
-nnoremap <silent> $			:blast<CR>
-nnoremap <silent> ^			:bfirst<CR>
-nnoremap <silent> d			:tabclose!<CR>
-" nnoremap					j			10j
-nnoremap <silent> J			:tabnext<CR>
-nnoremap					<C-j> 20j
-" nnoremap					k			10k
-nnoremap <silent> K			:tabprev<CR>
-nnoremap					<C-k> 20k
-nnoremap					q			<Esc>
-nnoremap <silent> Q			:quitall
+nnoremap <silent> $     :blast<CR>
+nnoremap <silent> ^     :bfirst<CR>
+nnoremap <silent> d     :tabclose!<CR>
+nnoremap <silent> J     :tabnext<CR>
+nnoremap          <C-j> 20j
+nnoremap <silent> K     :tabprev<CR>
+nnoremap          <C-k> 20k
+nnoremap          q     <Esc>
+nnoremap <silent> Q     :quitall
 nnoremap <silent> <C-q> :xall
 " }}}
+
 " Firefox options {{{
 set! accessibility.typeaheadfind.autostart='false'
 set! accessibility.typeaheadfind='false'
@@ -63,7 +62,7 @@ set! browser.download.dir='~/junk'
 set! browser.fullscreen.animateUp=0
 set! browser.newtabpage.columns=4
 set! browser.newtabpage.rows=4
-set! browser.startup.homepage='file:///home/samus/dots/startpage/startpage.html'
+set! browser.startup.homepage='about:blank'
 set! browser.tabs.animate='false'
 set! browser.tabs.closeWindowWithLastTab='false'
 " }}}
