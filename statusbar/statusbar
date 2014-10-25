@@ -14,7 +14,7 @@ x_date() {
 
 x_mpd() {
   mpd_format=`mpc current --format "%title% - %artist%" 2>/dev/null`
-  [[ -z ${mpd_format} ]] && mpd_format="nothing to see here"
+  [[ -z ${mpd_format} ]] && mpd_format="not playing"
   print "`icon note1 ${c_blue}` ${mpd_format} ^fg(${c_fg2})(`get_volume`)"
 }
 
@@ -45,7 +45,7 @@ x_wifi() {
   quality=`iwconfig ${interface} | grep "Link Quality" | awk '{gsub(/[=/]/," "); print $3}'`
   quality_max=`iwconfig ${interface} | grep "Link Quality" | awk '{gsub(/[=/]/," "); print $4}'`
   essid=`iwgetid -r`
-  if [[ -z ${essid} ]] && wifi="not connected" || wifi="${essid} ${quality}^fg(${c_fg2})/${quality_max}"
+  [[ -z ${essid} ]] && wifi="not connected" || wifi="${essid} ${quality}^fg(${c_fg2})/${quality_max}"
   print "`icon wifi ${c_magenta}` ${wifi}"
 }
 

@@ -5,13 +5,8 @@ ZSH="${HOME}/etc/zsh"
 
 # Debug mode
 DEBUG=0
-debug() {
-  [[ "$DEBUG" > 0 ]] && print "\e[0;34m DEBUG:\e[m $1";
-}
-
-error() {
-  print "\e[0;31m ERROR:\e[m $1";
-}
+debug() { [[ "${DEBUG}" > 0 ]] && print "\e[0;34m DEBUG:\e[m $1"; }
+error() { print "\e[0;31m ERROR:\e[m $1"; }
 
 # Source files
 for f in ${ZSH}/*.zsh; do
@@ -22,7 +17,9 @@ done
 # LS_COLORS
 [[ -f ${ZSH}/LS_COLORS ]] && eval $( dircolors -b ${ZSH}/LS_COLORS ) || return 0
 
-# fortune-mod
-# print "\n $(fortune)\n"
+if [[ -z "$DISPLAY" ]] {
+  PS1="> "
+}
 
-[[ -z $DISPLAY ]] && startx &>/dev/null || return 0
+# fortune-mod
+#print "\n $(fortune)\n"

@@ -1,7 +1,3 @@
-" Vim own options {{{
-set laststatus=2
-set noshowmode
-" }}}
 " Functions {{{
 function! FileSize()
   let bytes = getfsize(expand("%:p"))
@@ -21,10 +17,10 @@ function! SetStatusLeaveBuffer()
 endfunction
 au BufLeave * call SetStatusLeaveBuffer()
 
-au VimEnter     * call SetStatusInsertMode('normal')
-au InsertEnter  * call SetStatusInsertMode(v:insertmode)
-au InsertLeave  * call SetStatusInsertMode('normal')
-au BufEnter     * call SetStatusInsertMode('normal')
+au VimEnter    * call SetStatusInsertMode('normal')
+au InsertEnter * call SetStatusInsertMode(v:insertmode)
+au InsertLeave * call SetStatusInsertMode('normal')
+au BufEnter    * call SetStatusInsertMode('normal')
 
 function! StatusExpandtabON()
   if &expandtab
@@ -117,7 +113,7 @@ function! SetStatusInsertMode(mode)
 endfunction 
 
 function! SetStatus()
-  setl statusline+=%4*\ %n\ %3*\ %F%H%M%R%W\ %4*\ %Y\ 
+  setl statusline+=%3*\ %F%H%M%R%W\ %4*\ %Y\ %9*\ %{FileSize()}
 endfunction
 
 function! SetRightStatus()
@@ -136,17 +132,17 @@ endfunction
 
 let g:NCstatusline='%3*%f'
 " }}}
-" Colors {{{
-hi User1 ctermfg=233          ctermbg=yellow      cterm=none guifg=#151515 guibg=#9B8D74
-hi User2 ctermfg=233          ctermbg=green       cterm=bold guifg=#151515 guibg=#598A76
-hi User3 ctermfg=251          ctermbg=000         cterm=none guifg=#ddddee guibg=#202020
-hi User4 ctermfg=015          ctermbg=008         cterm=none guifg=#606060 guibg=#282828
-hi User5 ctermfg=007          ctermbg=008         cterm=none guifg=#505050 guibg=#282828
-hi User6 ctermfg=015          ctermbg=008         cterm=none guifg=#F1F1BC guibg=#282828
-hi User7 ctermfg=235          ctermbg=255         cterm=none guifg=#151515 guibg=#eeeeee
-hi User8 ctermfg=black        ctermbg=239         cterm=none
-hi User9 ctermfg=007          ctermbg=235         cterm=none
 
-hi! StatusLine                ctermbg=000 ctermfg=234 cterm=none
-hi! StatusLineNC              ctermbg=000 ctermfg=232 cterm=none
+" Colors {{{
+hi User1 ctermfg=000 ctermbg=012 cterm=none guifg=#151515 guibg=#9B8D74
+hi User2 ctermfg=233 ctermbg=002 cterm=bold guifg=#151515 guibg=#598A76
+hi User3 ctermfg=251 ctermbg=000 cterm=none guifg=#ddddee guibg=#202020
+hi User4 ctermfg=015 ctermbg=008 cterm=none guifg=#606060 guibg=#282828
+hi User5 ctermfg=007 ctermbg=008 cterm=none guifg=#505050 guibg=#282828
+hi User6 ctermfg=015 ctermbg=008 cterm=none guifg=#F1F1BC guibg=#282828
+hi User7 ctermfg=235 ctermbg=255 cterm=none guifg=#151515 guibg=#eeeeee
+hi User8 ctermfg=008 ctermbg=239 cterm=none
+hi User9 ctermfg=007 ctermbg=000 cterm=none
+hi! StatusLine       ctermbg=000 ctermfg=234 cterm=none
+hi! StatusLineNC     ctermbg=000 ctermfg=232 cterm=none
 " }}}

@@ -1,28 +1,29 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
-export _XINIT_WM="${@-"openbox"}"
-
+export _XINIT_WM="${@-"bspwm"}"
 eval `dbus-launch --sh-syntax --exit-with-session`
 
+autostart() {
+  while ! killall -0 "$_XINIT_WM"; do sleep 1; done
+  nitrogen --restore &
+  xcmenu --daemon &
+  unclutter -root -idle 2 &
+  xmodmap "$XDG_CONFIG_HOME/X11/xmodmaprc" &
+  #redshift -l 21:51 -m randr &
+  #compton -b
+}
+
+autokill() {
+  #killall redshift
+  killall xcmenu
+  killall unclutter
+}
+
 setxkbmap -layout br
-setxkbmap -option terminate:ctrl_alt_bksp
-setxkbmap -option compose:rwin
 xset r rate 340 40
-xset b off
-xset s off
-xset -dpms
 xsetroot -cursor_name left_ptr
-xrdb -load "$HOME/etc/X11/Xresources"
-xrdb -merge "$HOME/etc/X11/colortheme"
-xmodmap "$HOME/etc/X11/xmodmaprc" &
+xrdb -load "$XDG_CONFIG_HOME/X11/Xresources"
 
-autocutsel -fork &
-unclutter -root -idle 2 &
-nitrogen --restore &
-
-if [ "$_XINIT_WM" == "openbox" ]; then
-  tint2 &
-  compton -b &
-fi
-
-$_XINIT_WM
+autostart &
+$_XINIT_WM &>/dev/null
+autokill; sleep 1

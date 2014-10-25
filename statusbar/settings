@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-font="tewi:size=9"
-bar_height=14
+font="lemon:size=8"
+bar_height=12
 res_width=`xdpyinfo | grep "dimensions" | awk '{print $2}' | awk -Fx '{print $1}'`
 res_height=`xdpyinfo | grep "dimensions" | awk '{print $2}' | awk -Fx '{print $2}'`
 

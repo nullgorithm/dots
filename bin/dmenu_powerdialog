@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+cmd=`print "Lock\nShutdown\nReboot\nSuspend" | dmenu`
+
+case "$cmd" {
+  "Lock" ) { i3lock -c 073642 } ;;
+  "Shutdown") { systemctl poweroff } ;;
+  "Reboot") { systemctl reboot } ;;
+  "Suspend") { systemctl suspend } ;;
+}

@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+SELECTED=`grep "<bookmark href=" ~/.local/share/recently-used.xbel | sort -r -k4 | cut -d "/" -f3- | cut -d "\"" -f1 | sed -e's/%\([0-9A-F][0-9A-F]\)/\\\\\x\1/g' | xargs -I @ echo -e @ | dmenu -p "recent files" -i -l 10`
+[[ -z "$SELECTED" ]] && exit
+xdg-open "$SELECTED"

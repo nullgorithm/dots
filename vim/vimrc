@@ -15,7 +15,7 @@ Plugin 'gmarik/vundle'
 " original repos on GitHub
 "Plugin 'Shougo/neocomplcache.vim'
 "Plugin 'bling/vim-airline'
-Plugin 'itchyny/lightline.vim'
+Plugin 'lokaltog/vim-powerline'
 Plugin 'scrooloose/syntastic'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
@@ -31,11 +31,6 @@ syntax on
 set t_Co=256
 let g:hybrid_use_Xresources=1
 colorscheme hybrid
-
-if $TERM == 'linux'
-  set t_Co=8
-  set nolist
-endif
 
 if has('gui_running')
   set guifont=Meslo\ LG\ M\ for\ Powerline\ 8
@@ -105,6 +100,12 @@ set virtualedit=all
 set wildmenu
 set wildmode=list:longest,full
 set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g,.git,.svn,*.so,.hg
+
+if $TERM == 'linux'
+  set t_Co=8
+  set nolist
+  set laststatus=0
+endif
 " }}}
 " Autocmds {{{
 if has("autocmd")
@@ -115,4 +116,5 @@ endif
 " Sources {{{
 source ~/etc/vim/user/plugins.vim
 source ~/etc/vim/user/keybindings.vim
+"source ~/etc/vim/user/statusline.vim
 " }}}

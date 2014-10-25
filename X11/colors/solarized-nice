@@ -1,5 +1,5 @@
 *background:             #002b36
-*foreground:             #CCCCCC
+*foreground:             #BBBBBB
 *cursorColor:            #DDDDDD
 *pointerColorBackground: #DDDDDD
 *pointerColorForeground: #303030
@@ -11,7 +11,7 @@
 *color4:  #268bd2 /* blue */
 *color5:  #d33682 /* magenta */
 *color6:  #2aa198 /* cyan */
-*color7:  #CCCCCC /* white */
+*color7:  #55767F /* white */
 *color8:  #1D434D /* bright black */
 *color9:  #EF7B7B /* bright red */
 *color10: #ADBB4B /* bright green */
@@ -19,4 +19,17 @@
 *color12: #4DB5FF /* bright blue */
 *color13: #FF4DA3 /* bright magenta */
 *color14: #3DCCC1 /* bright cyan */
-*color15: #DDDDDD /* bright white */
+*color15: #AFC1C6 /* bright white */
+
+!*color1: #6673BF
+!*color9: #899AFF
+!*color2: #3EA290
+!*color10: #52AD91
+!*color3: #B0EAD9
+!*color11: #98C9BB
+!*color4: #31658C
+!*color12: #477AB3
+!*color5: #596196
+!*color13: #7882BF
+!*color6: #8292B2
+!*color14: #95A7CC

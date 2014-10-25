@@ -1,0 +1,135 @@
+#!/usr/bin/env bash
+
+bar_font1="-lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1"
+#bar_font1="-benis-lemon-medium-r-normal--10-110-75-75-m-50-iso8859-1"
+#bar_font1="-misc-fixed-medium-r-normal--10-100-75-75-c-60-iso10646-1"
+bar_font2="-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+bar_height=12
+bar_edge_gap=0
+bar_underline_thickness=2
+screen_width="$((`xdpyinfo | grep "dimensions" | awk '{print $2}' | awk -Fx '{print $1}'` - (${bar_edge_gap} * 2)))"
+bar_geometry="${screen_width}x${bar_height}+${bar_edge_gap}+${bar_edge_gap}"
+
+c_bg="#ff002b36"
+c_bg2="#ff073642"
+c_bg3="#ff1d434d"
+c_fg="#ffacc1c6"
+c_fg2="#ff55767F"
+c_fg3="#ff325963"
+c_transparent="#00000000"
+
+bspc config top_padding "$((${bar_height} + (${bar_edge_gap} * 2)))"
+
+b_workspaces() {
+  while read -r line; do
+    case $line in
+      W*)
+        IFS=":"
+        set -- ${line#?}
+        while [[ $# -gt 0 ]]; do
+          item=$1
+          case $item in
+            [OoFfUu]*)
+              name=${item#?}
+              case $item in
+                O*)
+                  # focused occupied desktop
+                  FG=$c_fg
+                  BG=$c_bg
+                  wm_infos="$wm_infos%{F$c_fg}%{U${c_fg}}%{+u} * %{-u}"
+                  ;;
+                F*)
+                  # focused free desktop
+                  FG=$c_fg
+                  BG=$c_bg
+                  wm_infos="$wm_infos%{F$c_fg}%{U${c_fg}}%{+u} - %{-u}"
+                  ;;
+                U*)
+                  # focused urgent desktop
+                  FG=$c_fg
+                  BG=$c_bg
+                  ;;
+                o*)
+                  # occupied desktop
+                  FG=$c_fg2
+                  BG=$c_bg
+                  wm_infos="$wm_infos%{F$c_fg2} + "
+                  ;;
+                f*)
+                  # free desktop
+                  FG=$c_fg3
+                  BG=$c_bg
+                  wm_infos="$wm_infos%{F$c_fg3} - "
+                  ;;
+                u*)
+                  # urgent desktop
+                  FG=$c_red
+                  BG=$c_bg
+                  ;;
+              esac
+              #wm_infos="$wm_infos%{F${FG}}%{B${BG}}$name"
+              ;;
+            L*)
+              layout=`printf "%s" "${item#?}" | sed 's/^\(.\).*/\U\1/'`
+              #wm_infos=" ${wm_infos}%{F${c_fg2}}%{U${c_fg2}}%{+u} ${layout} %{-u}"
+              ;;
+          esac
+          shift
+        done
+      ;;
+    esac
+    printf "%s\n" "$wm_infos"
+  done
+}
+
+b_battery() {
+  bat_level=`acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g'`
+  bat_status=`acpi -b | awk '{gsub(/,/,""); print $3}'`
+
+  case "$bat_level" in
+    [0-9]) bat_icon="\uE038" ;;
+    [7]*|[8]*|[9]*|100) bat_icon="\uE03B" ;;
+    [6]*|[5]*|[4]*) bat_icon="\uE03A" ;;
+    [3]*|[2]*|[1]*) bat_icon="\uE039" ;;
+  esac
+
+  case "$bat_level" in
+    [0-9]) bat_level="%{U#FFFF5050}%{+u}${bat_level}" ;;
+  esac
+
+  if [[ $bat_status != "Discharging" ]]; then
+    bat_icon="\uE042"
+  else
+    bat_icon="$bat_icon"
+  fi
+
+  echo "%{F${c_fg2}}$bat_icon %{F${c_fg}}${bat_level}%%%{-u}"
+}
+
+b_wifi() {
+  interface="wlp2s0"
+  quality=`iwconfig ${interface} | grep "Link Quality" | awk '{gsub(/[=/]/," "); print $3}'`
+  quality_max=`iwconfig ${interface} | grep "Link Quality" | awk '{gsub(/[=/]/," "); print $4}'`
+  essid=`iwgetid -r`
+
+  case $quality in
+    [1]*|[2]*|[3]*) wifi_icon="\uE049" ;;
+    [4]*|[5]*) wifi_icon="\uE04A" ;;
+    [6]*|70) wifi_icon="\uE04B" ;;
+  esac
+
+  [[ -z $essid ]] && wifi="%{F${c_fg}}not connected" || wifi="%{F${c_fg2}}$wifi_icon %{F${c_fg}}$essid"
+  echo "$wifi"
+}
+
+b_date() {
+  echo -e "%{F${c_fg2}}\uE0A2 %{F${c_fg}}`date +'%a %H:%M'`"
+}
+
+while true; do
+  bspc control --get-status | echo -e "%{B${c_bg}}%{l} `window_name 150 2> /dev/null` %{B-}%{c}\
+%{F$c_fg}%{B$c_bg} `b_workspaces` %{B-}\
+%{r}%{B${c_bg}} `b_wifi`  `b_battery`  `b_date` %{B-}"
+  sleep 1s
+done | bar -g ${bar_geometry} -B ${c_bg} -F ${c_fg} -u ${bar_underline_thickness}\
+  -f ${bar_font2},${bar_font1}

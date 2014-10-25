@@ -1,88 +1,132 @@
-# bspwm specific {{{
+# Specific to bspwm {{{
 # Quit bspwm
 super + shift + q
   bspc quit 1
+
 # Close active window
-super + q
-  bspc window -c
+super + shift + c
+  bspc window --close
+
 # Kill active window
 super + Delete
-  bspc window -k
+  bspc window --kill
+
 # Toggle floating/fullscreen
 super + {f,shift + f}
-  bspc window -t {floating,fullscreen}
+  bspc window --toggle {floating,fullscreen}
+
 # Toggle tiling/monocle
 super + t
-  bspc desktop -l next
-# Cycle between workspaces
-super + {p,n}
-  bspc desktop -f {prev,next}.occupied
-# Change workspace focus/send window to another workspace
+  bspc desktop --layout next
+
+# Cycle between ocuupied workspaces
+super + {m,n}
+  bspc desktop --focus {prev,next}.occupied
+
+# Change workspace focus and send window to another workspace
 super + {_,shift + }{1-9,0}
-  bspc {desktop -f,window -d} ^{1-9,10}
-# Ratios for manual splitting
+  bspc {desktop --focus,window --to-desktop} ^{1-9,10}
+
+# Ratio for manual splitting
 ctrl + alt + {1-9}
   bspc window --ratio 0.{1-9}
+
 # Focus/swap windows
 super + {_,shift + }{h,j,k,l}
-  bspc window -{f,s} {left,down,up,right}
+  bspc window --{focus,swap} {left,down,up,right}
+
 # Directions to manually split
 ctrl + alt + {h,j,k,l}
-  bspc window -p {left,down,up,right}
+  bspc window --presel {left,down,up,right}
+
 # Enlarge window
 alt + {h,j,k,l}
   bspc window --edge {left -10,down +10,up -10,right +10}
+
 # Shrink window
 alt + shift + {h,j,k,l}
   bspc window --edge {right -10,up +10,down -10,left +10}
+
 # Rotate windows
-alt + {_,shift +,control +} r
+super + {_,shift +,control +} r
   bspc desktop --rotate {90,180,270}
+
 # Flip layout
 super + {_,shift +} s
   bspc desktop --flip {vertical,horizontal}
+
 # Circulate all windows backward/forward
 super + {_,shift +} c
-  bspc desktop -C {forward,backward}
+  bspc desktop --circulate {forward,backward}
+
 # Hide/unhide all windows
 super + d
   bspc control --toggle-visibility
+
 # Lock active window
 super + x
-  bspc window -t locked
+  bspc window --toggle locked
+
 # Balance frames
 super + u
-  bspc desktop -B
+  bspc desktop --balance
+
 # Pointer click to focus window
 ~button1
-  bspc pointer -g focus
+  bspc pointer --grab focus
+
 # Other stuff with the pointer
 super + button{1-3}
-  bspc pointer -g {move,resize_side,resize_corner}
+  bspc pointer --grab {move,resize_side,resize_corner}
 super + !button{1-3}
-  bspc pointer -t %i %i
+  bspc pointer --track %i %i
 super + @button{1-3}
-  bspc pointer -u
+  bspc pointer --ungrab
 # }}}
-# Non bspwm specific {{{
+
+# Not specific to bspwm {{{
 # Terminal emulator
-super + Return
-  urxvt
 super + shift + Return
-  urxvt -fn "xft:monofur:size=9" -fb "xft:monofur:size=9"
+  terminal
+
 # Web browser
-super + b
+super + shift + b
   firefox
-# App launcher
-super + r
+
+# File manager
+super + shift + o
+  thunar
+
+# app launcher
+super + p
   dmenu_run
-# Another app launcher
-super + m
-  menu
+
+# quick file launcher
+super + o
+  dmenu_open
+
+# power dialog
+super + i
+  dmenu_powerdialog
+
+# clipboard manager
+super + v
+  xcmenuctrl
+
+# color chooser
+super + shift + g
+  gcolor2
+
+# take screenshot
+Print
+  screenshot
+
 # Reload sxhkd config
-super + shift + r
-  pkill -USR1 -x sxhkd && notify-send "Config reloaded"
-# mpd controls
+super + alt + r
+  pkill -USR1 --exact sxhkd; \
+  notify-send "Keybindings reloaded"
+
+# mpd control
 super + Left
   mpc prev
 super + Right
@@ -91,6 +135,7 @@ super + Up
   mpc stop
 super + Down
   mpc toggle
+
 # volume control
 super + Prior
   ponymix increase 5
@@ -98,4 +143,6 @@ super + Next
   ponymix decrease 5
 super + End
   ponymix toggle
+super + shift + a
+  pavucontrol
 # }}}

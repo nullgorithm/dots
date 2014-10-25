@@ -3,30 +3,28 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--8-80-75-75-c-50-iso8859-1
-#font -lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1
-#font pango:Meslo LG L 7
+font pango:tewi 9
 
 # should focus follow mouse?
-focus_follows_mouse yes
+focus_follows_mouse no
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # apps
-bindsym $mod+Return exec urxvt
+bindsym $mod+Shift+Return exec terminal
 bindsym $mod+Shift+a exec pavucontrol
-bindsym $mod+b exec firefox
-bindsym $mod+f exec thunar
-bindsym $mod+g exec gcolor2
-bindsym $mod+F12 exec oblogout
+bindsym $mod+Shift+b exec firefox
+bindsym $mod+Shift+o exec thunar
+bindsym $mod+Shift+g exec gcolor2
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
 bindsym $mod+p exec dmenu_run
-bindsym $mod+Shift+p exec i3-dmenu-desktop
+bindsym $mod+o exec finder
+bindsym $mod+Shift+p exec passmenu
 
 # change focus
 bindsym $mod+h focus left
@@ -91,7 +89,7 @@ bindsym $mod+Shift+9 move container to workspace IX
 bindsym $mod+Shift+0 move container to workspace X
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -120,37 +118,34 @@ bindsym $mod+Shift+bracketleft move scratchpad
 # Looks
 bar {
   status_command ~/.i3/i3conky
-  position top
+  mode dock
+  position bottom
   workspace_buttons yes
-  tray_output primary
+  #tray_output primary
   colors {
-    background #002b36
+    background #073642
     separator #1D434D
-    focused_workspace #D25A5A #D25A5A #EEEEEE
-    active_workspace #D25A5A #D25A5A #BBBBBB
-    inactive_workspace #002b36 #002b36 #BBBBBB
-    urgent_workspace #d33682 #d33682 #fdf6e3
+    focused_workspace #1D434D #1D434D #AFC1C6
+    active_workspace #1D434D #1D434D  #AFC1C6
+    inactive_workspace #073642 #073642 #AFC1C6
+    urgent_workspace #d33682 #d33682 #AFC1C6
   }
 }
 
 new_window pixel 1
 hide_edge_borders both
 
-client.focused          #586E74 #586E74 #fdf6e3 #586E74
-client.focused_inactive #073642 #073642 #eee8d5 #073642
-client.unfocused        #073642 #073642 #93a1a1 #073642
+# border → background → text → indicator
+client.focused          #55767F #55767F #AFC1C6 #586E74
+client.focused_inactive #073642 #073642 #AFC1C6 #073642
+client.unfocused        #073642 #073642 #55767F #073642
 client.urgent           #d33682 #d33682 #fdf6e3 #d33682
 
 # rules
-assign [instance="firefox"] → II
-
 for_window [instance="oblogout"] floating enable
 for_window [instance="thunar"] floating enable
 for_window [instance="sxiv"] floating enable
+for_window [instance="mpv"] floating enable
 for_window [instance="pavucontrol"] floating enable
 for_window [instance="lxappearance"] floating enable
 for_window [instance="gcolor2"] floating enable
-
-# auto start
-exec urxvt
-exec i3-msg 'workspace II; exec firefox; workspace I'

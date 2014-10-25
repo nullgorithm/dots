@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-wname=`xdotool getactivewindow getwindowname`
-charcount=`print "${wname}" | wc -m`
+wname="$(xdotool getactivewindow getwindowname 2>/dev/null)"
+charcount="$(print "${wname}" | wc -m)"
 
 if [[ ${charcount} -gt $1 ]] {
   wcut1=`print ${wname} | cut -b -$1`
@@ -9,7 +9,7 @@ if [[ ${charcount} -gt $1 ]] {
   wcut2=`print ${wcut1} | cut -f -$((wcount-1)) -d " "`
   print "${wcut2}..."
 } elif [[ -z ${wname} ]] {
-  print "Oy vey!"
+  print "\---"
 } else {
   print "${wname}"
 }

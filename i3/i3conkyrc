@@ -4,21 +4,29 @@ short_units yes
 TEXT
 [\
   # Loadavg
-  {"full_text": "AVG", "color": "\#268BD2", "separator": false, "separator_block_width": 5},\
-  {"full_text": "${loadavg}", "color": "\#CCCCCC", "separator_block_width": 15},\
+  {"full_text": "AVG", "color": "\#477AB3", "separator": false, "separator_block_width": 5},\
+  {"full_text": "${loadavg}", "color": "\#AFC1C6", "separator": false},\
+  {"full_text": "⮃", "color": "\#2D534D",  "separator": false},\
   # Memory
-  {"full_text": "MEM", "color": "\#859900", "separator": false, "separator_block_width": 5},\
-  {"full_text": "${mem} / ${memmax}", "color": "\#CCCCCC", "separator_block_width": 15},\
+  {"full_text": "MEM", "color": "\#52AD91", "separator": false, "separator_block_width": 5},\
+  {"full_text": "${mem}", "color": "\#AFC1C6", "separator": false},\
+  {"full_text": "⮃", "color": "\#2D534D",  "separator": false},\
   # HD
-  {"full_text": "HDD", "color": "\#2AA198", "separator": false, "separator_block_width": 5},\
-  {"full_text": "${fs_used /} / ${fs_size /}", "color": "\#CCCCCC", "separator_block_width": 15},\
+  {"full_text": "HDD", "color": "\#95A7CC", "separator": false, "separator_block_width": 5},\
+  {"full_text": "${fs_used /} / ${fs_size /}", "color": "\#AFC1C6", "separator": false},\
+  {"full_text": "⮃", "color": "\#2D534D",  "separator": false},\
   # Battery
-  {"full_text": "BAT", "color": "\#D24A4A", "separator": false, "separator_block_width": 5},\
-  {"full_text": "${battery_percent BAT0}%", "color": "\#CCCCCC", "separator_block_width": 15},\
+  {"full_text": "BAT", "color": "\#899AFF", "separator": false, "separator_block_width": 5},\
+  {"full_text": "${battery_percent BAT0}% (${battery_short})", "color": "\#AFC1C6", "separator": false},\
+  {"full_text": "⮃", "color": "\#2D534D",  "separator": false},\
   # Pulseaudio
-  {"full_text": "VOL", "color": "\#D33682", "separator": false, "separator_block_width": 5},\
-  {"full_text": "${exec ~/.i3/get_volume}", "color": "\#CCCCCC", "separator_block_width": 15},\
+  {"full_text": "VOL", "color": "\#7882BF", "separator": false, "separator_block_width": 5},\
+  {"full_text": "${exec get_volume}", "color": "\#AFC1C6", "separator": false},\
+  {"full_text": "⮃", "color": "\#2D534D",  "separator": false},\
   # Date
-  {"full_text": "${time %a %d %b}", "color": "\#CCCCCC", "separator_block_width": 15},\
-  {"full_text": "${time %I:%M}", "color": "\#CCCCCC"}
+  {"full_text": "${time %a %d %b}", "color": "\#AFC1C6", "separator": false},\
+  {"full_text": "⮃", "color": "\#2D534D",  "separator": false},\
+  {"full_text": "${time %H:%M}", "color": "\#AFC1C6", "separator": false},\
+  # White space
+  {"full_text": ""}
 ],

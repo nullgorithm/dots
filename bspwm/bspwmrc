@@ -1,53 +1,50 @@
 #!/usr/bin/env zsh
 
-# Workspaces names {{{
-bspc monitor --reset-desktops b s p w m
-# }}}
-# Options {{{
-                bspc config border_width 1
-                  bspc config window_gap 4
-                 bspc config split_ratio 0.5
-              bspc config bottom_padding 18
-                 bspc config top_padding 0
-                bspc config left_padding 0
-               bspc config right_padding 0
-              bspc config auto_alternate "true"
-                 bspc config auto_cancel "true"
-         bspc config history_aware_focus "true"
-          bspc config borderless_monocle "true"
-             bspc config gapless_monocle "true"
-       bspc config focus_follows_pointer "true"
-     bspc config pointer_follows_monitor "false"
-         bspc config apply_floating_atom "true"
-           bspc config ignore_ewmh_focus "false"
-     bspc config remove_disabled_monitor "true"
-# }}}
-# Colors {{{
-        bspc config focused_border_color "#9F7050"
-         bspc config normal_border_color "#080808"
-         bspc config presel_border_color "#CCBBBB"
- bspc config focused_locked_border_color "#383532"
-  bspc config normal_locked_border_color "#20171D"
-         bspc config urgent_border_color "#FAFAC0"
-# }}}
-# Rules {{{
-bspc rule --add gimp floating=on center=on follow=off desktop=^4
-bspc rule --add firefox floating=off center=off follow=on desktop=^2
-bspc rule --add mplayer floating=on center=on follow=on desktop=^3
-bspc rule --add mpv floating=on center=on follow=on desktop=^3
-bspc rule --add nitrogen floating=on center=on follow=off desktop=^3
-bspc rule --add deluge floating=on center=off follow=off desktop=^3
-bspc rule --add xfontsel floating=on center=on follow=on desktop=^4
-bspc rule --add lxappearance floating=on center=off follow=on desktop=^3
-bspc rule --add feh floating=on center=on follow=on desktop=^4
-bspc rule --add sxiv floating=on center=on follow=on desktop=^4
-bspc rule --add orage floating=on center=off follow=on
-bspc rule --add leafpad floating=on center=off follow=on
-bspc rule --add zathura floating=off center=off follow=on desktop=^4
-bspc rule --add pavucontrol floating=on center=on follow=on desktop=^4
-# }}}
-# Startup {{{
-panel &
-statusbar &
-sxhkd -c "${XDG_CONFIG_HOME}/bspwm/keybindings" &
-# }}}
+#// Options
+bspc config border_width                1
+bspc config window_gap                  4
+bspc config split_ratio                 0.50
+bspc config borderless_monocle          true
+bspc config gapless_monocle             true
+bspc config auto_cancel                 true
+bspc config auto_alternate              true
+bspc config history_aware_focus         true
+bspc config remove_disabled_monitors    true
+
+#// Colors
+bspc config focused_border_color        "#55767f"
+bspc config normal_border_color         "#002b36"
+bspc config focused_locked_border_color "#79464E"
+bspc config normal_locked_border_color  "#361E22"
+bspc config urgent_border_color         "#6E4C70"
+bspc config presel_border_color         "#93895A"
+
+#// Rules
+bspc rule --add Firefox       desktop=^2 floating=false follow=true
+bspc rule --add dwb           desktop=^2 floating=false follow=true
+bspc rule --add Thunar        desktop=^3 floating=true  center=false follow=true
+bspc rule --add mpv           desktop=^3 floating=true  center=true  follow=true
+bspc rule --add sxiv          desktop=^3 floating=true  center=true  follow=true
+bspc rule --add file-roller   desktop=^3 floating=true  center=true  follow=true
+bspc rule --add zathura       desktop=^4 floating=false follow=true
+bspc rule --add lxappearance  desktop=^4 floating=true  center=true  follow=true
+bspc rule --add gimp          desktop=^4 floating=true  center=true  follow=false
+bspc rule --add nitrogen      desktop=^4 floating=true  center=true  follow=true
+bspc rule --add xfontsel      desktop=^4 floating=true  center=true  follow=true
+bspc rule --add gbdfed        desktop=^4 floating=true  center=true  follow=true
+bspc rule --add gcolor2       floating=true center=true
+bspc rule --add pavucontrol   floating=true center=true
+bspc rule --add xcalc         floating=true center=true
+
+#// Desktops
+bspc monitor --reset-desktops 1 2 3 4 5 6 7 8 9
+for x ( 2 5 ) { bspc desktop ${x} --layout monocle }
+for x ( left right top bottom ) { bspc config --desktop 1 ${x}_padding 10 }
+
+#// Autostart
+killall bar dzen2 bspc sxhkd
+sxhkd -c $XDG_CONFIG_HOME/bspwm/keybindings &
+#statusbar &
+#sleep 1s
+#bspwm_panel &
+bar_bspwm_panel &

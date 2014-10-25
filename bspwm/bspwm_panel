@@ -10,7 +10,6 @@ b_workspaces() {
   while read -r line; do
     case $line in
       W*)
-        wm_infos="$PADDING"
         IFS=$FIELDIFS
         set -- ${line#?}
         while [ $# -gt 0 ]; do
@@ -23,13 +22,13 @@ b_workspaces() {
                   # focused occupied desktop
                   FG=$c_fg
                   BG=#544C45
-                  wm_infos="$wm_infos^fg(${FG})*^fg()$PADDING"
+                  #wm_infos="$wm_infos^fg(${FG})*^fg()$PADDING"
                   ;;
                 F*)
                   # focused free desktop
                   FG=$c_fg
                   BG=#544C45
-                  wm_infos="$wm_infos^fg(${FG})-^fg()$PADDING"
+                  #wm_infos="$wm_infos^fg(${FG})-^fg()$PADDING"
                   ;;
                 U*)
                   # focused urgent desktop
@@ -40,13 +39,13 @@ b_workspaces() {
                   # occupied desktop
                   FG=$c_fg2
                   BG=#2B2825
-                  wm_infos="$wm_infos^fg(${FG})+^fg()$PADDING"
+                  #wm_infos="$wm_infos^fg(${FG})+^fg()$PADDING"
                   ;;
                 f*)
                   # free desktop
                   FG=$c_fg3
                   BG=#2B2825
-                  wm_infos="$wm_infos^fg(${FG})-^fg()$PADDING"
+                  #wm_infos="$wm_infos^fg(${FG})-^fg()$PADDING"
                   ;;
                 u*)
                   # urgent desktop
@@ -54,7 +53,7 @@ b_workspaces() {
                   BG=#DDCCBB
                   ;;
               esac
-            #wm_infos="$wm_infos^ca(1, bspc desktop --focus $name)^ca(2, bspc window --to-desktop $name)^fg($FG)$name^fg()$PADDING^ca()^ca()"
+            wm_infos="$wm_infos^ca(1, bspc desktop --focus $name)^ca(2, bspc window --to-desktop $name)^fg($FG)$name^fg()$PADDING^ca()^ca()"
             ;;
             esac
             shift
@@ -66,9 +65,9 @@ b_workspaces() {
   done
 }
 
-b_button="^bg($c_fg2)^fg($c_bg)⮀ ^ca(1, 9menu)^fg($c_bg)^i($HOME/dots/icons/arch2.xbm) ^ca()^bg($c_bg)^fg($c_fg2)⮀"
+b_button="^ca(1,9menu)^bg($c_fg2)^fg($c_bg) ^fg($c_bg)^i($HOME/dots/icons/arch2.xbm) ^bg($c_bg)^fg($c_fg2)⮀^ca()"
 
 while true; do
-  bspc control --get-status | echo "$b_button$(b_workspaces)$(window_name 50)"
+  bspc control --get-status | echo "${b_button} `b_workspaces`"
   sleep 1s
 done | dzen2 -fn $font -h $bar_height -ta left -bg $c_bg -fg $c_fg -dock -expand right

@@ -1,62 +1,115 @@
 ! G L O B A L --------------------------------- {{{
-*saveLines: 4096
+#include "/home/floque/etc/X11/colortheme"
 ! }}}
+
 ! U R X V T ----------------------------------- {{{
-!URxvt*font:                 -misc-fixed-medium-r-semicondensed--12-90-100-100-c-60-iso8859-1
-!URxvt*boldFont:             -misc-fixed-medium-r-semicondensed--12-90-100-100-c-60-iso8859-1
-!URxvt*italicFont:           -misc-fixed-medium-r-normal--8-60-100-100-c-50-iso8859-1
-!URxvt*font:                 -misc-fixed-medium-r-normal--10-*-*-*-*-*-*-*
-!URxvt*boldFont:             -misc-fixed-medium-r-normal--10-*-*-*-*-*-*-*
-!URxvt*font:                 -*-flicked-*-*-*-*-*-*-*-*-*-*-*-*
-!URxvt*boldFont:             -*-flicked-*-*-*-*-*-*-*-*-*-*-*-*
-!URxvt*italicFont:           -*-flicked-*-*-*-*-*-*-*-*-*-*-*-*
-!URxvt*font:                 -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1
-!URxvt*boldFont:             -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso8859-1
-!URxvt*font:                 -schumacher-clean-medium-r-normal--12-120-75-75-c-60-iso8859-1
-!URxvt*boldFont:             -schumacher-clean-bold-r-normal--12-120-75-75-c-60-iso646.1991-irv
-URxvt*font:                 -lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1
-URxvt*boldFont:             -lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1
-!URxvt*boldFont:             -lucy-tewi-bold-r-normal--11-90-75-75-p-58-iso10646-1
+URxvt*font: -lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1
+URxvt*boldFont: -lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1
+!URxvt*font: xft:Source Code Pro:size=8
+!URxvt*boldFont: xft:Source Code Pro:size=8:style=Bold
+!URxvt*font: xft:Fixedmod:size=9
 
+URxvt*buffered: true
+URxvt*cursorBlink: false
+URxvt*cursorUnderline: false
+URxvt*termName: rxvt-unicode-256color
+URxvt*urgentOnBell: true
+URxvt*visualBell: false
+URxvt*pointerBlank: false
+URxvt*letterSpace: 0
+URxvt*internalBorder: 0
+URxvt*scrollBar: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyOutput: true
+URxvt*transparency: false
 
-!URxvt*font:                 xft:PragmataPro:size=8
-!URxvt*boldFont:             xft:PragmataPro:size=8:style=Bold
-!URxvt*font:                 xft:Meslo LG L:size=7
-!URxvt*boldFont:             xft:Meslo LG L:size=7:style=bold
-!URxvt*font:                 xft:Source Code Pro:size=8
-!URxvt*boldFont:             xft:Source Code Pro:size=8:style=Bold
-
-URxvt*buffered:             true
-URxvt*cursorBlink:          false
-URxvt*cursorUnderline:      false
-URxvt*termName:             rxvt-unicode-256color
-URxvt*urgentOnBell:         true
-URxvt*visualBell:           false
-URxvt*pointerBlank:         false
-!URxvt*letterSpace:          -2
-URxvt*internalBorder:       0
-URxvt*scrollBar:            false
-URxvt*scrollWithBuffer:     true
-URxvt*scrollTtyOutput:      true
-URxvt*perl-lib:             /usr/lib/urxvt/perl/
-URxvt*perl-ext-common:      default,matcher
-URxvt*perl-ext:             default,url-select
-URxvt*keysym.M-u:           perl:url-select:select_next
-URxvt*url-select.launcher:  /usr/bin/firefox
-URxvt*transparency:         false
+URxvt.perl-ext: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/firefox -new-tab
+URxvt.url-select.underline: true
 ! }}}
+
+! X T E R M ----------------------------------- {{{
+xterm*VT100.geometry: 80x25
+xterm*faceName: Fixed:style=Regular:size=9
+xterm*dynamicColors: true
+xterm*utf8: 2
+xterm*eightBitInput: true
+xterm*saveLines: 512
+xterm*scrollKey: true
+xterm*scrollTtyOutput:false
+xterm*scrollBar: false
+xterm*rightScrollBar: false
+xterm*jumpScroll: true
+xterm*multiScroll: true
+xterm*toolBar: false
+! }}}
+
 ! X F O N T S E L ----------------------------- {{{
-XFontSel*menu*showUnselectable:      false
-XFontSel*MenuButton.shadowWidth:     0
-XFontSel*Toggle*ToggleStyle:         check
-XFontSel*MenuButton*Justify:         center
+XFontSel*menu*showUnselectable: false
+XFontSel*MenuButton.shadowWidth: 0
+XFontSel*Toggle*ToggleStyle: check
+XFontSel*MenuButton*Justify: center
 XFontSel*MenuButton*MenuButtonStyle: select
 ! }}}
+
 ! X C L O C K --------------------------------- {{{
-xclock*analog:        true
-xclock*majorColor:    #AA9080
-xclock*minorColor:    #504030
-xclock*minuteColor:   #CCBBAA
-xclock*hourColor:     #AA9080
-xclock*secondColor:   #AA9080
+xclock*analog: true
+xclock*majorColor: #acc1c6
+xclock*minorColor: #55767f
+xclock*minuteColor:#55767f
+xclock*hourColor: #acc1c6
+xclock*secondColor:#acc1c6
+! }}}
+
+! X C A L C ----------------------------------- {{{
+xcalc*geometry: 200x275
+xcalc.ti.bevel.background: #111111
+xcalc.ti.bevel.screen.background: #000000
+xcalc.ti.bevel.screen.DEG.background: #000000
+xcalc.ti.bevel.screen.DEG.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.GRAD.background: #000000
+xcalc.ti.bevel.screen.GRAD.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.RAD.background: #000000
+xcalc.ti.bevel.screen.RAD.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.INV.background: #000000
+xcalc.ti.bevel.screen.INV.foreground:Red
+xcalc.ti.bevel.screen.LCD.background: #000000
+xcalc.ti.bevel.screen.LCD.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.LCD.shadowWidth: 0
+xcalc.ti.bevel.screen.M.background: #000000
+xcalc.ti.bevel.screen.M.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.P.background: #000000
+xcalc.ti.bevel.screen.P.foreground: Yellow
+xcalc.ti.Command.foreground: White
+xcalc.ti.Command.background: #777777
+xcalc.ti.button5.background: Orange3
+xcalc.ti.button19.background: #611161
+xcalc.ti.button18.background: #611161
+xcalc.ti.button20.background: #611111
+xcalc.ti.button20.label: /
+xcalc.ti.button25.background: #722222
+xcalc.ti.button30.background: #833333
+xcalc.ti.button35.background: #944444
+xcalc.ti.button40.background: #a55555
+xcalc.ti.button22.background: #222262
+xcalc.ti.button23.background: #222262
+xcalc.ti.button24.background: #222272
+xcalc.ti.button27.background: #333373
+xcalc.ti.button28.background: #333373
+xcalc.ti.button29.background: #333373
+xcalc.ti.button32.background: #444484
+xcalc.ti.button33.background: #444484
+xcalc.ti.button34.background: #444484
+xcalc.ti.button37.background: #555595
+xcalc.ti.button38.background: #555595
+xcalc.ti.button39.background: #555595
+XCalc*Cursor: left_ptr
+XCalc*ShapeStyle: rectangle
+! }}}
+
+! X P D F ------------------------------------- {{{
+xpdf*enableFreetype: yes
+xpdf*antialias: yes
+xpdf*urlCommand: /usr/bin/firefox -new-tab %s
 ! }}}

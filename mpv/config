@@ -1,6 +1,7 @@
 ao = pulse
-vo = opengl-hq:swapinterval=1
-msgmodule = yes
-msgcolor = yes
-no-border = yes
+#vo = opengl-hq:swapinterval=1
+vo = xv
+msg-module = yes
+msg-color = yes
+no-border
 stop-screensaver = yes

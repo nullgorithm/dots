@@ -9,10 +9,10 @@ let g:ctrlp_working_path_mode = 'ra'
 " }}}
 " neocomplcache {{{
 " enable at startup
-"let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_at_startup = 1
 
 " enable smartcase
-"let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_smart_case = 1
 
 " keybindings
 "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -32,11 +32,23 @@ let g:airline_powerline_fonts = 1
 " }}}
 " lightline.vim {{{
 let g:lightline = {
-      \ 'colorscheme': 'default',
+      \ 'colorscheme': 'wombat',
       \ 'component': {
       \   'readonly': '%{&readonly?"⭤":""}',
       \ },
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
+" }}}
+" vim-powerlne {{{
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_colorscheme = 'default'
+let g:Powerline_mode_n = 'N'
+let g:Powerline_mode_i = 'I'
+let g:Powerline_mode_R = 'R'
+let g:Powerline_mode_v = 'V'
+let g:Powerline_mode_V = 'V-L'
+let g:Powerline_mode_cv = 'V-B'
+let g:Powerline_mode_s = 'S'
+let g:Powerline_mode_cs = 'S-B'
 " }}}

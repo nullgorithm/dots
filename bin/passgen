@@ -1,3 +1,8 @@
 #!/usr/bin/env zsh
 
-< /dev/urandom tr -dc A-Za-z0-9_ | head -c$1
+if [[ -z "$1" ]] {
+  print "I need a number as argument"
+  return 1
+}
+
+< /dev/urandom | tr --delete --complement A-Za-z0-9_ | head --bytes $1
